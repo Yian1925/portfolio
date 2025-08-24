@@ -1,0 +1,31 @@
+#float-ball {
+  position: fixed;
+  right: 40px;
+  bottom: 100px;
+  width: 56px;
+  height: 56px;
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  transition: box-shadow 0.2s;
+  user-select: none;
+}
+
+#float-ball:active {
+  cursor: grabbing;
+  /* box-shadow: 0 4px 18px rgba(0,0,0,0.28); */
+}
+
+#float-ball img {
+  width: 100%;      
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  pointer-events: none; 
+}

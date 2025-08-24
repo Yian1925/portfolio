@@ -1,0 +1,106 @@
+.exp-list {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.exp-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.exp-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
+  padding: 28px 20px 28px 0px;
+  min-width: 320px;
+  max-width: 360px;
+  border-radius: 14px 0 0 14px;
+}
+
+.exp-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.exp-type-row {
+  color: #fff;
+  opacity: 0.7; 
+}
+
+.exp-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #222;
+}
+
+.exp-title {
+  font-size: 1.25em;      
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.exp-info-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #fff;
+  opacity: 0.7; 
+}
+
+.exp-identity, .exp-time {
+  font-size: 1em;         
+  color: inherit;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.exp-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;   
+  opacity: 0.7; 
+  padding: 28px 32px;
+}
+
+.exp-desc {
+  color: #eee;
+  font-size: 1em;
+  line-height: 1.7;
+  max-width: 500px;
+  text-align: left;
+}
+
+/* 响应式适配 */
+@media (max-width: 700px) {
+  .exp-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .exp-left, .exp-right {
+    width: 100%;
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #222;
+    padding: 18px 12px;
+  }
+  .exp-right {
+    border-bottom: none;
+  }
+}

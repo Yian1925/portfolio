@@ -1,0 +1,15 @@
+{
+	"$schema": "https://unpkg.com/jsrepo@2.4.3/schemas/project-config.json",
+	"repos": [
+		"https://reactbits.dev/default",
+		"https://reactbits.dev/ts/tailwind"
+	],
+	"includeTests": false,
+	"includeDocs": false,
+	"watermark": true,
+	"configFiles": {},
+	"paths": {
+		"*": "./My\\Profile/my-react-app/node_modules",
+		"TextAnimations": "./my-react-app"
+	}
+}

@@ -1,0 +1,369 @@
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  min-height: 80vh; 
+}
+
+.contact-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contact-title h3 {
+  font-size: 3.55rem;
+  font-weight: bold;
+  color: #222;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.rotating-text-bg {
+  background: #111;
+  padding: 8px 16px;
+  border-radius: 8px;
+  min-height: 60px;
+  min-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.rotating-text-bg .text-rotate-element {
+  color: white !important;
+  font-weight: bold;
+}
+
+.contact-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* contact-form */
+.contact-form {
+  flex: 1;
+  max-width: 500px;
+}
+
+.contact-form form {
+  width: 100%;
+}
+
+.contact-form div {
+  margin-bottom: 30px;
+  width: 100%;
+  position: relative;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 3px solid #111;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+/* input-error */
+.contact-form input.error,
+.contact-form textarea.error {
+  border-color: #111;
+}
+
+.contact-form .error-message {
+  color: #111;
+  font-size: 12px;
+  margin-top: 5px;
+  position: absolute;
+  bottom: -55px;
+  left: 0;
+  z-index: 1;
+}
+
+.contact-form div {
+  margin-bottom: 30px;
+  width: 100%;
+  position: relative;
+}
+
+/* 提交按钮状态 */
+.contact-form button.submitting {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Toast 提示样式 */
+.submit-message {
+  position: fixed;
+  top: -320px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 10px;
+  border-radius: 0.75rem;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  max-width: 200px;
+  animation: slideInUp 0.3s ease-out;
+  border: 2px solid #111;
+  text-align: center;
+}
+
+.submit-message.success {
+  background-color: #b4b581;
+  color: #fff;
+  border: 3px solid #b4b581;
+}
+
+.submit-message.error {
+  background-color: #b4b581;
+  color: #fff;
+  border: 3px solid #b4b581;
+}
+
+/* Toast 从下侧滑入动画 */
+@keyframes slideInUp {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Toast 消失动画 */
+.submit-message.fade-out {
+  animation: slideOutDown 0.3s ease-in forwards;
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .submit-message {
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    font-size: 13px;
+    padding: 10px 16px;
+    transform: translateY(-50%);
+  }
+  
+  @keyframes slideInUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutDown {
+    from {
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+}
+
+.contact-form #message {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 15px 30px;
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #111;
+}
+
+/* contact-info */
+.contact-info {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-list {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding-left: 175px;
+  padding-top: 75px; 
+}
+
+.contact-item {
+  margin-bottom: 18px;
+}
+
+.contact-details {
+  display: flex;
+  align-items: center;
+}
+
+.contact-label {
+  font-weight: 500;
+  margin-right: 10px;
+  min-width: 80px;
+}
+
+.contact-list a {
+  color: #111;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* contact-icon */
+.contact-icon-boxes {
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 125px;
+  animation: slideUpFromBottom 0.8s ease-out;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #111;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+  animation: slideUpFromBottom 0.8s ease-out;
+}
+
+@keyframes slideUpFromBottom {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.icon-box:hover {
+  background: #111;
+  border-color: #111;
+  transform: translateY(-2px);
+}
+
+.icon-box img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .contact-info {
+    padding-left: 0;
+    align-items: center;
+  }
+  
+  .contact-title h3 {
+    text-align: center;
+  }
+  
+  .contact-icon-boxes {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .icon-box {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .icon-box img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* 完全禁用浏览器默认验证样式 */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #111 !important;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background: white;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #111 !important;
+  box-shadow: none !important;
+}
+
+/* 强制移除所有验证样式 */
+.contact-form input:invalid,
+.contact-form textarea:invalid,
+.contact-form input:valid,
+.contact-form textarea:valid {
+  border-color: #111 !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+h1, h2, h3 {
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 2.25em;
+}
+
+.section {
+  padding: 120px 0;
+}
+
+.white-bg {
+  background: #fff;
+  color: #111;
+}
+
+.black-bg {
+  background: #111;
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

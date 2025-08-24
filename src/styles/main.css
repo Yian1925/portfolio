@@ -1,0 +1,10 @@
+@import './base.css';
+@import '../sections/Navbar/Navbar.css';
+@import '../sections/FloatBall/FloatBall.css';
+@import '../sections/PersonalSection/PersonalSection.css';
+@import '../sections/PhotoWallSection/PhotoWallSection.css';
+@import '../sections/ExperienceSection/ExperienceSection.css';
+@import '../sections/SkillsSection/SkillsSection.css';
+@import '../sections/ProjectSection/ProjectSection.css';
+@import '../sections/ContactSection/ContactSection.css';
+@import '../sections/Footer/Footer.css';
