@@ -19,7 +19,9 @@ btnEn.addEventListener('click', () => setLang('en'));
 //     this.classList.toggle('active');
 //   });
 // });
-// 浮标拖拽功能
+// 浮标拖拽功能已移至React组件中
+// 注释掉旧的DOM操作代码以避免冲突
+/*
 const floatBall = document.getElementById('float-ball');
 let isDragging = false;
 let offsetX, offsetY;
@@ -42,7 +44,7 @@ document.addEventListener('mousemove', function(e) {
     const maxX = window.innerWidth - floatBall.offsetWidth;
     const maxY = window.innerHeight - floatBall.offsetHeight;
     x = Math.max(minX, Math.min(x, maxX));
-    y = Math.max(minY, Math.min(y, maxY));
+    y = Math.max(minX, Math.min(y, maxY));
     floatBall.style.left = x + 'px';
     floatBall.style.top = y + 'px';
     floatBall.style.right = 'auto';
@@ -65,3 +67,4 @@ floatBall.addEventListener('click', function(e) {
     e.preventDefault();
   }
 });
+*/

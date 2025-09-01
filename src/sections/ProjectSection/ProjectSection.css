@@ -1,13 +1,19 @@
 .project-list {
   max-width: 1400px;
   margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 添加垂直居中对齐 */
+  justify-content: center; /* 添加水平居中对齐 */
 }
 
 .project-item {
   display: flex;
   align-items: center;
+  justify-content: center; /* 确保每个项目卡片居中 */
   margin-bottom: 48px;
   flex-wrap: wrap;
+  width: 100%; /* 确保占满容器宽度 */
 }
 
 .project-item img {
@@ -30,11 +36,14 @@
 
 .left-img {
   flex-direction: row;
+  justify-content: center; /* 保持居中对齐 */
+  gap: 2rem; /* 添加间距 */
 }
 
 .right-img {
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: row-reverse; /* 改为反向排列而不是右对齐 */
+  justify-content: center; /* 保持居中对齐 */
+  gap: 2rem; /* 添加间距 */
 }
 
 .project-desc p {
@@ -68,4 +77,22 @@
 .project-link a:hover {
   opacity: 1;
   text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .project-item {
+    flex-direction: column !important; /* 在移动端强制垂直布局 */
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .project-desc {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .project-desc h3 {
+    font-size: 1.5rem;
+  }
 }

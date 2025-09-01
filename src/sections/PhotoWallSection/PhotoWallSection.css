@@ -1,13 +1,11 @@
 .photos-content {
- display: flex;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* 改为居中对齐 */
   max-width: 2200px;
-  min-width: 1000px;
-  /* margin: 50px auto;  */
-  gap: 5rem;
+  margin: 50px auto; /* 恢复自动居中边距 */
+  gap: 2rem; /* 减少间距以更好地居中 */
   flex-wrap: wrap;
   margin-bottom: 850px; 
-  /* margin-top: 50px; */
-  /* overflow: auto; */
+  padding: 0 2rem; /* 添加左右内边距 */
 }

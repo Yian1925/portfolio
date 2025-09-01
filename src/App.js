@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/main.css'; 
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './sections/Navbar';
-// import FloatBall from './sections/FloatBall';
+import FloatBall from './sections/FloatBall';
 import PersonalSection from './sections/PersonalSection';
 import PhotoWallSection from './sections/PhotoWallSection'
 import ExperienceSection from './sections/ExperienceSection';
@@ -15,7 +15,7 @@ function App() {
   return (
     <LanguageProvider>
       <Navbar />
-      {/* <FloatBall /> */}
+      <FloatBall />
       <PersonalSection />
       <PhotoWallSection />
       <ExperienceSection />
