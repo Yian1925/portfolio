@@ -1,0 +1,56 @@
+.submit-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 10px;
+  border-radius: 0.75rem;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000000;
+  max-width: 200px;
+  animation: slideInUp 0.3s ease-out;
+  border: 2px solid #f4d03f;
+  text-align: center;
+}
+
+.submit-message.success {
+  background-color: #f4d03f;
+  color: #333;
+  border: 3px solid #f4d03f;
+}
+
+.submit-message.error {
+  background-color: #f4d03f;
+  color: #333;
+  border: 3px solid #f4d03f;
+}
+
+/* Toast 从下侧滑入动画 */
+@keyframes slideInUp {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Toast 消失动画 */
+.submit-message.fade-out {
+  animation: slideOutDown 0.3s ease-in forwards;
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}

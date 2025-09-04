@@ -39,8 +39,8 @@ function PersonalSection() {
             <SplitText
               key={`desc-${lang}`}
               text={lang === 'zh' 
-                ? '欢迎访问我的个人网站！在这里你可以看到我的教育背景，工作经历，个人技能，以及一些项目经验，当然了，还有那些让我两眼放光的兴趣！请随意参观～另外还有我在这里养了一只可爱的约克夏哦～欢迎投喂并和她玩耍！'
-                : 'Welcome to my personal website! Here, you can explore my educational background, professional experience, technical skills, and project portfolio—along with some of my passions that truly spark my curiosity. Feel free to browse around! Oh, and I also have an adorable Yorkshire Terrier here—treats and playtime are always welcome!'
+                ? '欢迎访问我的个人网站！在这里你可以看到我的教育背景，工作经历，个人技能，以及一些项目经验，当然了，还有那些让我两眼放光的兴趣！请随意参观～'
+                : 'Welcome to my personal website! Here, you can explore my educational background, professional experience, technical skills, and project portfolio—along with some of my passions that truly spark my curiosity. Feel free to browse around!'
               }
               className="text-lg leading-relaxed"
               delay={200}
@@ -57,7 +57,9 @@ function PersonalSection() {
           </div>
         </div>
         <div className="personal-img">
-          <img src="/assets/images/人物卡通形象.jpg" alt="个人形象" />
+          <a href="/comic" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/人物卡通形象.jpg" alt="个人形象" />
+          </a>
         </div>
       </div>
     </section>

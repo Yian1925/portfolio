@@ -1,0 +1,95 @@
+/* 右上角按钮统一样式 */
+.reset-button,
+.comic-save-layout-button,
+.change-background-btn,
+.add-image-box-btn,
+.rolling-gallery-upload-btn,
+.add-custom-gallery-btn,
+.delete-gallery-btn,
+.delete-gallery-images-btn {
+  position: fixed !important;
+  right: 20px !important;
+  z-index: 100000 !important;
+  padding: 12px 20px !important;
+  border: none !important;
+  border-radius: 3em !important;
+  cursor: pointer !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  box-shadow: 3px 3px 6px #1f1e1e,
+  -3px -3px 6px #4a4a4a;
+  transition: all 0.3s ease !important;
+  width: 140px !important;
+  height: 40px !important;
+}
+
+/* 按钮位置设置 */
+.reset-button {
+  top: 20px !important;
+  background: linear-gradient(145deg, #fad0c4 0%, #ffd1ff 100%) !important;
+  color: #9dcde1 !important;
+}
+
+.comic-save-layout-button {
+  top: 80px !important;
+  background: linear-gradient(145deg, #ffddaf 0%, #ffbaaf 100%) !important;
+  color: #9dcde1 !important;
+}
+
+
+.change-background-btn {
+  top: 140px !important;
+  background: linear-gradient(145deg, #fad0c4 0%, #ffd1ff 100%) !important;
+  color: #9dcde1 !important;
+}
+
+.add-image-box-btn {
+  top: 200px !important;
+  background: linear-gradient(145deg, #ffddaf 0%, #ffbaaf 100%) !important;
+  color: #9dcde1 !important;
+}
+
+.rolling-gallery-upload-btn {
+  top: 260px !important;
+  background: linear-gradient(145deg, #fad0c4 0%, #ffd1ff 100%) !important;
+  color: #9dcde1 !important;
+}
+
+.add-custom-gallery-btn {
+  top: 320px !important;
+  background: linear-gradient(145deg, #ffddaf 0%, #ffbaaf 100%) !important;
+  color: #9dcde1 !important;
+}
+
+.delete-gallery-btn {
+  top: 380px !important;
+  background: linear-gradient(145deg, #fad0c4 0%, #ffd1ff 100%) !important;
+  color: #9dcde1 !important;
+}
+
+.delete-gallery-images-btn {
+  top: 440px !important;
+  background: linear-gradient(145deg, #ffddaf 0%, #ffbaaf 100%) !important;
+  color: #9dcde1 !important;
+}
+
+/* 按钮悬停效果 */
+.reset-button:hover,
+.change-background-btn:hover,
+.rolling-gallery-upload-btn:hover,
+.delete-gallery-btn:hover {
+  background: #ddf0ee !important;
+  color: black !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.comic-save-layout-button:hover,
+.add-image-box-btn:hover,
+.add-custom-gallery-btn:hover,
+.delete-gallery-images-btn:hover {
+  background: #ddf0ee !important;
+  color: black !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}

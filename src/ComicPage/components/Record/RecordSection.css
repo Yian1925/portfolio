@@ -1,0 +1,104 @@
+.record-section {
+  position: absolute !important;
+  z-index: 500 !important;
+  cursor: grab !important;
+  transition: all 0.2s ease !important;
+  user-select: text !important;
+  pointer-events: auto !important;
+}
+
+.record-section:active {
+  cursor: grabbing !important;
+}
+
+.record-section:hover {
+  cursor: grab !important;
+}
+
+.record-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  background-color: #aee3eb;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 12px 30px rgba(232, 235, 171, 0.4),    /* 主阴影 */
+    0 6px 15px rgba(232, 235, 171, 0.3),     /* 中层阴影 */
+    0 3px 8px rgba(232, 235, 171, 0.2),      /* 内层阴影 */
+    inset 0 2px 4px rgba(255, 255, 255, 0.5), /* 内发光 */
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: text !important;
+  pointer-events: auto !important;
+  z-index: 500 !important;
+  /* transform: translate(0); */
+  transition: all 0.3s ease;
+}
+
+.record-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: -10px;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.record-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+  user-select: text !important;
+  pointer-events: auto !important;
+}
+
+.record-container textarea {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  border: 3px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #d9e8ec;
+  line-height: 1.5;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  min-height: 120px;
+  user-select: text !important;
+  pointer-events: auto !important;
+}
+
+.record-container textarea:focus {
+  outline: none;
+  border-color: #ffbac3;
+}
+
+.record-container button {
+  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+  color: #7657be;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.record-container button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.record-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

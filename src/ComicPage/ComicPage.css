@@ -1,0 +1,122 @@
+@import './components/Record/RecordSection.css';
+@import './components/GallerySector/GallerySector.css';
+@import './components/ImageBox/ImageBoxes.css';
+@import './components/UI/ButtonGroup.css';
+@import './components/UI/BackgroundLayer.css';
+@import './components/UI/ToastMessage.css';
+@import './components/UI/ConfirmDialog.css';
+@import './components/UI/InputDialog.css';
+@import './components/Notes/NoteBoxes.css';
+
+
+.comic-page {
+  min-height: 1500px !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  font-family: 'Arial', sans-serif !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .comic-page {
+    min-height: 1200px !important;
+  }
+  
+  .note-box {
+    max-width: 200px !important;
+    font-size: 12px !important;
+  }
+  
+  .record-container {
+    min-width: 300px !important;
+    padding: 20px !important;
+  }
+  
+  .record-container textarea {
+    max-width: 300px !important;
+  }
+  
+  .image-box {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .reset-button,
+  .comic-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 100px !important;
+    font-size: 12px !important;
+    padding: 8px 15px !important;
+  }
+  
+  .gallery-selector {
+    max-width: 90% !important;
+    padding: 20px !important;
+  }
+  
+  .gallery-option {
+    padding: 10px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .comic-page {
+    min-height: 1000px !important;
+  }
+  
+  .note-box {
+    max-width: 150px !important;
+    font-size: 11px !important;
+    padding: 10px 15px !important;
+  }
+  
+  .record-container {
+    min-width: 250px !important;
+    padding: 15px !important;
+  }
+  
+  .record-container textarea {
+    max-width: 250px !important;
+    min-height: 100px !important;
+  }
+  
+  .image-box {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  .reset-button,
+  .comic-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 80px !important;
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+  }
+  
+  .gallery-selector {
+    max-width: 95% !important;
+    padding: 15px !important;
+  }
+  
+  .gallery-option {
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+}

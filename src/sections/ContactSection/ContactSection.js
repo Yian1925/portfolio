@@ -78,7 +78,7 @@ function ContactSection() {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('https://formspree.io/f/你的表单ID', {
+      const response = await fetch('https://getform.io/f/bwnyyqna', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -213,30 +213,30 @@ function ContactSection() {
               <div className="contact-item">
                 <div className="contact-details">
                   <span className="contact-label">GitHub: </span>
-                  <a href="https://github.com/yourname" target="_blank" rel="noreferrer">github.com/yourname</a>
+                  <a href="https://github.com/Yian1925" target="_blank" rel="noreferrer">github.com/Yian1925</a>
                 </div>
               </div>
               
               <div className="contact-item">
                 <div className="contact-details">
                   <span className="contact-label">Gitee: </span>
-                  <a href="https://gitee.com/yourname" target="_blank" rel="noreferrer">gitee.com/yourname</a>
+                  <a href="https://gitee.com/chapter-one-thinking" target="_blank" rel="noreferrer">gitee.com/chapter-one-thinking</a>
                 </div>
               </div>
             </div>
             
             {/* contact-icon-boxes */}
             <div className="contact-icon-boxes">
-              <a href="mailto:yourmail@example.com" className="icon-box">
+              <a href="mailto:0280ly@sina.com" className="icon-box">
                 <img src="/assets/icon/Email-icon.png" alt="Email" />
               </a>
               <div className="icon-box">
                 <img src="/assets/icon/Phone-icon.png" alt="Phone" />
               </div>
-              <a href="https://github.com/yourname" target="_blank" rel="noreferrer" className="icon-box">
+              <a href="https://github.com/Yian1925" target="_blank" rel="noreferrer" className="icon-box">
                 <img src="/assets/icon/Github-icon.png" alt="GitHub" />
               </a>
-              <a href="https://gitee.com/yourname" target="_blank" rel="noreferrer" className="icon-box">
+              <a href="https://www.notion.so/23c0ba9653f08037b15ff19c26cc99b5" target="_blank" rel="noreferrer" className="icon-box">
                 <img src="/assets/icon/Notion-icon.png" alt="Notion" />
               </a>
             </div>
