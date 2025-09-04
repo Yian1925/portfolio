@@ -9,7 +9,7 @@
 @import './components/Notes/NoteBoxes.css';
 
 
-.comic-page {
+.essay-page {
   min-height: 1500px !important;
   position: relative !important;
   overflow-x: hidden !important;
@@ -24,7 +24,7 @@
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .comic-page {
+  .essay-page {
     min-height: 1200px !important;
   }
   
@@ -48,7 +48,7 @@
   }
   
   .reset-button,
-  .comic-save-layout-button,
+  .essay-save-layout-button,
   .change-background-btn,
   .add-image-box-btn,
   .rolling-gallery-upload-btn,
@@ -72,7 +72,7 @@
 }
 
 @media (max-width: 480px) {
-  .comic-page {
+  .essay-page {
     min-height: 1000px !important;
   }
   
@@ -98,7 +98,7 @@
   }
   
   .reset-button,
-  .comic-save-layout-button,
+  .essay-save-layout-button,
   .change-background-btn,
   .add-image-box-btn,
   .rolling-gallery-upload-btn,

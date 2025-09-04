@@ -1,6 +1,6 @@
 /* 右上角按钮统一样式 */
 .reset-button,
-.comic-save-layout-button,
+.essay-save-layout-button,
 .change-background-btn,
 .add-image-box-btn,
 .rolling-gallery-upload-btn,
@@ -30,7 +30,7 @@
   color: #9dcde1 !important;
 }
 
-.comic-save-layout-button {
+.essay-save-layout-button {
   top: 80px !important;
   background: linear-gradient(145deg, #ffddaf 0%, #ffbaaf 100%) !important;
   color: #9dcde1 !important;
@@ -84,7 +84,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-.comic-save-layout-button:hover,
+.essay-save-layout-button:hover,
 .add-image-box-btn:hover,
 .add-custom-gallery-btn:hover,
 .delete-gallery-images-btn:hover {

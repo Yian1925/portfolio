@@ -10,7 +10,7 @@ import SkillsSection from './sections/SkillsSection';
 import ProjectSection from './sections/ProjectSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './sections/Footer';
-import ComicPage from './ComicPage';
+import EssayPage from './EssayPage';
 import { LanguageProvider } from './context/LanguageContext';
 
 // 原有的个人作品集页面组件
@@ -36,7 +36,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Portfolio />} />
-          <Route path="/comic" element={<ComicPage />} />
+          <Route path="/essay" element={<EssayPage />} />
         </Routes>
       </BrowserRouter>
     </LanguageProvider>

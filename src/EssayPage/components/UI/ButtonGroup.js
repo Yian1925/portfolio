@@ -22,7 +22,7 @@ export const ButtonGroup = ({
 
       {/* 保存布局按钮 */}
       <button 
-        className="comic-save-layout-button"
+        className="essay-save-layout-button"
         onClick={onSaveLayout}
       >
         保存布局

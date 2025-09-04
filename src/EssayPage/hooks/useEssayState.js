@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useComicState = () => {
+export const useEssayState = () => {
   const [notes, setNotes] = useState([
     { id: 1, content: '请你永远永远，不要再光临我的夏季', x: window.innerWidth / 2 - 400, y: 60 },
     { id: 2, content: '截停一场未定的秋天', x: window.innerWidth / 2 - -240, y: 30 },
@@ -34,7 +34,7 @@ export const useComicState = () => {
   // 加载保存的位置
   useEffect(() => {
     const loadPositions = () => {
-      const saved = localStorage.getItem('comicPagePositions');
+      const saved = localStorage.getItem('essayPagePositions');
       if (saved) {
         try {
           const positions = JSON.parse(saved);
@@ -89,7 +89,7 @@ export const useComicState = () => {
       selectedGallery,
       backgroundImage
     };
-    localStorage.setItem('comicPagePositions', JSON.stringify(positions));
+    localStorage.setItem('essayPagePositions', JSON.stringify(positions));
     setHasUnsavedChanges(false);
   };
 
@@ -132,7 +132,7 @@ export const useComicState = () => {
       setCustomGalleries([]);
       setSelectedGallery('main');
       setBackgroundImage('/assets/images/2.jpeg');
-      localStorage.removeItem('comicPagePositions');
+      localStorage.removeItem('essayPagePositions');
       setHasUnsavedChanges(false);
       setSubmitMessage(' 布局已重置！');
     });

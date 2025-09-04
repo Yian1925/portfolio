@@ -57,7 +57,7 @@ function PersonalSection() {
           </div>
         </div>
         <div className="personal-img">
-          <a href="/comic" target="_blank" rel="noopener noreferrer">
+          <a href="/essay" target="_blank" rel="noopener noreferrer">
             <img src="/assets/images/人物卡通形象.jpg" alt="个人形象" />
           </a>
         </div>

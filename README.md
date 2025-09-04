@@ -1,4 +1,5 @@
 # 个人网站
+
 ![个人网站](./portfolio.jpg)
 
 ## 🛠️ 技术栈
@@ -18,8 +19,8 @@ src/
 ├── components          # 动画组件
 ├── context             # 语言切换的全局状态管理
 ├── sections            # 页面区块
-│   ├── Navbar              
-│   ├── PersonalSection     
+│   ├── Navbar
+│   ├── PersonalSection
 │   ├── PhotoWallSection
 │   ├── ExperienceSection
 │   ├── ProjectSection
@@ -35,6 +36,7 @@ src/
 ## 🚀 快速开始
 
 ### 启动开发服务器
+
 ```bash
 npm start
 ```

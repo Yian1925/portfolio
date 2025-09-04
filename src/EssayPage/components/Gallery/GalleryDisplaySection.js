@@ -1,7 +1,7 @@
 import React from 'react';
 import RollingGallery from '../../../components/RollingGallery/RollingGallery';
-import { linearGradient } from 'framer-motion/m';
-import { degrees } from 'framer-motion';
+// import { linearGradient } from 'framer-motion/m';
+// import { degrees } from 'framer-motion';
 
 export const GalleryDisplaySection = ({
   rollingGalleryTitle,

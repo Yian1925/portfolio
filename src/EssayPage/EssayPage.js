@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
-import './ComicPage.css';
-import { useComicState } from './hooks/useComicState.js';
+import './EssayPage.css';
+import { useEssayState } from './hooks/useEssayState.js';
 import { useDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useGalleryManagement } from './hooks/useGalleryManagement.js';
 import { useImageBoxManagement } from './hooks/useImageBoxManagement.js';
@@ -17,11 +17,11 @@ import GallerySelectorModal from './components/GallerySector/GallerySectorModal.
 import DeleteGallerySelectorModal from './components/GallerySector/DeleteGallerySectorModal.js';
 import DeleteImageSelectorModal from './components/ImageCardSector/DeleteImageSelectorModal.js';
 
-function ComicPage() {
+function EssayPage() {
   // 状态管理
-  const state = useComicState();
+  const state = useEssayState();
   
-  // 在useComicState中添加状态
+  // 在useEssayState中添加状态
   const [showInputDialog, setShowInputDialog] = useState(false);
   const [inputDialogConfig, setInputDialogConfig] = useState({});
 
@@ -53,7 +53,7 @@ function ComicPage() {
   );
 
   return (
-    <div className="comic-page" style={{ minHeight: '1500px' }}>
+    <div className="essay-page" style={{ minHeight: '1500px' }}>
       {/* 背景层 */}
       <BackgroundLayer backgroundImage={state.backgroundImage} />
       
@@ -151,4 +151,4 @@ function ComicPage() {
   );
 }
 
-export default ComicPage;
+export default EssayPage;
