@@ -6,6 +6,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  margin: 0 auto; /* 确保容器居中 */
 }
 
 .item-wrapper {

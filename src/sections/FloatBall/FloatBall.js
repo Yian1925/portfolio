@@ -27,21 +27,23 @@ function FloatBall() {
 
   // 处理鼠标按下事件
   const handleMouseDown = (e) => {
-    setIsDragging(false);
+    e.preventDefault(); // 防止默认行为
     setHasMoved(false); // 重置移动状态
     const rect = ballRef.current.getBoundingClientRect();
     const offsetX = e.clientX - rect.left;
     const offsetY = e.clientY - rect.top;
 
     const handleMouseMove = (e) => {
+      e.preventDefault();
       const moveDistance = Math.abs(e.clientX - (rect.left + offsetX)) + 
                           Math.abs(e.clientY - (rect.top + offsetY));
       
-      if (moveDistance > 5) { // 如果移动距离超过5px，认为是拖拽
+      if (moveDistance > 3) { // 降低移动阈值
         setIsDragging(true);
         setHasMoved(true);
       }
       
+      // 计算新位置，确保跟随鼠标
       const x = e.clientX - offsetX;
       const y = e.clientY - offsetY;
       
@@ -55,16 +57,19 @@ function FloatBall() {
       });
     };
 
-    const handleMouseUp = () => {
+    const handleMouseUp = (e) => {
+      e.preventDefault();
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = ''; // 恢复文字选择
       
       // 延迟重置拖拽状态
       setTimeout(() => {
         setIsDragging(false);
-      }, 150); // 增加延迟时间
+      }, 100);
     };
 
+    document.body.style.userSelect = 'none'; // 防止选中文字
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };

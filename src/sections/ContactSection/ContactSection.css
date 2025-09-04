@@ -43,7 +43,10 @@
 .contact-content {
   display: flex;
   align-items: flex-start;
+  justify-content: center; /* 添加水平居中 */
   gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto; /* 确保整体居中 */
 }
 
 /* contact-form */
@@ -314,18 +317,33 @@
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  
   .contact-info {
     padding-left: 0;
     align-items: center;
+    width: 100%;
+  }
+  
+  .contact-list {
+    padding-left: 0;
+    padding-top: 0;
+    text-align: center;
   }
   
   .contact-title h3 {
     text-align: center;
+    font-size: 2.5rem;
   }
   
   .contact-icon-boxes {
     justify-content: center;
     flex-wrap: wrap;
+    padding-left: 0;
   }
   
   .icon-box {

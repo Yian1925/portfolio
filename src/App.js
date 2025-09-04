@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/main.css';
 import Navbar from './sections/Navbar';
-// import FloatBall from './sections/FloatBall';
+import FloatBall from './sections/FloatBall';
 import PersonalSection from './sections/PersonalSection';
 import PhotoWallSection from './sections/PhotoWallSection';
 import ExperienceSection from './sections/ExperienceSection';
@@ -18,7 +18,7 @@ function Portfolio() {
   return (
     <div className="App">
       <Navbar />
-      {/* <FloatBall /> */}
+      <FloatBall />
       <PersonalSection />
       <PhotoWallSection />
       <ExperienceSection />

@@ -50,8 +50,9 @@ export default function TiltedCard({
     const offsetX = e.clientX - rect.left - rect.width / 2;
     const offsetY = e.clientY - rect.top - rect.height / 2;
 
-    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
-    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
+    // 限制旋转幅度，防止过度倾斜
+    const rotationX = Math.max(-rotateAmplitude, Math.min((offsetY / (rect.height / 2)) * -rotateAmplitude, rotateAmplitude));
+    const rotationY = Math.max(-rotateAmplitude, Math.min((offsetX / (rect.width / 2)) * rotateAmplitude, rotateAmplitude));
 
     rotateX.set(rotationX);
     rotateY.set(rotationY);
@@ -60,7 +61,8 @@ export default function TiltedCard({
     y.set(e.clientY - rect.top);
 
     const velocityY = offsetY - lastY;
-    rotateFigcaption.set(-velocityY * 0.6);
+    // 减少caption的旋转幅度，防止突然跳动
+    rotateFigcaption.set(-velocityY * 0.3);
     setLastY(offsetY);
   }
 
