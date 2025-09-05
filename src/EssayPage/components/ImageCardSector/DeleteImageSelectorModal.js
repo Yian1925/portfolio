@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ImageSelectionModal from './ImageSelectionModal.js';
 
 const DeleteImageSelectorModal = ({
   showDeleteImageSelector,
@@ -6,44 +7,70 @@ const DeleteImageSelectorModal = ({
   rollingGalleryTitle,
   rollingGalleryImages,
   customGalleries,
-  setSubmitMessage
+  setSubmitMessage,
+  onDeleteImages
 }) => {
+  const [selectedGallery, setSelectedGallery] = useState(null);
+  const [showImageSelector, setShowImageSelector] = useState(false);
+
   if (!showDeleteImageSelector) return null;
 
   const handleGallerySelect = (gallery) => {
-    if (gallery.images.length === 0) {
-      setSubmitMessage(`${gallery.title}没有图片可删除！`);
+    if (gallery === 'main' && rollingGalleryImages.length === 0) {
+      setSubmitMessage(`${rollingGalleryTitle}没有图片可删除～`);
       return;
     }
-    setShowDeleteImageSelector(false);
-    setSubmitMessage(' 请选择要删除的图片噢～ ');
-    // 这里可以添加打开图片选择界面的逻辑
+
+    const customGallery = customGalleries.find(g => g.id === gallery.id);
+    if (customGallery && customGallery.images.length === 0) {
+      setSubmitMessage(`${customGallery.title}没有图片可删除～`);
+      return;
+    }
+
+    setSelectedGallery(gallery);
+    setShowImageSelector(true);
   };
 
-  const handleMainGallerySelect = () => {
-    if (rollingGalleryImages.length === 0) {
-      setSubmitMessage(' 主画册没有图片可删除～ ');
-      return;
-    }
-    setShowDeleteImageSelector(false);
-    setSubmitMessage(' 请选择要删除的图片～ ');
-    // 这里可以添加打开图片选择界面的逻辑
+  const handleBackToGallerySelector = () => {
+    setSelectedGallery(null);
+    setShowImageSelector(false);
   };
+
+  const handleClose = () => {
+    setSelectedGallery(null);
+    setShowImageSelector(false);
+    setShowDeleteImageSelector(false);
+  };
+
+  if (showImageSelector && selectedGallery) {
+    return (
+      <ImageSelectionModal
+        gallery={selectedGallery}
+        rollingGalleryImages={rollingGalleryImages}
+        rollingGalleryTitle={rollingGalleryTitle}
+        customGalleries={customGalleries}
+        onBack={handleBackToGallerySelector}
+        onDelete={onDeleteImages}
+        onClose={handleClose}
+        setSubmitMessage={setSubmitMessage}
+      />
+    );
+  }
 
   return (
     <div className="gallery-selector-overlay">
       <div className="gallery-selector">
         <h3>选择要删除图片的画册</h3>
         <div className="gallery-options">
-          <button 
+          <button
             className="gallery-option"
-            onClick={handleMainGallerySelect}
+            onClick={() => handleGallerySelect('main')}
           >
             <span className="gallery-name">主画册：{rollingGalleryTitle}</span>
             <span className="gallery-count">({rollingGalleryImages.length}张图片)</span>
           </button>
           {customGalleries.map(gallery => (
-            <button 
+            <button
               key={gallery.id}
               className="gallery-option"
               onClick={() => handleGallerySelect(gallery)}
@@ -53,7 +80,7 @@ const DeleteImageSelectorModal = ({
             </button>
           ))}
         </div>
-        <button 
+        <button
           className="cancel-btn"
           onClick={() => setShowDeleteImageSelector(false)}
         >

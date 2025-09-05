@@ -1,0 +1,80 @@
+/* 主题颜色变量定义 */
+:root {
+  /* 默认主题 */
+  --theme-primary: #f4d03f;
+  --theme-bg-primary: #fff3cd;
+  --theme-bg-secondary: #ffffff;
+  --theme-text-primary: #333333;
+  --theme-text-secondary: #666666;
+  --theme-accent: #333333;
+}
+
+/* 淡粉色主题 */
+[data-theme="pink"] {
+  --theme-primary: #ffb3ba;
+  --theme-bg-primary: #fce4ec;
+  --theme-bg-secondary: #ffffff;
+  --theme-text-primary: #333333;
+  --theme-text-secondary: #666666;
+  --theme-accent: #e91e63;
+}
+
+/* 奶蓝色主题 */
+[data-theme="blue"] {
+  --theme-primary: #bae1ff;
+  --theme-bg-primary: #e3f2fd;
+  --theme-bg-secondary: #ffffff;
+  --theme-text-primary: #333333;
+  --theme-text-secondary: #666666;
+  --theme-accent: #2196f3;
+}
+
+/* 奶油黄主题 */
+[data-theme="yellow"] {
+  --theme-primary: #fff9c4;
+  --theme-bg-primary: #fffde7;
+  --theme-bg-secondary: #ffffff;
+  --theme-text-primary: #333333;
+  --theme-text-secondary: #666666;
+  --theme-accent: #ff9800;
+}
+
+/* 奶绿色主题 */
+[data-theme="green"] {
+  --theme-primary: #c8e6c9;
+  --theme-bg-primary: #e8f5e8;
+  --theme-bg-secondary: #ffffff;
+  --theme-text-primary: #333333;
+  --theme-text-secondary: #666666;
+  --theme-accent: #4caf50;
+}
+
+/* 页面背景主题 */
+[data-theme="default"] {
+  --page-bg: linear-gradient(135deg, #fff3cd 0%, #f4d03f 50%, #fff3cd 100%);
+}
+
+[data-theme="pink"] {
+  --page-bg: linear-gradient(135deg, #fce4ec 0%, #ffb3ba 50%, #fce4ec 100%);
+}
+
+[data-theme="blue"] {
+  --page-bg: linear-gradient(135deg, #e3f2fd 0%, #bae1ff 50%, #e3f2fd 100%);
+}
+
+[data-theme="yellow"] {
+  --page-bg: linear-gradient(135deg, #fffde7 0%, #fff9c4 50%, #fffde7 100%);
+}
+
+[data-theme="green"] {
+  --page-bg: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 50%, #e8f5e8 100%);
+}
+
+.essay-page {
+  background: var(--page-bg, linear-gradient(135deg, #fff3cd 0%, #f4d03f 50%, #fff3cd 100%));
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}

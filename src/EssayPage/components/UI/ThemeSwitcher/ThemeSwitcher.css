@@ -1,37 +1,17 @@
-/* 定义自定义属性 --angle-1，用于表示角度 */
-@property --angle-1 {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: -75deg;
+.theme-switcher {
+  position: fixed;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 100000 !important;
 }
 
-/* 定义自定义属性 --angle-2，用于表示角度 */
-@property --angle-2 {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: -45deg;
-}
-
-:root {
-  --global--size: 1.6em;
-  --anim--hover-time: 400ms;
-  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* 右上角按钮统一样式 */
-.reset-button,
-.essay-save-layout-button,
-.change-background-btn,
-.add-image-box-btn,
-.rolling-gallery-upload-btn,
-.add-custom-gallery-btn,
-.delete-gallery-btn,
-.delete-gallery-images-btn {
+.theme-switch-btn {
   --border-width: clamp(1px, 0.0625em, 4px);
   all: unset;
   cursor: pointer;
   position: fixed !important;
   right: 20px !important;
+  top: 20px !important;
   z-index: 100000 !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   pointer-events: auto;
@@ -57,15 +37,7 @@
   justify-content: center !important;
 }
 
-/* 按钮文字样式 */
-.reset-button span,
-.essay-save-layout-button span,
-.change-background-btn span,
-.add-image-box-btn span,
-.rolling-gallery-upload-btn span,
-.add-custom-gallery-btn span,
-.delete-gallery-btn span,
-.delete-gallery-images-btn span {
+.theme-switch-btn span {
   position: relative;
   display: block;
   user-select: none;
@@ -82,48 +54,7 @@
   z-index: 1;
 }
 
-/* 按钮位置设置 */
-.reset-button {
-  top: 80px !important; /* 移到主题切换器下方 */
-}
-
-.essay-save-layout-button {
-  top: 140px !important;
-}
-
-.change-background-btn {
-  top: 200px !important;
-}
-
-.add-image-box-btn {
-  top: 260px !important;
-}
-
-.rolling-gallery-upload-btn {
-  top: 320px !important;
-}
-
-.add-custom-gallery-btn {
-  top: 380px !important;
-}
-
-.delete-gallery-btn {
-  top: 440px !important;
-}
-
-.delete-gallery-images-btn {
-  top: 500px !important;
-}
-
-/* 按钮悬停效果 */
-.reset-button:hover,
-.essay-save-layout-button:hover,
-.change-background-btn:hover,
-.add-image-box-btn:hover,
-.rolling-gallery-upload-btn:hover,
-.add-custom-gallery-btn:hover,
-.delete-gallery-btn:hover,
-.delete-gallery-images-btn:hover {
+.theme-switch-btn:hover {
   transform: scale(0.975);
   backdrop-filter: blur(0.01em);
   -webkit-backdrop-filter: blur(0.01em);

@@ -13,7 +13,7 @@
 }
 
 .input-dialog {
-  background: #fadc9c !important;
+  background: var(--theme-bg-secondary) !important;
   padding: 40px !important;
   border-radius: 20px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
@@ -26,7 +26,7 @@
 .input-dialog-title {
   margin: 0 0 25px 0 !important;
   font-size: 24px !important;
-  color: #8d9c23 !important;
+  color: var(--theme-text-primary) !important;
   font-weight: 600 !important;
   line-height: 1.4 !important;
 }
@@ -37,8 +37,8 @@
   border: none !important;
   border-radius: 12px !important;
   font-size: 16px !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #333 !important;
+  background: var(--theme-bg-primary) !important;
+  color: var(--theme-text-primary) !important;
   margin: 0 15px 25px -8px !important;
   transition: all 0.3s ease !important;
 }
@@ -50,7 +50,7 @@
 }
 
 .input-dialog-input::placeholder {
-  color: #999 !important;
+  color: var(--theme-text-secondary) !important;
 }
 
 .input-dialog-buttons {
@@ -61,8 +61,8 @@
 
 .input-dialog-btn {
   padding: 12px 30px !important;
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%) !important;
-  color: #7657be;
+  background: var(--theme-primary) !important;
+  color: var(--theme-text-primary);
   border: none !important;
   border-radius: 18px !important;
   font-size: 16px !important;
@@ -72,7 +72,7 @@
 }
 
 .input-dialog-btn:hover {
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%) !important;
+  background: var(--theme-primary) !important;
   transform: translateY(-2px) !important;
 }
 

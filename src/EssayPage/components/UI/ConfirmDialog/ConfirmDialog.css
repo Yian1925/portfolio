@@ -12,10 +12,11 @@
 }
 
 .confirm-dialog {
-  background: #fadc9c !important;
+  background: var(--theme-bg-primary) !important;
+  border: 2px solid var(--theme-primary) !important;
   padding: 25px 15px !important;
   border-radius: 14px !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
   max-width: 350px !important;
   min-height: 100px !important;
   width: 90% !important;

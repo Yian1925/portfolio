@@ -4,7 +4,7 @@
   left: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  z-index: 1 !important;
+  z-index: -1 !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;

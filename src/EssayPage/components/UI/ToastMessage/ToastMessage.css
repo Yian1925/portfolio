@@ -7,24 +7,18 @@
   border-radius: 0.75rem;
   font-size: 15px;
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000000;
   max-width: 200px;
   animation: slideInUp 0.3s ease-out;
-  border: 2px solid #f4d03f;
+  border: 2px solid var(--theme-primary);
   text-align: center;
 }
 
-.submit-message.success {
-  background-color: #f4d03f;
-  color: #333;
-  border: 3px solid #f4d03f;
-}
-
+.submit-message.success,
 .submit-message.error {
-  background-color: #f4d03f;
-  color: #333;
-  border: 3px solid #f4d03f;
+  background-color: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
 }
 
 /* Toast 从下侧滑入动画 */

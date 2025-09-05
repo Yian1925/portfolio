@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 
 export const useEssayState = () => {
-  // 提供默认值，避免在服务器端渲染时出错
   const getDefaultNotes = () => {
-    const defaultWidth = 1920; // 默认屏幕宽度
+    const screenWidth = window.innerWidth; 
     return [
-      { id: 1, content: '请你永远永远，不要再光临我的夏季', x: defaultWidth / 2 - 400, y: 60 },
-      { id: 2, content: '截停一场未定的秋天', x: defaultWidth / 2 + 240, y: 30 },
-      { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: defaultWidth / 2 - 700, y: 160 },
-      { id: 4, content: '无所事事的平静很珍贵', x: defaultWidth / 2 - 640, y: 500 },
-      { id: 5, content: '我特别特别喜欢散步', x: defaultWidth / 2 - 560, y: 330 },
-      { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: defaultWidth / 2 - 100, y: 110 },
-      { id: 7, content: '世界温和，大道光明', x: defaultWidth / 2 - 650, y: 40 },
-      { id: 8, content: '梧桐大道', x: defaultWidth / 2 + 400, y: 120 }
+      { id: 1, content: '请你永远永远，不要再光临我的夏季', x: screenWidth / 2 - 400, y: 60 },
+      { id: 2, content: '截停一场未定的秋天', x: screenWidth / 2 + 240, y: 30 },
+      { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: screenWidth / 2 - 700, y: 160 },
+      { id: 4, content: '无所事事的平静很珍贵', x: screenWidth / 2 - 640, y: 500 },
+      { id: 5, content: '我特别特别喜欢散步', x: screenWidth / 2 - 560, y: 330 },
+      { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: screenWidth / 2 - 100, y: 110 },
+      { id: 7, content: '世界温和，大道光明', x: screenWidth / 2 - 650, y: 40 },
+      { id: 8, content: '梧桐大道', x: screenWidth / 2 + 400, y: 120 }
     ];
   };
 
@@ -25,7 +24,7 @@ export const useEssayState = () => {
   const [confirmCallback, setConfirmCallback] = useState(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState('/assets/images/2.jpeg');
-  const [recordSection, setRecordSection] = useState({ x: 1920 / 2 - 300, y: 240 });
+  const [recordSection, setRecordSection] = useState({ x: window.innerWidth / 2 - 300, y: 240 });
   const [draggedElement, setDraggedElement] = useState(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [imageBoxes, setImageBoxes] = useState([]);
@@ -48,7 +47,7 @@ export const useEssayState = () => {
         try {
           const positions = JSON.parse(saved);
           setNotes(positions.notes || getDefaultNotes());
-          setRecordSection(positions.recordSection || { x: 1920 / 2 - 200, y: 200 });
+          setRecordSection(positions.recordSection || { x: window.innerWidth / 2 - 200, y: 200 });
           setImageBoxes(positions.imageBoxes || []);
           setRollingGalleryImages(positions.rollingGalleryImages || []);
           setRollingGalleryTitle(positions.rollingGalleryTitle || '✨ 日常注脚 ✨');
@@ -118,7 +117,7 @@ export const useEssayState = () => {
       const defaultNotes = getDefaultNotes();
       
       setNotes(defaultNotes);
-      setRecordSection({ x: 1920 / 2 - 300, y: 240 });
+      setRecordSection({ x: window.innerWidth / 2 - 300, y: 240 });
       setImageBoxes([]);
       setRollingGalleryImages([]);
       setRollingGalleryTitle('✨ 日常注脚 ✨');
