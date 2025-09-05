@@ -4,15 +4,19 @@ import { useEssayState } from './hooks/useEssayState.js';
 import { useDragAndDrop } from './hooks/useDragAndDrop.js';
 import { useGalleryManagement } from './hooks/useGalleryManagement.js';
 import { useImageBoxManagement } from './hooks/useImageBoxManagement.js';
-import { ButtonGroup } from './components/UI/ButtonGroup.js';
+
+import { GalleryDisplaySection } from './components/Gallery/GalleryDisplaySection.js';
+import { ImageBoxes } from './components/ImageBox/ImageBoxes.js';
+// import { ModalComponents } from './components/Models/ModalComponents.js'
 import { NoteBoxes } from './components/Notes/NoteBoxes.js';
 import { RecordSection } from './components/Record/RecordSection.js';
-import { ImageBoxes } from './components/ImageBox/ImageBoxes.js';
-import { BackgroundLayer } from './components/UI/BackgroundLayer.js';
-import { GalleryDisplaySection } from './components/Gallery/GalleryDisplaySection.js';
-import { ToastMessage } from './components/UI/ToastMessage.js';
-import { ConfirmDialog } from './components/UI/ConfirmDialog.js';
-import { InputDialog } from './components/UI/InputDialog.js';
+
+import { BackgroundLayer } from './components/UI/BackgroundLayer/BackgroundLayer.js';
+import { ToastMessage } from './components/UI/ToastMessage/ToastMessage.js';
+import { ConfirmDialog } from './components/UI/ConfirmDialog/ConfirmDialog.js';
+import { InputDialog } from './components/UI/InputDialog/InputDialog.js';
+import { ButtonGroup } from './components/UI/ButtonGroup/ButtonGroup.js';
+
 import GallerySelectorModal from './components/GallerySector/GallerySectorModal.js';
 import DeleteGallerySelectorModal from './components/GallerySector/DeleteGallerySectorModal.js';
 import DeleteImageSelectorModal from './components/ImageCardSector/DeleteImageSelectorModal.js';

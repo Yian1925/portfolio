@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 
 export const useEssayState = () => {
-  const [notes, setNotes] = useState([
-    { id: 1, content: '请你永远永远，不要再光临我的夏季', x: window.innerWidth / 2 - 400, y: 60 },
-    { id: 2, content: '截停一场未定的秋天', x: window.innerWidth / 2 - -240, y: 30 },
-    { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: window.innerWidth / 2 - 700, y: 160 },
-    { id: 4, content: '无所事事的平静很珍贵', x: window.innerWidth / 2 - 640, y: 500 },
-    { id: 5, content: '我特别特别喜欢散步', x: window.innerWidth / 2 - 560, y: 330 },
-    { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: window.innerWidth / 2 - 100, y: 110 },
-    { id: 7, content: '世界温和，大道光明', x: window.innerWidth / 2 - 650, y: 40 },
-    { id: 8, content: '梧桐大道', x: window.innerWidth / 2 - -400, y: 120 }
-  ]);
+  // 提供默认值，避免在服务器端渲染时出错
+  const getDefaultNotes = () => {
+    const defaultWidth = 1920; // 默认屏幕宽度
+    return [
+      { id: 1, content: '请你永远永远，不要再光临我的夏季', x: defaultWidth / 2 - 400, y: 60 },
+      { id: 2, content: '截停一场未定的秋天', x: defaultWidth / 2 + 240, y: 30 },
+      { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: defaultWidth / 2 - 700, y: 160 },
+      { id: 4, content: '无所事事的平静很珍贵', x: defaultWidth / 2 - 640, y: 500 },
+      { id: 5, content: '我特别特别喜欢散步', x: defaultWidth / 2 - 560, y: 330 },
+      { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: defaultWidth / 2 - 100, y: 110 },
+      { id: 7, content: '世界温和，大道光明', x: defaultWidth / 2 - 650, y: 40 },
+      { id: 8, content: '梧桐大道', x: defaultWidth / 2 + 400, y: 120 }
+    ];
+  };
+
+  const [notes, setNotes] = useState(getDefaultNotes());
   const [recordText, setRecordText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
@@ -19,7 +25,7 @@ export const useEssayState = () => {
   const [confirmCallback, setConfirmCallback] = useState(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState('/assets/images/2.jpeg');
-  const [recordSection, setRecordSection] = useState({ x: window.innerWidth / 2 - 300, y: 240 });
+  const [recordSection, setRecordSection] = useState({ x: 1920 / 2 - 300, y: 240 });
   const [draggedElement, setDraggedElement] = useState(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [imageBoxes, setImageBoxes] = useState([]);
@@ -31,6 +37,9 @@ export const useEssayState = () => {
   const [showDeleteGallerySelector, setShowDeleteGallerySelector] = useState(false);
   const [showDeleteImageSelector, setShowDeleteImageSelector] = useState(false);
 
+  // 主题相关状态
+  const [currentTheme, setCurrentTheme] = useState('default');
+
   // 加载保存的位置
   useEffect(() => {
     const loadPositions = () => {
@@ -38,23 +47,15 @@ export const useEssayState = () => {
       if (saved) {
         try {
           const positions = JSON.parse(saved);
-          setNotes(positions.notes || [
-            { id: 1, content: '请你永远永远，不要再光临我的夏季', x: window.innerWidth / 2 - 400, y: 60 },
-            { id: 2, content: '截停一场未定的秋天', x: window.innerWidth / 2 - -240, y: 30 },
-            { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: window.innerWidth / 2 - 700, y: 160 },
-            { id: 4, content: '无所事事的平静很珍贵', x: window.innerWidth / 2 - 640, y: 500 },
-            { id: 5, content: '我特别特别喜欢散步', x: window.innerWidth / 2 - 560, y: 330 },
-            { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: window.innerWidth / 2 - 100, y: 110 },
-            { id: 7, content: '世界温和，大道光明', x: window.innerWidth / 2 - 650, y: 40 },
-            { id: 8, content: '梧桐大道', x: window.innerWidth / 2 - -400, y: 120 }
-          ]);
-          setRecordSection(positions.recordSection || { x: window.innerWidth / 2 - 200, y: 200 });
+          setNotes(positions.notes || getDefaultNotes());
+          setRecordSection(positions.recordSection || { x: 1920 / 2 - 200, y: 200 });
           setImageBoxes(positions.imageBoxes || []);
           setRollingGalleryImages(positions.rollingGalleryImages || []);
           setRollingGalleryTitle(positions.rollingGalleryTitle || '✨ 日常注脚 ✨');
           setCustomGalleries(positions.customGalleries || []);
           setSelectedGallery(positions.selectedGallery || 'main');
           setBackgroundImage(positions.backgroundImage || '/assets/images/2.jpeg');
+          setCurrentTheme(positions.currentTheme || 'default');
           setHasUnsavedChanges(false);
         } catch (error) {
           console.error('加载位置失败:', error);
@@ -87,7 +88,8 @@ export const useEssayState = () => {
       rollingGalleryTitle,
       customGalleries,
       selectedGallery,
-      backgroundImage
+      backgroundImage,
+      currentTheme
     };
     localStorage.setItem('essayPagePositions', JSON.stringify(positions));
     setHasUnsavedChanges(false);
@@ -113,25 +115,17 @@ export const useEssayState = () => {
     setConfirmCallback(() => () => {
       console.log('用户确认重置，执行重置操作');
       
-      const defaultNotes = [
-        { id: 1, content: '请你永远永远，不要再光临我的夏季', x: window.innerWidth / 2 - 400, y: 60 },
-        { id: 2, content: '截停一场未定的秋天', x: window.innerWidth / 2 - -240, y: 30 },
-        { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: window.innerWidth / 2 - 700, y: 160 },
-        { id: 4, content: '无所事事的平静很珍贵', x: window.innerWidth / 2 - 640, y: 500 },
-        { id: 5, content: '我特别特别喜欢散步', x: window.innerWidth / 2 - 560, y: 330 },
-        { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: window.innerWidth / 2 - 100, y: 110 },
-        { id: 7, content: '世界温和，大道光明', x: window.innerWidth / 2 - 650, y: 40 },
-        { id: 8, content: '梧桐大道', x: window.innerWidth / 2 - -400, y: 120 }
-      ];
+      const defaultNotes = getDefaultNotes();
       
       setNotes(defaultNotes);
-      setRecordSection({ x: window.innerWidth / 2 - 300, y: 240 });
+      setRecordSection({ x: 1920 / 2 - 300, y: 240 });
       setImageBoxes([]);
       setRollingGalleryImages([]);
       setRollingGalleryTitle('✨ 日常注脚 ✨');
       setCustomGalleries([]);
       setSelectedGallery('main');
       setBackgroundImage('/assets/images/2.jpeg');
+      setCurrentTheme('blue'); // 重置为奶蓝色主题
       localStorage.removeItem('essayPagePositions');
       setHasUnsavedChanges(false);
       setSubmitMessage(' 布局已重置！');
@@ -271,6 +265,7 @@ export const useEssayState = () => {
     showGallerySelector, setShowGallerySelector,
     showDeleteGallerySelector, setShowDeleteGallerySelector,
     showDeleteImageSelector, setShowDeleteImageSelector,
+    currentTheme, setCurrentTheme,
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,

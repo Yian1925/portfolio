@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DeleteGallerySelectorModal = ({ 
   showDeleteGallerySelector, 
@@ -7,28 +7,61 @@ const DeleteGallerySelectorModal = ({
   deleteSelectedGalleries, 
   setSubmitMessage 
 }) => {
+  const [selectedGalleries, setSelectedGalleries] = useState([]);
+
   if (!showDeleteGallerySelector) return null;
 
+  // 如果没有自定义画册，直接关闭弹窗
+  if (customGalleries.length === 0) {
+    setShowDeleteGallerySelector(false);
+    setSubmitMessage(' 当前没有自定义画册～ ');
+    return null;
+  }
+
+  const handleCheckboxChange = (galleryId) => {
+    setSelectedGalleries(prev => {
+      if (prev.includes(galleryId)) {
+        return prev.filter(id => id !== galleryId);
+      } else {
+        return [...prev, galleryId];
+      }
+    });
+  };
+
   const handleDelete = () => {
-    const checkboxes = document.querySelectorAll('.gallery-checkbox:checked');
-    const selectedIds = Array.from(checkboxes).map(cb => parseInt(cb.value));
-    if (selectedIds.length > 0) {
-      deleteSelectedGalleries(selectedIds);
+    if (selectedGalleries.length === 0) {
+      setSubmitMessage(' 请选择要删除的画册～ ');
+      return;
+    }
+
+    // 计算删除后剩余的画册数量
+    const remainingCount = customGalleries.length - selectedGalleries.length;
+
+    deleteSelectedGalleries(selectedGalleries);
+
+    if (remainingCount === 0) {
+      // 如果删除了所有画册，关闭弹窗
+      setSubmitMessage(' 删除成功～ ');
+      setShowDeleteGallerySelector(false);
     } else {
-      setSubmitMessage(' 请选择要删除的图册～ ');
+      // 如果还有画册，清空选择状态，保持弹窗显示
+      setSubmitMessage(' 删除成功～ ');
+      setSelectedGalleries([]);
     }
   };
 
   return (
     <div className="gallery-selector-overlay">
       <div className="gallery-selector">
-        <h3>选择要删除的图册（可多选）</h3>
+        <h3>选择要删除的画册（可多选）</h3>
         <div className="gallery-options">
           {customGalleries.map(gallery => (
             <label key={gallery.id} className="gallery-checkbox-option">
               <input 
                 type="checkbox" 
                 value={gallery.id}
+                checked={selectedGalleries.includes(gallery.id)}
+                onChange={() => handleCheckboxChange(gallery.id)}
                 className="gallery-checkbox"
               />
               <span className="gallery-name">{gallery.title}</span>
@@ -45,7 +78,10 @@ const DeleteGallerySelectorModal = ({
           </button>
           <button 
             className="cancel-btn"
-            onClick={() => setShowDeleteGallerySelector(false)}
+            onClick={() => {
+              setSelectedGalleries([]);
+              setShowDeleteGallerySelector(false);
+            }}
           >
             取消
           </button>

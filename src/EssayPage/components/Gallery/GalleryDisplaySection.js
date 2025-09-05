@@ -20,18 +20,18 @@ export const GalleryDisplaySection = ({
         textAlign: 'center'
       }}>
         <div style={{
-          background: '#f1f2cf',
+          background: 'var(--theme-bg-primary)',
           padding: '15px 20px',
           borderRadius: '12px',
           boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
           marginBottom: '20px',
           textAlign: 'center',
-          width: '300px', 
+          width: '300px',
         }}>
           <h2 style={{
             fontSize: '36px',
             fontWeight: 'bold',
-            color: '#333',
+            color: 'var(--theme-text-primary)',
             margin: '0',
             textAlign: 'center'
           }}>
@@ -70,22 +70,21 @@ export const GalleryDisplaySection = ({
             zIndex: 400
           }}
         >
-          <div style={{
-            background: '#f1f2cf',
+          <div style={{            background: 'var(--theme-bg-primary)',
             padding: '15px 20px',
             borderRadius: '12px',
             boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
             marginBottom: '20px',
             textAlign: 'center',
             width: 'fit-content', // 自适应内容宽度
-            margin: '0 auto 0px auto', 
-            maxWidth: '600px', 
+            margin: '0 auto 0px auto',
+            maxWidth: '600px',
             minWidth: '200px'
           }}>
             <h2 style={{
               fontSize: '36px',
               fontWeight: 'bold',
-              color: '#333',
+              color: 'var(--theme-text-primary)',
               margin: '0',
               textAlign: 'center'
             }}>

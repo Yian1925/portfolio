@@ -1,11 +1,11 @@
 @import './components/Record/RecordSection.css';
 @import './components/GallerySector/GallerySector.css';
 @import './components/ImageBox/ImageBoxes.css';
-@import './components/UI/ButtonGroup.css';
-@import './components/UI/BackgroundLayer.css';
-@import './components/UI/ToastMessage.css';
-@import './components/UI/ConfirmDialog.css';
-@import './components/UI/InputDialog.css';
+@import './components/UI/BackgroundLayer/BackgroundLayer.css';
+@import './components/UI/ButtonGroup/ButtonGroup.css';
+@import './components/UI/ConfirmDialog/ConfirmDialog.css';
+@import './components/UI/InputDialog/InputDialog.css';
+@import './components/UI/ToastMessage/ToastMessage.css';
 @import './components/Notes/NoteBoxes.css';
 
 

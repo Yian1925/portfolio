@@ -10,7 +10,7 @@ import SkillsSection from './sections/SkillsSection';
 import ProjectSection from './sections/ProjectSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './sections/Footer';
-import EssayPage from './EssayPage';
+import EssayPage from './EssayPage/EssayPage';
 import { LanguageProvider } from './context/LanguageContext';
 
 // 原有的个人作品集页面组件

@@ -12,7 +12,7 @@
 }
 
 .gallery-selector {
-  background: #fadc9c;
+  background: var(--theme-bg-secondary);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -24,7 +24,7 @@
 .gallery-selector h3 {
   margin: 0 0 20px 0;
   font-size: 25px;
-  color: #8d9c23;
+  color: var(--theme-text-primary);
   font-weight: 800;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .gallery-option {
-  background: #f8f9fa;
-  border: 2px solid #e9ecef;
+  background: var(--theme-bg-primary);
+  border: 2px solid var(--theme-primary);
   border-radius: 8px;
   box-shadow: 0 8px 25px rgba(245, 244, 244, 0.3) !important;
   padding: 15px;
@@ -54,11 +54,11 @@
 
 .gallery-name {
   font-weight: 500;
-  color: #333;
+  color: var(--theme-text-primary);
 }
 
 .gallery-count {
-  color: #666;
+  color: var(--theme-text-secondary);
   font-size: 14px;
 }
 
@@ -70,8 +70,8 @@
 }
 
 .delete-btn {
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
-  color: #7657be;
+  background: var(--theme-primary);
+  color: var(--theme-text-primary);
   border: none;
   border-radius: 15px;
   padding: 12px 25px;
@@ -81,13 +81,36 @@
 }
 
 .delete-btn:hover {
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+  background: var(--theme-primary);
   transform: translateY(-2px) !important;
 }
 
+.selector-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background: var(--theme-primary);
+  color: var(--theme-text-primary);
+  border: none;
+  border-radius: 15px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  background: var(--theme-primary);
+  transform: translateY(-2px);
+}
+
 .cancel-btn {
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
-  color: #7657be;
+  background: var(--theme-primary);
+  color: var(--theme-text-primary);
   border: none;
   border-radius: 15px;
   padding: 12px 25px;
@@ -97,13 +120,13 @@
 }
 
 .cancel-btn:hover {
-  background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+  background: var(--theme-primary);
   transform: translateY(-2px) !important;
 }
 
 .gallery-checkbox-option {
-  background: #f8f9fa;
-  border: 2px solid #e9ecef;
+  background: var(--theme-bg-primary);
+  border: 2px solid var(--theme-primary);
   border-radius: 8px;
   padding: 15px;
   cursor: pointer;
@@ -114,8 +137,8 @@
 }
 
 .gallery-checkbox-option:hover {
-  background: #f8f9fa;
-  border-color: #ffbac3;
+  background: var(--theme-bg-primary);
+  border-color: var(--theme-primary);
 }
 
 .gallery-checkbox {
