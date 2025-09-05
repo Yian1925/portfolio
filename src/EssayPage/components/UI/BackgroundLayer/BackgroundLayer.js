@@ -9,9 +9,6 @@ export const BackgroundLayer = ({ backgroundImage, currentTheme }) => {
   // 如果没有自定义背景，背景层完全透明，不影响主题背景
   if (!hasCustomBackground) {
     return null;
-    // return (
-    //   <div className="background-layer" style={{ background: 'transparent' }} />
-    // );
   }
 
   // 如果有自定义背景，显示用户图片

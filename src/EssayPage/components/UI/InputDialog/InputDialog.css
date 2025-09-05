@@ -13,7 +13,7 @@
 }
 
 .input-dialog {
-  background: var(--theme-bg-secondary) !important;
+  background: var(--theme-bg-primary) !important;
   padding: 40px !important;
   border-radius: 20px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
@@ -37,7 +37,7 @@
   border: none !important;
   border-radius: 12px !important;
   font-size: 16px !important;
-  background: var(--theme-bg-primary) !important;
+  background: var(--theme-bg-secondary) !important;
   color: var(--theme-text-primary) !important;
   margin: 0 15px 25px -8px !important;
   transition: all 0.3s ease !important;

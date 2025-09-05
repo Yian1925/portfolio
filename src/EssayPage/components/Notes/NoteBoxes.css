@@ -1,14 +1,14 @@
 .note-box {
   position: absolute !important;
   background: var(--theme-bg-primary) !important;
-  border-radius: 12px !important;
+  border-radius: 18px !important;
   padding: 15px 20px !important;
   min-width: 80px !important;
   max-width: 300px !important;
   width: fit-content !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 6px 20px rgba(171, 172, 176, 0.4) !important;
   backdrop-filter: blur(10px) !important;
-  border: 2px solid var(--theme-primary) !important;
+  border: 2px solid var(--theme-bg-primary) !important;
   cursor: grab !important;
   transition: all 0.2s ease !important;
   user-select: none !important;

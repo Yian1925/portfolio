@@ -4,9 +4,9 @@ import React from 'react';
 const themes = [
   { id: 'default', name: '默认' },
   { id: 'pink', name: '淡粉色' },
-  { id: 'blue', name: '奶蓝色' },
+  { id: 'purple', name: '紫色' },
   { id: 'yellow', name: '奶油黄' },
-  { id: 'green', name: '奶绿色' }
+  { id: 'green', name: '绿色' }
 ];
 
 export const ThemeSwitcher = ({ currentTheme, onThemeChange }) => {

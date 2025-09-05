@@ -20,7 +20,7 @@
   border-radius: 20px;
   padding: 40px;
   backdrop-filter: blur(10px);
-  border: 2px solid var(--theme-primary);
+  border: 0;
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.1),
     0 6px 15px rgba(0, 0, 0, 0.08),
@@ -80,12 +80,12 @@
 }
 
 .record-container button {
-  background: var(--theme-bg-secondary);
+  background: var(--theme-bg-tertiary);
   color: var(--theme-text-primary);
-  border: 2px solid var(--theme-primary);
+  border: 2px solid var(--theme-bg-primary);
   padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 15px;
+  font-size: 17px;
   font-weight: 500;
   margin-top: 15px;
   cursor: pointer;
@@ -94,7 +94,7 @@
 
 .record-container button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(117, 135, 216, 0.4);
 }
 
 .record-container button:disabled {

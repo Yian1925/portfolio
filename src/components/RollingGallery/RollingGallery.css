@@ -59,7 +59,7 @@
   height: 120px;
   width: 300px;
   border-radius: 15px;
-  border: 3px solid #fff;
+  border: 1px solid var(--theme-bg-primary);
   object-fit: cover;
   transition: 0.3s ease;
 }

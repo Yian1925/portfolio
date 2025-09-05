@@ -19,11 +19,11 @@
 }
 
 .image-item:hover {
-  border-color: #ffbac3;
+  border-color: var(--theme-primary);
 }
 
 .image-item.selected {
-  border-color: #ffbac3;
+  border-color: var(--theme-primary);
 }
 
 .image-item img {
