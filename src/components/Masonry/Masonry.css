@@ -4,14 +4,13 @@
 
 .list {
   position: relative;
-  width: 100%;
+  width: 100% !important;
   height: 100%;
 }
 
 .item-wrapper {
   position: absolute;
   will-change: transform, width, height, opacity;
-  padding: 12px;
   cursor: pointer;
   top: 0;
   left: 0;

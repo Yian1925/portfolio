@@ -9,11 +9,11 @@
 
 .contact-title {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 60px; /* 保持原样 */
 }
 
 .contact-title h3 {
-  font-size: 3.55rem;
+  font-size: 3.55rem; /* 保持原样 */
   font-weight: bold;
   color: #222;
   letter-spacing: 1px;
@@ -25,10 +25,10 @@
 
 .rotating-text-bg {
   background: #111;
-  padding: 8px 16px;
+  padding: 8px 16px; /* 保持原样 */
   border-radius: 8px;
-  min-height: 60px;
-  min-width: 200px;
+  min-height: 60px; /* 保持原样 */
+  min-width: 200px; /* 保持原样 */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,10 +43,10 @@
 .contact-content {
   display: flex;
   align-items: flex-start;
-  gap: 60px;
+  gap: 60px; /* 保持原样 */
 }
 
-/* contact-form */
+/* contact-form - 完全保持原样 */
 .contact-form {
   flex: 1;
   max-width: 500px;
@@ -57,7 +57,7 @@
 }
 
 .contact-form div {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* 保持原样 */
   width: 100%;
   position: relative;
 }
@@ -65,16 +65,16 @@
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 15px;
-  border: 3px solid #111;
+  padding: 15px; /* 保持原样 */
+  border: 3px solid #111; /* 保持原样 */
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 16px; /* 保持原样 */
   box-sizing: border-box;
   background: #fff;
   transition: border-color 0.3s ease;
 }
 
-/* input-error */
+/* input-error - 保持原样 */
 .contact-form input.error,
 .contact-form textarea.error {
   border-color: #111;
@@ -91,12 +91,12 @@
 }
 
 .contact-form div {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* 保持原样 */
   width: 100%;
   position: relative;
 }
 
-/* 提交按钮状态 */
+/* 提交按钮状态 - 保持原样 */
 .contact-form button.submitting {
   opacity: 0.7;
   cursor: not-allowed;
@@ -107,7 +107,234 @@
   cursor: not-allowed;
 }
 
-/* Toast 提示样式 */
+.contact-form #message {
+  min-height: 200px; /* 保持原样 */
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 15px 30px; /* 保持原样 */
+  background-color: #111; /* 按钮颜色保持原样 */
+  color: white; /* 按钮文字颜色保持原样 */
+  border: none;
+  border-radius: 1rem;
+  font-size: 16px; /* 保持原样 */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #111; /* 保持原样 */
+}
+
+/* contact-info - 保持大屏幕样式 */
+.contact-info {
+  flex: 1;
+  max-width: 400px; /* 保持原样 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-list {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding-left: 175px; /* 保持原样 - 大屏幕左边距 */
+  padding-top: 75px; /* 保持原样 - 大屏幕上边距 */
+}
+
+.contact-item {
+  margin-bottom: 18px; /* 保持原样 */
+}
+
+.contact-details {
+  display: flex;
+  align-items: center;
+}
+
+.contact-label {
+  font-weight: 500;
+  margin-right: 10px;
+  min-width: 80px; /* 保持原样 */
+}
+
+.contact-list a {
+  color: #111;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* contact-icon - 保持大屏幕样式 */
+.contact-icon-boxes {
+  display: flex;
+  flex-direction: row;
+  gap: 45px; /* 保持原样 */
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 125px; /* 保持原样 - 大屏幕左边距 */
+  animation: slideUpFromBottom 0.8s ease-out;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* 保持原样 */
+  height: 50px; /* 保持原样 */
+  border: 3px solid #111; /* 保持原样 */
+  border-radius: 8px;
+  background: white; /* 保持原样 */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+  animation: slideUpFromBottom 0.8s ease-out;
+}
+
+@keyframes slideUpFromBottom {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.icon-box:hover {
+  background: #111; /* 保持原样 */
+  border-color: #111; /* 保持原样 */
+  transform: translateY(-2px);
+}
+
+.icon-box img {
+  width: 25px; /* 保持原样 */
+  height: 25px; /* 保持原样 */
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+/* ==================== 响应式设计 ==================== */
+/* 只针对小屏幕进行修改，大屏幕完全保持原样 */
+
+/* 平板端响应式 */
+@media (max-width: 1024px) {
+  .contact-content {
+    gap: 40px; /* 稍微减少间距 */
+  }
+  
+  .contact-list {
+    padding-left: 100px; /* 减少左边距 */
+  }
+  
+  .contact-icon-boxes {
+    padding-left: 100px; /* 减少左边距 */
+    gap: 35px; /* 稍微减少间距 */
+  }
+}
+
+/* 手机端响应式 */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 0 1.5rem;
+  }
+  
+  .contact-title {
+    margin-bottom: 40px;
+  }
+  
+  .contact-title h3 {
+    font-size: 2.5rem; /* 适当减小字体 */
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: center;
+  }
+  
+  .rotating-text-bg {
+    min-width: 180px;
+    min-height: 50px;
+    padding: 6px 12px;
+  }
+  
+  .contact-content {
+    flex-direction: column; /* 垂直排列 */
+    gap: 40px;
+    align-items: center;
+  }
+  
+  .contact-form {
+    max-width: 100%; /* 全宽度 */
+    order: 1; /* 表单在上方 */
+  }
+  
+  .contact-info {
+    max-width: 100%; /* 全宽度 */
+    align-items: center; /* 居中 */
+    order: 2; /* 信息在下方 */
+  }
+  
+  .contact-list {
+    padding-left: 0; /* 移除左边距 */
+    padding-top: 0; /* 移除上边距 */
+    text-align: center; /* 文字居中 */
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-details {
+    justify-content: center; /* 居中 */
+  }
+  
+  .contact-icon-boxes {
+    padding-left: 0; /* 移除左边距 */
+    justify-content: center; /* 居中 */
+    gap: 25px; /* 减少间距 */
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .contact-title h3 {
+    font-size: 2rem;
+  }
+  
+  .rotating-text-bg {
+    min-width: 150px;
+    min-height: 45px;
+  }
+  
+  .contact-details {
+    flex-direction: column; /* 垂直排列 */
+    gap: 5px;
+  }
+  
+  .contact-label {
+    min-width: auto;
+    margin-right: 0;
+  }
+  
+  .contact-icon-boxes {
+    gap: 20px;
+  }
+  
+  .icon-box {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .icon-box img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ==================== 保持原有样式不变的部分 ==================== */
+
+/* Toast 提示样式 - 完全保持原样 */
 .submit-message {
   position: fixed;
   top: -320px;
@@ -137,7 +364,7 @@
   border: 3px solid #b4b581;
 }
 
-/* Toast 从下侧滑入动画 */
+/* Toast 动画 - 完全保持原样 */
 @keyframes slideInUp {
   from {
     transform: translate(-50%, 100%);
@@ -149,7 +376,6 @@
   }
 }
 
-/* Toast 消失动画 */
 .submit-message.fade-out {
   animation: slideOutDown 0.3s ease-in forwards;
 }
@@ -165,181 +391,7 @@
   }
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .submit-message {
-    left: 10px;
-    right: 10px;
-    max-width: none;
-    font-size: 13px;
-    padding: 10px 16px;
-    transform: translateY(-50%);
-  }
-  
-  @keyframes slideInUp {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(-50%);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOutDown {
-    from {
-      transform: translateY(-50%);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-  }
-}
-
-.contact-form #message {
-  min-height: 200px;
-  resize: vertical;
-}
-
-.contact-form button {
-  padding: 15px 30px;
-  background-color: #111;
-  color: white;
-  border: none;
-  border-radius: 1rem;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.contact-form button:hover {
-  background-color: #111;
-}
-
-/* contact-info */
-.contact-info {
-  flex: 1;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.contact-list {
-  width: 100%;
-  margin-bottom: 2rem;
-  padding-left: 175px;
-  padding-top: 75px; 
-}
-
-.contact-item {
-  margin-bottom: 18px;
-}
-
-.contact-details {
-  display: flex;
-  align-items: center;
-}
-
-.contact-label {
-  font-weight: 500;
-  margin-right: 10px;
-  min-width: 80px;
-}
-
-.contact-list a {
-  color: #111;
-  text-decoration: none;
-  word-break: break-all;
-}
-
-.contact-list a:hover {
-  text-decoration: underline;
-}
-
-/* contact-icon */
-.contact-icon-boxes {
-  display: flex;
-  flex-direction: row;
-  gap: 45px;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 125px;
-  animation: slideUpFromBottom 0.8s ease-out;
-}
-
-.icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border: 3px solid #111;
-  border-radius: 8px;
-  background: white;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  flex-shrink: 0;
-  animation: slideUpFromBottom 0.8s ease-out;
-}
-
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.icon-box:hover {
-  background: #111;
-  border-color: #111;
-  transform: translateY(-2px);
-}
-
-.icon-box img {
-  width: 25px;
-  height: 25px;
-  object-fit: contain;
-  transition: filter 0.3s ease;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .contact-info {
-    padding-left: 0;
-    align-items: center;
-  }
-  
-  .contact-title h3 {
-    text-align: center;
-  }
-  
-  .contact-icon-boxes {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .icon-box {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .icon-box img {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* 完全禁用浏览器默认验证样式 */
+/* 浏览器验证样式 - 完全保持原样 */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -359,7 +411,6 @@
   box-shadow: none !important;
 }
 
-/* 强制移除所有验证样式 */
 .contact-form input:invalid,
 .contact-form textarea:invalid,
 .contact-form input:valid,

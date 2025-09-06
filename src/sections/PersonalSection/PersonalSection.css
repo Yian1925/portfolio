@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 1200px;
-  min-width: 600px;
+  /* min-width: 600px; */
   margin: 0 64px;
   gap: 5rem;
   flex-wrap: wrap;
@@ -41,6 +41,28 @@
 }
 
 /* 响应式设计 */
+@media (max-width: 1024px) {
+  .personal-content {
+    max-width: 100%;
+    margin: 0 32px;
+    gap: 4rem;
+  }
+  
+  .personal-introduce {
+    font-size: 2.8em;
+  }
+  
+  .personal-mb4 {
+    font-size: 1.2em;
+    line-height: 34px;
+  }
+  
+  .personal-img img {
+    width: 450px;
+    height: 540px;
+  }
+}
+
 @media (max-width: 900px) {
   .personal-content {
     flex-direction: column;
@@ -68,6 +90,28 @@
   .personal-mb4 {
     font-size: 1.1em;
     line-height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .personal-content {
+    margin: 0 15px;
+    gap: 2.5rem;
+  }
+  
+  .personal-introduce {
+    font-size: 2.2em;
+  }
+  
+  .personal-mb4 {
+    font-size: 1.05em;
+    line-height: 30px;
+  }
+  
+  .personal-img img {
+    width: 100%;
+    max-width: 400px;
+    height: 480px;
   }
 }
 

@@ -11,6 +11,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 100%; 
 }
 
 .tilted-card-mobile-alert {
@@ -21,18 +22,12 @@
   display: none;
 }
 
-@media (max-width: 640px) {
-  .tilted-card-mobile-alert {
-    display: block;
-  }
-  .tilted-card-caption {
-    display: none;
-  }
-}
-
 .tilted-card-inner {
   position: relative;
   transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  max-width: 100%; 
 }
 
 .tilted-card-img {
@@ -43,6 +38,9 @@
   border-radius: 15px;
   will-change: transform;
   transform: translateZ(0);
+  width: 100% !important; 
+  height: 100% !important; 
+  max-width: 100% !important; 
 }
 
 .tilted-card-overlay {
@@ -52,6 +50,8 @@
   z-index: 2;
   will-change: transform;
   transform: translateZ(30px);
+  width: 100%;
+  height: 100%;
 }
 
 .tilted-card-caption {
@@ -66,4 +66,53 @@
   color: #2d2d2d;
   opacity: 0;
   z-index: 3;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .tilted-card-figure {
+    max-width: 200px;
+    max-height: 160px;
+    perspective: 500px;
+  }
+  
+  .tilted-card-mobile-alert {
+    display: block;
+    font-size: 0.75rem;
+  }
+  
+  .tilted-card-caption {
+    display: none;
+  }
+}
+
+/* 小手机端 */
+@media (max-width: 480px) {
+  .tilted-card-figure {
+    max-width: 180px;
+    max-height: 140px;
+    perspective: 400px;
+  }
+  
+  .tilted-card-mobile-alert {
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+}
+
+/* 超小屏幕 */
+@media (max-width: 360px) {
+  .tilted-card-figure {
+    max-width: 160px;
+    max-height: 120px;
+    perspective: 300px;
+  }
+}
+
+/* 确保在容器中居中显示 */
+.tilted-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

@@ -79,13 +79,13 @@ const Masonry = ({
 }) => {
   const columns = useMedia(
     [
-      "(min-width:1500px)",
-      "(min-width:1000px)",
+      "(min-width:1200px)",
+      "(min-width:900px)",
       "(min-width:600px)",
       "(min-width:400px)",
     ],
     [5, 4, 3, 2],
-    1
+    2
   );
 
   const [containerRef, { width }] = useMeasure();
@@ -130,18 +130,40 @@ const Masonry = ({
 const grid = useMemo(() => {
   if (!width) return [];
 
-  const gap = 16; // 设置间距
+  const gap = 16; // 恢复到原来的间距
   const colHeights = new Array(columns).fill(0);
-  const columnWidth = (width - (columns - 1) * gap) / columns;
+
+  // 简单的自适应列宽计算
+  let columnWidth = (width - (columns - 1) * gap) / columns;
+
+  // 只设置一个合理的最大宽度限制
+  const maxColumnWidth = 400;
+  columnWidth = Math.min(columnWidth, maxColumnWidth);
+
+  // 简单居中计算
+  const totalWidth = columnWidth * columns + gap * (columns - 1);
+  const offsetX = Math.max(0, (width - totalWidth) / 2);
+
+  // 响应式高度计算函数
+  const getResponsiveHeight = (originalHeight) => {
+    if (width >= 1200) return originalHeight ; // 桌面端
+    if (width >= 900) return originalHeight * 0.8; // 大平板
+    if (width >= 600) return originalHeight * 0.7; // 小平板
+    return originalHeight * 0.5; // 手机端
+  };
+
+  colHeights.fill(0);
 
   return items.map((child) => {
     const col = colHeights.indexOf(Math.min(...colHeights));
-    // 修改 x 坐标，加上间距
-    const x = columnWidth * col + gap * col;
-    const height = child.height / 2;
+    const x = offsetX + columnWidth * col + gap * col;
+    
+    const height = getResponsiveHeight(child.height);
+
     const y = colHeights[col];
 
-    // 在高度计算中也加上间距
+    const validHeight = isNaN(height) || height <= 0 ? 200 : height;
+
     colHeights[col] += height + gap;
 
     return { ...child, x, y, w: columnWidth, h: height };

@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;  
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
@@ -27,13 +31,4 @@ h1, h2, h3 {
 .black-bg {
   background: #111;
   color: #fff;
-}
-
-html {
-  scroll-behavior: smooth;  
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }

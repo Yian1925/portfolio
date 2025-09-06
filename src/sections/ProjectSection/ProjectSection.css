@@ -73,15 +73,16 @@
 /* 响应式规则 */
 @media (max-width: 768px) {
   .project-list {
-    margin: 20px auto 0 auto;
+    margin: 20 auto 0 auto;
     padding: 0 20px;
   }
   
   .project-item {
     flex-direction: column;
     margin-bottom: 30px;
-    align-items: center;
+    /* align-items: center; */
   }
+  
   
   .project-item img {
     width: 100%;
@@ -114,3 +115,4 @@
     font-size: 1.3rem;
   }
 }
+

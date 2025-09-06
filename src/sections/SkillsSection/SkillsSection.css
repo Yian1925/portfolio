@@ -56,3 +56,96 @@
   color: #fff;
   border: 2px solid #0078ff;
 }
+
+/* 平板端响应式 */
+@media (max-width: 1024px) {
+  .skills-list {
+    gap: 20px 20px;
+    padding: 0 20px;
+    max-width: 100%;
+  }
+  
+  .skill-item {
+    width: 280px;
+    height: 160px;
+  }
+  
+  .skill-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+  }
+  
+  .skill-title {
+    font-size: 1.1em;
+  }
+}
+
+/* 大手机端响应式 */
+@media (max-width: 768px) {
+  .skills-list {
+    gap: 16px 16px;
+    padding: 0 15px;
+  }
+  
+  .skill-item {
+    width: 240px;
+    height: 140px;
+  }
+  
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+  
+  .skill-title {
+    font-size: 1em;
+  }
+}
+
+/* 小平板端响应式 */
+@media (max-width: 600px) {
+  .skills-list {
+    gap: 14px 14px;
+    padding: 0 10px;
+  }
+  
+  .skill-item {
+    width: 200px;
+    height: 120px;
+  }
+  
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .skill-title {
+    font-size: 0.95em;
+  }
+}
+
+/* 小手机端响应式 */
+@media (max-width: 480px) {
+  .skills-list {
+    gap: 12px 12px;
+    padding: 0 8px;
+  }
+  
+  .skill-item {
+    width: 160px;
+    height: 100px;
+  }
+  
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+  }
+  
+  .skill-title {
+    font-size: 0.9em;
+  }
+}

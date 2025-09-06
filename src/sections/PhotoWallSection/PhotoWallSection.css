@@ -1,13 +1,9 @@
 .photos-content {
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 2200px;
-  min-width: 1000px;
-  /* margin: 50px auto;  */
+  margin: 50px auto; 
   gap: 5rem;
   flex-wrap: wrap;
-  margin-bottom: 850px; 
-  /* margin-top: 50px; */
-  /* overflow: auto; */
+  margin-bottom: 1170px; 
 }
