@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import './EssayPage.css';
 import { useEssayState } from './hooks/useEssayState.js';
 import { useDragAndDrop } from './hooks/useDragAndDrop.js';
@@ -7,7 +7,6 @@ import { useImageBoxManagement } from './hooks/useImageBoxManagement.js';
 
 import { GalleryDisplaySection } from './components/Gallery/GalleryDisplaySection.js';
 import { ImageBoxes } from './components/ImageBox/ImageBoxes.js';
-// import { ModalComponents } from './components/Models/ModalComponents.js'
 import { NoteBoxes } from './components/Notes/NoteBoxes.js';
 import { RecordSection } from './components/Record/RecordSection.js';
 
@@ -80,9 +79,8 @@ function EssayPage() {
     state.dragOffset,
     state.setHasUnsavedChanges,
     {
-      handleMouseDown: state.handleMouseDown,
-      handleMouseMove: state.handleMouseMove,
-      handleMouseUp: state.handleMouseUp
+      handlePointerMove: state.handlePointerMove,
+      handlePointerUp: state.handlePointerUp
     }
   );
 
@@ -112,26 +110,26 @@ function EssayPage() {
         onDeleteGalleryImages={() => state.setShowDeleteImageSelector(true)}
       />
       
-      {/* 随笔文本框 */}
+      {/* 随笔文本框 - 使用统一的函数名 */}
       <NoteBoxes
         notes={state.notes}
-        onMouseDown={(e, type, id) => state.handleMouseDown(e, type, id)}
+        onPointerDown={(e, type, id) => state.handlePointerDown(e, type, id)}
       />
       
-      {/* 记录区域 */}
+      {/* 记录区域 - 使用统一的函数名 */}
       <RecordSection
         recordSection={state.recordSection}
         recordText={state.recordText}
         isSubmitting={state.isSubmitting}
-        onMouseDown={(e) => state.handleMouseDown(e, 'record', 'record')}
+        onPointerDown={(e) => state.handlePointerDown(e, 'record', 'record')}
         onTextChange={state.setRecordText}
         onSubmit={state.handleSubmitRecord}
       />
       
-      {/* 图片卡片 */}
+      {/* 图片卡片 - 使用统一的函数名 */}
       <ImageBoxes
         imageBoxes={state.imageBoxes}
-        onMouseDown={(e, type, id) => state.handleMouseDown(e, type, id)}
+        onPointerDown={(e, type, id) => state.handlePointerDown(e, type, id)}
         onImageUpload={imageBoxManagement.handleImageUpload}
         onRemoveImageBox={imageBoxManagement.handleRemoveImageBox}
         onRemoveImage={imageBoxManagement.handleRemoveImage}

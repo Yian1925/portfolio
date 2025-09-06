@@ -2,9 +2,10 @@
   position: absolute !important;
   z-index: 500 !important;
   cursor: grab !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.3s ease !important;
   user-select: text !important;
   pointer-events: auto !important;
+  transform-origin: top left !important;
 }
 
 .record-section:active {
@@ -20,7 +21,7 @@
   border-radius: 20px;
   padding: 40px;
   backdrop-filter: blur(10px);
-  border: 0;
+  border: 2px solid var(--theme-primary);
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.1),
     0 6px 15px rgba(0, 0, 0, 0.08),
@@ -37,6 +38,30 @@
   transition: all 0.3s ease;
 }
 
+/* 响应式容器尺寸调整 */
+@media (max-width: 480px) {
+  .record-container {
+    min-width: 300px !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .record-container {
+    min-width: 400px !important;
+    padding: 25px !important;
+    border-radius: 18px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .record-container {
+    min-width: 480px !important;
+    padding: 30px !important;
+  }
+}
+
 .record-container h2 {
   text-align: center;
   color: var(--theme-text-primary);
@@ -46,14 +71,18 @@
   font-weight: 600;
 }
 
-.record-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  align-items: center;
-  user-select: text !important;
-  pointer-events: auto !important;
+/* 响应式标题字体 */
+@media (max-width: 480px) {
+  .record-container h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .record-container h2 {
+    font-size: 1.5rem !important;
+  }
 }
 
 .record-container textarea {
@@ -74,6 +103,24 @@
   pointer-events: auto !important;
 }
 
+/* 响应式文本框 */
+@media (max-width: 480px) {
+  .record-container textarea {
+    max-width: 260px !important;
+    padding: 12px !important;
+    font-size: 13px !important;
+    min-height: 100px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .record-container textarea {
+    max-width: 350px !important;
+    padding: 14px !important;
+    font-size: 13px !important;
+  }
+}
+
 .record-container textarea:focus {
   outline: none;
   border-color: var(--theme-accent);
@@ -82,19 +129,35 @@
 .record-container button {
   background: var(--theme-bg-tertiary);
   color: var(--theme-text-primary);
-  border: 2px solid var(--theme-bg-primary);
+  border: 2px solid var(--theme-primary);
   padding: 12px 24px;
-  border-radius: 15px;
-  font-size: 17px;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 500;
   margin-top: 15px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* 响应式按钮 */
+@media (max-width: 480px) {
+  .record-container button {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+    margin-top: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .record-container button {
+    padding: 11px 22px !important;
+    font-size: 15px !important;
+  }
+}
+
 .record-container button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(117, 135, 216, 0.4);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .record-container button:disabled {

@@ -58,14 +58,14 @@
 }
 
 /* 按钮文字样式 */
-.reset-button span,
-.essay-save-layout-button span,
-.change-background-btn span,
-.add-image-box-btn span,
-.rolling-gallery-upload-btn span,
-.add-custom-gallery-btn span,
-.delete-gallery-btn span,
-.delete-gallery-images-btn span {
+.reset-button,
+.essay-save-layout-button,
+.change-background-btn,
+.add-image-box-btn,
+.rolling-gallery-upload-btn,
+.add-custom-gallery-btn,
+.delete-gallery-btn,
+.delete-gallery-images-btn {
   position: relative;
   display: block;
   user-select: none;
@@ -75,7 +75,7 @@
   font-family: "Inter", sans-serif;
   letter-spacing: -0.05em;
   font-weight: 500;
-  font-size: clamp(0.8em, 0.5em + 0.5vw, 1.2em);
+  font-size: clamp(0.8em, 0.5em + 0.5vw, 1.2em) !important;
   line-height: 1.2;
   color: var(--theme-text-primary);
   text-align: center;

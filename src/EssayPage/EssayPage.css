@@ -29,7 +29,7 @@
 /* 响应式设计 */
 /* 修改第29-77行的响应式规则，添加更多断点 */
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .essay-page {
     min-height: 1300px;
   }
@@ -171,4 +171,4 @@
     padding: 8px !important;
     font-size: 12px !important;
   }
-}
+} */

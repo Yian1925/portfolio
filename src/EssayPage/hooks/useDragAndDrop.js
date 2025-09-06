@@ -7,23 +7,30 @@ export const useDragAndDrop = (
   handlers
 ) => {
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handlePointerMove = (e) => {
       if (!draggedElement) return;
-      handlers.handleMouseMove(e);
+      handlers.handlePointerMove(e);
     };
 
-    const handleMouseUp = () => {
+    const handlePointerUp = () => {
       if (draggedElement) {
-        handlers.handleMouseUp();
+        handlers.handlePointerUp();
       }
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    // 同时监听鼠标和触摸事件
+    document.addEventListener('mousemove', handlePointerMove);
+    document.addEventListener('touchmove', handlePointerMove, { passive: false });
+    document.addEventListener('mouseup', handlePointerUp);
+    document.addEventListener('touchend', handlePointerUp);
+    document.addEventListener('touchcancel', handlePointerUp);
    
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mousemove', handlePointerMove);
+      document.removeEventListener('touchmove', handlePointerMove);
+      document.removeEventListener('mouseup', handlePointerUp);
+      document.removeEventListener('touchend', handlePointerUp);
+      document.removeEventListener('touchcancel', handlePointerUp);
     };
   }, [draggedElement, dragOffset, handlers]);
 };

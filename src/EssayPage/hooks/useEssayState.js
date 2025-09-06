@@ -39,6 +39,111 @@ export const useEssayState = () => {
   // 主题相关状态
   const [currentTheme, setCurrentTheme] = useState('default');
 
+  // 添加屏幕尺寸和响应式缩放状态
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+  const [responsiveScale, setResponsiveScale] = useState(1);
+
+  // 屏幕尺寸变化监听和响应式调整
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      
+      setScreenSize({ width: newWidth, height: newHeight });
+      
+      // 计算响应式缩放因子
+      let scale = 1;
+      if (newWidth <= 480) {
+        scale = 0.6;
+      } else if (newWidth <= 768) {
+        scale = 0.75;
+      } else if (newWidth <= 1024) {
+        scale = 0.85;
+      }
+      
+      setResponsiveScale(scale);
+      
+      // 重新计算note位置以避免重叠
+      adjustNotesForScreenSize(scale, newWidth, newHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // 避免重叠的位置调整函数
+  const adjustNotesForScreenSize = (scale, screenWidth, screenHeight) => {
+    setNotes(prevNotes => {
+      const adjustedNotes = [...prevNotes];
+      const noteSpacing = 120 * scale; // 根据缩放调整间距
+      const margin = 20 * scale;
+      
+      // 定义安全区域
+      const safeArea = {
+        left: margin,
+        right: screenWidth - margin,
+        top: margin,
+        bottom: screenHeight - margin
+      };
+      
+      // 重新排列notes位置
+      adjustedNotes.forEach((note, index) => {
+        let newX = note.x * scale;
+        let newY = note.y * scale;
+        
+        // 确保在安全区域内
+        newX = Math.max(safeArea.left, Math.min(newX, safeArea.right - 200 * scale));
+        newY = Math.max(safeArea.top, Math.min(newY, safeArea.bottom - 100 * scale));
+        
+        // 检查与其他notes的重叠
+        let overlap = true;
+        let attempts = 0;
+        const maxAttempts = 50;
+        
+        while (overlap && attempts < maxAttempts) {
+          overlap = false;
+          
+          for (let i = 0; i < index; i++) {
+            const otherNote = adjustedNotes[i];
+            const distance = Math.sqrt(
+              Math.pow(newX - otherNote.x * scale, 2) + 
+              Math.pow(newY - otherNote.y * scale, 2)
+            );
+            
+            if (distance < noteSpacing) {
+              overlap = true;
+              
+              // 尝试新的位置
+              const angle = Math.random() * Math.PI * 2;
+              const radius = noteSpacing + Math.random() * 50;
+              newX += Math.cos(angle) * radius;
+              newY += Math.sin(angle) * radius;
+              
+              // 再次检查边界
+              newX = Math.max(safeArea.left, Math.min(newX, safeArea.right - 200 * scale));
+              newY = Math.max(safeArea.top, Math.min(newY, safeArea.bottom - 100 * scale));
+              
+              break;
+            }
+          }
+          
+          attempts++;
+        }
+        
+        adjustedNotes[index] = {
+          ...note,
+          x: Math.round(newX),
+          y: Math.round(newY)
+        };
+      });
+      
+      return adjustedNotes;
+    });
+  };
+
   // 加载保存的位置
   useEffect(() => {
     const loadPositions = () => {
@@ -176,28 +281,42 @@ export const useEssayState = () => {
     input.click();
   };
 
-  // 拖拽相关函数
-  const handleMouseDown = (e, elementType, elementId) => {
+  // 统一的事件处理函数 - 支持鼠标和触摸
+  const handlePointerDown = (e, elementType, elementId) => {
     e.preventDefault();
+    
+    // 获取正确的坐标（兼容鼠标和触摸）
+    const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    
     const rect = e.currentTarget.getBoundingClientRect();
     setDraggedElement({ type: elementType, id: elementId });
     setDragOffset({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      x: clientX - rect.left,
+      y: clientY - rect.top
     });
   };
 
-  const handleMouseMove = (e) => {
+  const handlePointerMove = (e) => {
     if (!draggedElement) return;
     
-    const newX = e.clientX - dragOffset.x;
-    const newY = e.clientY - dragOffset.y;
+    // 获取正确的坐标（兼容鼠标和触摸）
+    const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
     
-    // 边界检查
-    const maxX = window.innerWidth - 200;
-    const maxY = window.innerHeight - 100;
-    const clampedX = Math.max(0, Math.min(newX, maxX));
-    const clampedY = Math.max(0, Math.min(newY, maxY));
+    const newX = clientX - dragOffset.x;
+    const newY = clientY - dragOffset.y;
+    
+    // 使用响应式边界
+    const margin = 20 * responsiveScale;
+    const noteWidth = 200 * responsiveScale;
+    const noteHeight = 80 * responsiveScale;
+    
+    const maxX = screenSize.width - margin - noteWidth;
+    const maxY = screenSize.height - margin - noteHeight;
+    
+    const clampedX = Math.max(margin, Math.min(newX, maxX));
+    const clampedY = Math.max(margin, Math.min(newY, maxY));
     
     if (draggedElement.type === 'note') {
       setNotes(prev => prev.map(note => 
@@ -216,7 +335,7 @@ export const useEssayState = () => {
     }
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     if (draggedElement) {
       setDraggedElement(null);
       setDragOffset({ x: 0, y: 0 });
@@ -265,9 +384,9 @@ export const useEssayState = () => {
     showDeleteGallerySelector, setShowDeleteGallerySelector,
     showDeleteImageSelector, setShowDeleteImageSelector,
     currentTheme, setCurrentTheme,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
+    handlePointerDown,
+    handlePointerMove,
+    handlePointerUp,
     handleResetLayout,
     handleSaveLayout,
     handleChangeBackground,
