@@ -69,3 +69,48 @@
   opacity: 1;
   text-decoration: underline;
 }
+
+/* 响应式规则 */
+@media (max-width: 768px) {
+  .project-list {
+    margin: 20px auto 0 auto;
+    padding: 0 20px;
+  }
+  
+  .project-item {
+    flex-direction: column;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  
+  .project-item img {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    margin: 0 0 20px 0;
+  }
+  
+  .project-desc {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .project-desc h3 {
+    font-size: 1.5rem;
+  }
+  
+  .project-desc p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-item img {
+    height: 150px;
+  }
+  
+  .project-desc h3 {
+    font-size: 1.3rem;
+  }
+}

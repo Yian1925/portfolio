@@ -127,3 +127,77 @@
   background: #111;
   color: #fff;
 }
+
+/* 响应式设计 */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-left {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .nav-logo {
+    margin-right: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+  
+  .nav-menu {
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .nav-menu li {
+    margin: 0 10px;
+  }
+  
+  .nav-menu a {
+    font-size: 1.2em;
+    padding: 5px 10px;
+  }
+  
+  .nav-right {
+    justify-content: center;
+  }
+  
+  #lang-btn {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 15px 15px;
+  }
+  
+  .nav-logo {
+    font-size: 1em;
+  }
+  
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .nav-menu li {
+    margin: 0 5px;
+  }
+  
+  .nav-menu a {
+    font-size: 1em;
+    padding: 3px 8px;
+  }
+  
+  .lang-btn {
+    width: 60px;
+    height: 32px;
+    font-size: 0.4em;
+  }
+}

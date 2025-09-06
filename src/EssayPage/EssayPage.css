@@ -27,51 +27,99 @@
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+/* 修改第29-77行的响应式规则，添加更多断点 */
+
+@media (max-width: 1024px) {
   .essay-page {
-    min-height: 1200px !important;
+    min-height: 1300px;
   }
   
   .note-box {
-    max-width: 200px !important;
-    font-size: 12px !important;
+    max-width: 180px;
+    font-size: 13px;
   }
   
   .record-container {
-    min-width: 300px !important;
-    padding: 20px !important;
+    min-width: 280px;
+    padding: 18px;
   }
   
   .record-container textarea {
-    max-width: 300px !important;
+    max-width: 280px;
   }
   
   .image-box {
-    width: 200px !important;
-    height: 200px !important;
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .essay-page {
+    min-height: 1200px;
   }
   
-  .reset-button,
-  .essay-save-layout-button,
-  .change-background-btn,
-  .add-image-box-btn,
-  .rolling-gallery-upload-btn,
-  .add-custom-gallery-btn,
-  .delete-gallery-btn,
-  .delete-gallery-images-btn {
-    width: 100px !important;
-    font-size: 12px !important;
-    padding: 8px 15px !important;
+  .note-box {
+    max-width: 160px;
+    font-size: 12px;
+    padding: 12px 18px;
+  }
+  
+  .record-container {
+    min-width: 280px;
+    padding: 18px;
+  }
+  
+  .record-container textarea {
+    max-width: 280px;
+    min-height: 120px;
+  }
+  
+  .image-box {
+    width: 160px;
+    height: 160px;
   }
   
   .gallery-selector {
-    max-width: 90% !important;
-    padding: 20px !important;
+    max-width: 85%;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .essay-page {
+    min-height: 1000px;
+  }
+  
+  .note-box {
+    max-width: 140px;
+    font-size: 11px;
+    padding: 10px 15px;
+  }
+  
+  .record-container {
+    min-width: 250px;
+    padding: 15px;
+  }
+  
+  .record-container textarea {
+    max-width: 250px;
+    min-height: 100px;
+  }
+  
+  .image-box {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .gallery-selector {
+    max-width: 95%;
+    padding: 15px;
   }
   
   .gallery-option {
-    padding: 10px !important;
-    font-size: 14px !important;
+    padding: 8px;
+    font-size: 12px;
   }
 }
 

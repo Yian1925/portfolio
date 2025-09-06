@@ -16,11 +16,12 @@ const IMGS = [
 ];
 
 const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] }) => {
-  images = IMGS;
+  const displayImages = images && images.length > 0 ? images : IMGS;
+ 
   const [isScreenSizeSm, setIsScreenSizeSm] = useState(window.innerWidth <= 640);
 
   const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
-  const faceCount = images.length;
+  const faceCount = displayImages.length;
   const faceWidth = (cylinderWidth / faceCount) * 1.5;
   const dragFactor = 0.05;
   const radius = cylinderWidth / (2 * Math.PI);
@@ -110,7 +111,7 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
           onDragEnd={handleDragEnd}
           animate={controls}
         >
-          {images.map((url, i) => (
+          {displayImages.map((url, i) => (
             <div
               key={i}
               className="gallery-item"
