@@ -55,9 +55,13 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  /* 防止内容溢出 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* 按钮文字样式 */
+/* 按钮文字样式 - 确保文字不会超出边界 */
 .reset-button,
 .essay-save-layout-button,
 .change-background-btn,
@@ -80,11 +84,258 @@
   color: var(--theme-text-primary);
   text-align: center;
   z-index: 1;
+  /* 确保文字不会超出按钮边界 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  padding: 0 4px;
+  box-sizing: border-box;
 }
 
-/* 按钮位置设置 */
+/* 响应式设计 */
+/* 平板横屏和大屏幕 (769px+) */
+@media (min-width: 769px) {
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 140px !important;
+    height: 40px !important;
+  }
+
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    font-size: clamp(0.9em, 0.6em + 0.3vw, 1.1em) !important;
+  }
+}
+
+/* 平板竖屏 (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 120px !important;
+    height: 36px !important;
+    right: 16px !important;
+  }
+
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    font-size: 0.85em !important;
+    padding: 0 3px;
+  }
+
+  /* 调整按钮位置以适应屏幕 */
+  .reset-button {
+    top: 76px !important;
+  }
+
+  .essay-save-layout-button {
+    top: 118px !important;
+  }
+
+  .change-background-btn {
+    top: 160px !important;
+  }
+
+  .add-image-box-btn {
+    top: 202px !important;
+  }
+
+  .rolling-gallery-upload-btn {
+    top: 244px !important;
+  }
+
+  .add-custom-gallery-btn {
+    top: 286px !important;
+  }
+
+  .delete-gallery-btn {
+    top: 328px !important;
+  }
+
+  .delete-gallery-images-btn {
+    top: 370px !important;
+  }
+}
+
+/* 手机大屏 (361px - 480px) */
+@media (max-width: 480px) and (min-width: 361px) {
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 100px !important;
+    height: 32px !important;
+    right: 12px !important;
+  }
+
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    font-size: 0.75em !important;
+    padding: 0 2px;
+  }
+
+  /* 调整按钮位置 */
+  .reset-button {
+    top: 72px !important;
+  }
+
+  .essay-save-layout-button {
+    top: 108px !important;
+  }
+
+  .change-background-btn {
+    top: 144px !important;
+  }
+
+  .add-image-box-btn {
+    top: 180px !important;
+  }
+
+  .rolling-gallery-upload-btn {
+    top: 216px !important;
+  }
+
+  .add-custom-gallery-btn {
+    top: 252px !important;
+  }
+
+  .delete-gallery-btn {
+    top: 288px !important;
+  }
+
+  .delete-gallery-images-btn {
+    top: 324px !important;
+  }
+}
+
+/* 手机小屏 (≤360px) */
+@media (max-width: 360px) {
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 90px !important;
+    height: 30px !important;
+    right: 8px !important;
+  }
+
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    font-size: 0.7em !important;
+    padding: 0 2px;
+    letter-spacing: -0.03em;
+  }
+
+  /* 调整按钮位置 */
+  .reset-button {
+    top: 68px !important;
+  }
+
+  .essay-save-layout-button {
+    top: 102px !important;
+  }
+
+  .change-background-btn {
+    top: 136px !important;
+  }
+
+  .add-image-box-btn {
+    top: 170px !important;
+  }
+
+  .rolling-gallery-upload-btn {
+    top: 204px !important;
+  }
+
+  .add-custom-gallery-btn {
+    top: 238px !important;
+  }
+
+  .delete-gallery-btn {
+    top: 272px !important;
+  }
+
+  .delete-gallery-images-btn {
+    top: 306px !important;
+  }
+}
+
+/* 超小屏幕 (≤320px) */
+@media (max-width: 320px) {
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    width: 80px !important;
+    height: 28px !important;
+    right: 6px !important;
+  }
+
+  .reset-button,
+  .essay-save-layout-button,
+  .change-background-btn,
+  .add-image-box-btn,
+  .rolling-gallery-upload-btn,
+  .add-custom-gallery-btn,
+  .delete-gallery-btn,
+  .delete-gallery-images-btn {
+    font-size: 0.65em !important;
+    padding: 0 1px;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* 按钮位置设置 - 基础位置 */
 .reset-button {
-  top: 80px !important; /* 移到主题切换器下方 */
+  top: 80px !important;
 }
 
 .essay-save-layout-button {
@@ -134,4 +385,18 @@
     0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
     0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
     0 0 0 0 rgba(255, 255, 255, 1);
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .reset-button:hover,
+  .essay-save-layout-button:hover,
+  .change-background-btn:hover,
+  .add-image-box-btn:hover,
+  .rolling-gallery-upload-btn:hover,
+  .add-custom-gallery-btn:hover,
+  .delete-gallery-btn:hover,
+  .delete-gallery-images-btn:hover {
+    transform: none;
+  }
 }

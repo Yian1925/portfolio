@@ -1,14 +1,9 @@
-.theme-switcher {
-  top: 20px !important;
-}
-
 .theme-switch-btn {
   --border-width: clamp(1px, 0.0625em, 4px);
   all: unset;
   cursor: pointer;
   position: fixed !important;
   right: 20px !important;
-  top: 20px !important;
   z-index: 100000 !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   pointer-events: auto;
@@ -32,8 +27,13 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  /* 防止内容溢出 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+/* 按钮文字样式 - 确保文字不会超出边界 */
 .theme-switch-btn span {
   position: relative;
   display: block;
@@ -44,13 +44,112 @@
   font-family: "Inter", sans-serif;
   letter-spacing: -0.05em;
   font-weight: 500;
-  font-size: clamp(0.8em, 0.5em + 0.5vw, 1.2em);
+  font-size: clamp(0.8em, 0.5em + 0.5vw, 1.2em) !important;
   line-height: 1.2;
   color: var(--theme-text-primary);
   text-align: center;
   z-index: 1;
+  /* 确保文字不会超出按钮边界 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  padding: 0 4px;
+  box-sizing: border-box;
 }
 
+/* 响应式设计 */
+/* 平板横屏和大屏幕 (769px+) */
+@media (min-width: 769px) {
+  .theme-switch-btn {
+    width: 140px !important;
+    height: 40px !important;
+  }
+
+  .theme-switch-btn span {
+    font-size: clamp(0.9em, 0.6em + 0.3vw, 1.1em) !important;
+  }
+}
+
+/* 平板竖屏 (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .theme-switch-btn {
+    width: 120px !important;
+    height: 36px !important;
+    right: 16px !important;
+  }
+
+  .theme-switch-btn span {
+    font-size: 0.85em !important;
+    padding: 0 3px;
+  }
+
+  /* 调整按钮位置以适应屏幕 */
+  .theme-switch-btn {
+    top: 34px !important;
+  }
+}
+
+/* 手机大屏 (361px - 480px) */
+@media (max-width: 480px) and (min-width: 361px) {
+  .theme-switch-btn {
+    width: 100px !important;
+    height: 32px !important;
+    right: 12px !important;
+  }
+
+  .theme-switch-btn span {
+    font-size: 0.75em !important;
+    padding: 0 2px;
+  }
+
+  /* 调整按钮位置 */
+  .theme-switch-btn {
+    top: 36px !important;
+  }
+}
+
+/* 手机小屏 (≤360px) */
+@media (max-width: 360px) {
+  .theme-switch-btn {
+    width: 90px !important;
+    height: 30px !important;
+    right: 8px !important;
+  }
+
+  .theme-switch-btn span {
+    font-size: 0.7em !important;
+    padding: 0 2px;
+    letter-spacing: -0.03em;
+  }
+
+  /* 调整按钮位置 */
+  .theme-switch-btn {
+    top: 34px !important;
+  }
+}
+
+/* 超小屏幕 (≤320px) */
+@media (max-width: 320px) {
+  .theme-switch-btn {
+    width: 80px !important;
+    height: 28px !important;
+    right: 6px !important;
+  }
+
+  .theme-switch-btn span{
+    font-size: 0.65em !important;
+    padding: 0 1px;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* 按钮位置设置 - 基础位置 */
+.theme-switch-btn {
+  top: 20px !important;
+}
+
+/* 按钮悬停效果 */
 .theme-switch-btn:hover {
   transform: scale(0.975);
   backdrop-filter: blur(0.01em);
@@ -62,4 +161,11 @@
     0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
     0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
     0 0 0 0 rgba(255, 255, 255, 1);
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .theme-switch-btn:hover {
+    transform: none;
+  }
 }
