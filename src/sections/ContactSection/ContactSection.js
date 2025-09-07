@@ -236,7 +236,7 @@ function ContactSection() {
               <a href="https://github.com/Yian1925" target="_blank" rel="noreferrer" className="icon-box">
                 <img src="/assets/icon/Github-icon.png" alt="GitHub" />
               </a>
-              <a href="https://www.notion.so/23c0ba9653f08037b15ff19c26cc99b5" target="_blank" rel="noreferrer" className="icon-box">
+              <a href="https://www.notion.so/23c0ba9653f08037b15ff19c26cc99b5?source=copy_link" target="_blank" rel="noreferrer" className="icon-box">
                 <img src="/assets/icon/Notion-icon.png" alt="Notion" />
               </a>
             </div>

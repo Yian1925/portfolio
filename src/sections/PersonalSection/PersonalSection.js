@@ -39,8 +39,8 @@ function PersonalSection() {
             <SplitText
               key={`desc-${lang}`}
               text={lang === 'zh' 
-                ? '欢迎访问我的个人网站！在这里你可以看到我的教育背景，工作经历，个人技能，以及一些项目经验，当然了，还有那些让我两眼放光的兴趣！请随意参观～'
-                : 'Welcome to my personal website! Here, you can explore my educational background, professional experience, technical skills, and project portfolio—along with some of my passions that truly spark my curiosity. Feel free to browse around!'
+                ? '欢迎访问我的个人网站！在这里你可以看到我的教育背景，工作经历，个人技能，以及一些项目经验。推门进来吧，此处永远备着一份舍不得褪去的热枕和未写完的下一行'
+                : 'Welcome to my personal website! Here you can explore my educational background, professional experience, technical skills, and project portfolio. Step inside—there is always a pot of unwavering passion brewing and the next unwritten line waiting to be filled.'
               }
               className="text-lg leading-relaxed"
               delay={200}

@@ -26,8 +26,8 @@ function ExperienceSection() {
           <div className="exp-right">
             <div className="exp-desc">
               {lang === 'zh' 
-                ? '信号与系统、数字信号处理、数字图像处理、随机信号分析、数据结构与算法设计、机器学习理论和实践'
-                : 'Signal and System, Digital Signal Processing, Digital Image Processing, Random Signal Analysis, Data Structure and Algorithm Design, Machine Learning Theory and Practice'
+                ? '主修课程：\n●  信号与系统、数字信号处理、数字图像处理、随机信号分析、数据结构与算法设计、机器学习理论和实践...'
+                : 'Major Courses:\n●  Signal and System, Digital Signal Processing, Digital Image Processing, Random Signal Analysis, Data Structure and Algorithm Design, Machine Learning Theory and Practice'
               }
             </div>
           </div>
@@ -51,8 +51,8 @@ function ExperienceSection() {
           <div className="exp-right">
             <div className="exp-desc">
               {lang === 'zh' 
-                ? '负责产品的Web端、移动端、小程序的功能测试、接口测试、性能测试、兼容性测试、弱网测试、线上监控等，独立完成分配的测试工作，确保20+个产品顺利上线。参与项目测试的全流程，有效执行测试计划，及时跟踪验证BUG，确保产品顺利上线并进行回归测试'
-                : 'Responsible for functional testing, API testing, performance testing, compatibility testing, weak network testing, and online monitoring of Web, mobile, and mini-program products. Independently completed assigned testing work, ensuring the successful launch of 20+ products. Participated in the full process of project testing, effectively executed test plans, and tracked and verified BUGs in a timely manner to ensure smooth product launch and regression testing'
+                ? '主要职责：\n●  负责产品的Web端、移动端、小程序的功能测试、接口测试、性能测试、兼容性测试、弱网测试、线上监控等\n●  独立完成分配的测试工作，确保20+个产品顺利上线'
+                : 'Responsibilities:\n●  Conducted functional, API, performance, compatibility, low-network, and production monitoring tests for web, mobile, and mini-program products\n●  Independently managed testing for 20+ product launches'
               }
             </div>
           </div>
@@ -63,7 +63,7 @@ function ExperienceSection() {
           <div className="exp-left">
             <div className="exp-title-row">
               <img className="exp-icon" src="/assets/images/准动.jpg" alt="厦门准动网络" />
-              <span className="exp-title">{lang === 'zh' ? '厦门准动网络' : 'Xiamen Zhundong Network'}</span>
+              <span className="exp-title">{lang === 'zh' ? '厦门准动网络' : 'Zhundong Network'}</span>
             </div>
             <div className="exp-type-row">
               <span className="exp-type">{lang === 'zh' ? '全职' : 'Full-time'}</span>
@@ -76,8 +76,8 @@ function ExperienceSection() {
           <div className="exp-right">
             <div className="exp-desc">
               {lang === 'zh' 
-                ? '负责银豹客户端、web端的接口测试、功能测试等，在单接口自动化的基础上实现场景自动化提高测试效率以及业务测试用例覆盖率。根据抓包结果以及后端日志辅助定位缺陷产生原因，累计跟进测试项目30+。整理项目的技术文档及业务逻辑文档，编写相关流程图。维护TAPD系统测试文档，累计录入2000+测试用例'
-                : 'Responsible for API testing and functional testing of Yinbao client and web applications. Implemented scenario automation based on single interface automation to improve testing efficiency and business test case coverage. Assisted in locating defect causes based on packet capture results and backend logs, cumulatively following up on 30+ test projects. Organized project technical documentation and business logic documentation, and wrote related flowcharts. Maintained TAPD system test documentation with over 2000 test cases'
+                ? '主要职责：\n●  负责银豹客户端、web端的接口测试、功能测试等，在单接口自动化的基础上实现场景自动化提高测试效率以及业务测试用例覆盖率\n●  根据抓包结果以及后端日志辅助定位缺陷产生原因，累计跟进测试项目30+'
+                : 'Responsibilities:\n●  Developed scenario-based automation on top of single-interface automation to improve testing efficiency and business test coverage for Xibao client and web platforms\n●  Analyzed packet capture results and backend logs to identify root causes of defects, supporting 30+ test projects'
               }
             </div>
           </div>
