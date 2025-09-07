@@ -4,7 +4,10 @@ import RollingGallery from '../../../components/RollingGallery/RollingGallery';
 export const GalleryDisplaySection = ({
   rollingGalleryTitle,
   rollingGalleryImages,
-  customGalleries
+  customGalleries,
+  handleImageUploadToGallery,
+  onSaveGallery,
+  setSubmitMessage
 }) => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
@@ -45,10 +48,10 @@ export const GalleryDisplaySection = ({
     };
   }, []);
 
-  // 计算画册布局位置
+  // 计算画册布局位置 - 修改这部分
   const getGalleryPosition = (index) => {
     if (isColumnLayout) {
-      // 垂直布局
+      // 垂直布局：居中显示
       const baseTop = 1100 * responsiveScale;
       const spacing = 350 * responsiveScale;
       return {
@@ -58,22 +61,23 @@ export const GalleryDisplaySection = ({
         width: `${700 * responsiveScale}px`
       };
     } else {
-      // 水平布局
+      // 水平布局：交替位置（左、右、左、右...）
       const baseTop = 1200 * responsiveScale;
       const spacing = 420 * responsiveScale;
-      const isLeft = index % 2 === 0;
+      const isLeft = index % 2 === 0; // 偶数索引在左边，奇数索引在右边
       
       return {
-        top: baseTop + Math.floor(index / 2) * spacing,
+        top: baseTop + index * spacing, // 每行一个，所以直接使用index
         left: isLeft ? '7%' : `calc(93% - ${700 * responsiveScale}px)`,
-        width: `${700 * responsiveScale}px`
+        width: `${700 * responsiveScale}px`,
+        transform: 'none'
       };
     }
   };
 
   return (
     <>
-      {/* RollingGallery 标题 */}
+      {/* RollingGallery 标题 - 保持不变 */}
       <div style={{
         position: 'absolute',
         top: `${750 * responsiveScale}px`,
@@ -105,7 +109,7 @@ export const GalleryDisplaySection = ({
         </div>
       </div>
 
-      {/* RollingGallery 组件 */}
+      {/* RollingGallery 组件 - 保持不变 */}
       <div style={{
         position: 'absolute',
         top: `${820 * responsiveScale}px`,
@@ -128,7 +132,7 @@ export const GalleryDisplaySection = ({
         </div>
       </div>
 
-      {/* 自定义图册 */}
+      {/* 自定义图册 - 保持样式不变，只修改布局位置 */}
       {customGalleries.map((gallery, index) => {
         const position = getGalleryPosition(index);
         

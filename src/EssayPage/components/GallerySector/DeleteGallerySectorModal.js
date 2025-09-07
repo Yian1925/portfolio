@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const DeleteGallerySelectorModal = ({ 
   showDeleteGallerySelector, 
   setShowDeleteGallerySelector, 
   customGalleries, 
   deleteSelectedGalleries, 
-  setSubmitMessage 
+  setSubmitMessage
 }) => {
   const [selectedGalleries, setSelectedGalleries] = useState([]);
 
+  // 如果没有自定义画册，使用 useEffect 处理
+  useEffect(() => {
+    // 只有在用户主动打开删除画册弹窗时才检查并显示提示
+    if (showDeleteGallerySelector && customGalleries.length === 0) {
+      setShowDeleteGallerySelector(false);
+      setSubmitMessage(' 当前没有自定义画册～ ');
+    }
+  }, [showDeleteGallerySelector, customGalleries.length, setShowDeleteGallerySelector, setSubmitMessage]);
+
   if (!showDeleteGallerySelector) return null;
 
-  // 如果没有自定义画册，直接关闭弹窗
+  // 如果没有自定义画册，直接返回 null
   if (customGalleries.length === 0) {
-    setShowDeleteGallerySelector(false);
-    setSubmitMessage(' 当前没有自定义画册～ ');
     return null;
   }
 
@@ -37,7 +44,8 @@ const DeleteGallerySelectorModal = ({
     // 计算删除后剩余的画册数量
     const remainingCount = customGalleries.length - selectedGalleries.length;
 
-    deleteSelectedGalleries(selectedGalleries);
+
+    deleteSelectedGalleries(selectedGalleries, customGalleries);
 
     if (remainingCount === 0) {
       // 如果删除了所有画册，关闭弹窗

@@ -36,8 +36,19 @@ export const useEssayState = () => {
   const [showDeleteGallerySelector, setShowDeleteGallerySelector] = useState(false);
   const [showDeleteImageSelector, setShowDeleteImageSelector] = useState(false);
 
-  // 主题相关状态
-  const [currentTheme, setCurrentTheme] = useState('default');
+  // 主题相关状态 - 从localStorage获取初始主题，避免默认主题闪烁
+  const [currentTheme, setCurrentTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('essayPagePositions');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return parsed.currentTheme || 'default';
+      }
+    } catch (error) {
+      console.error('获取初始主题失败:', error);
+    }
+    return 'default';
+  });
 
   // 添加屏幕尺寸和响应式缩放状态
   const [screenSize, setScreenSize] = useState({
@@ -45,6 +56,92 @@ export const useEssayState = () => {
     height: window.innerHeight
   });
   const [responsiveScale, setResponsiveScale] = useState(1);
+
+  // IndexedDB初始化
+  const initDB = async () => {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('EssayPageDB', 1);
+      
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => resolve(request.result);
+      
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        
+        // 创建布局存储
+        if (!db.objectStoreNames.contains('layouts')) {
+          db.createObjectStore('layouts', { keyPath: 'id' });
+        }
+        
+        // 创建图片存储
+        if (!db.objectStoreNames.contains('images')) {
+          db.createObjectStore('images', { keyPath: 'id' });
+        }
+      };
+    });
+  };
+
+  // IndexedDB保存函数
+  // 保存布局到 layouts
+  const saveLayoutToIndexedDB = async (key, layoutData) => {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(['layouts'], 'readwrite');
+      const store = transaction.objectStore('layouts');
+      const request = store.put({ id: key, data: layoutData, timestamp: Date.now() });
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+  };
+
+  // 保存图片到 images
+  const saveImageToIndexedDB = async (imgKey, imgData) => {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(['images'], 'readwrite');
+      const store = transaction.objectStore('images');
+      const request = store.put({ id: imgKey, data: imgData, timestamp: Date.now() });
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+      console.log('保存图片', imgKey, typeof imgData, imgData && imgData.length);
+    });
+  };
+
+  // IndexedDB读取函数
+  // 读取布局
+  const loadLayoutFromIndexedDB = async (key = 'essayPagePositions') => {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(['layouts'], 'readonly');
+      const store = transaction.objectStore('layouts');
+      const request = store.get(key);
+      request.onsuccess = () => resolve(request.result?.data);
+      request.onerror = () => reject(request.error);
+    });
+  };
+
+  // 读取图片
+  const loadImageFromIndexedDB = async (imgKey) => {
+    const db = await initDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(['images'], 'readonly');
+      const store = transaction.objectStore('images');
+      const request = store.get(imgKey);
+      request.onsuccess = () => resolve(request.result?.data);
+      request.onerror = () => reject(request.error);
+    });
+  };
+
+  const deleteImageFromIndexedDB = async (imgKey) => {
+  const db = await initDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(['images'], 'readwrite');
+    const store = transaction.objectStore('images');
+    const request = store.delete(imgKey);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+    });
+  };
 
   // 屏幕尺寸变化监听和响应式调整
   useEffect(() => {
@@ -144,13 +241,121 @@ export const useEssayState = () => {
     });
   };
 
-  // 加载保存的位置
+  // 加载保存的位置 - 使用IndexedDB
   useEffect(() => {
-    const loadPositions = () => {
-      const saved = localStorage.getItem('essayPagePositions');
-      if (saved) {
+  const loadPositions = async () => {
+    try {
+      // 优先从IndexedDB获取
+      const saved = await loadLayoutFromIndexedDB('essayPagePositions');
+      
+      console.log('加载保存的布局数据:', saved);
+      
+      if (!saved) {
+        console.log('没有找到保存的布局数据，使用默认布局');
+        setHasUnsavedChanges(false);
+        return;
+      }
+
+      // 恢复布局数据
+      setNotes(saved.notes || getDefaultNotes());
+      setRecordSection(saved.recordSection || { x: window.innerWidth / 2 - 200, y: 200 });
+      setImageBoxes(saved.imageBoxes || []);
+      setRollingGalleryImages(saved.rollingGalleryImages || []);
+      setRollingGalleryTitle(saved.rollingGalleryTitle || '✨ 日常注脚 ✨');
+      setCustomGalleries(saved.customGalleries || []);
+      setSelectedGallery(saved.selectedGallery || 'main');
+      // 确保 backgroundImage 是字符串类型
+      const bgImage = saved.backgroundImage;
+      if (typeof bgImage === 'object' && bgImage !== null) {
+        // 如果是对象，使用默认背景
+        setBackgroundImage('/assets/images/2.jpeg');
+      } else {
+        setBackgroundImage(bgImage || '/assets/images/2.jpeg');
+      }
+      setCurrentTheme(saved.currentTheme || 'default');
+      
+      // 加载背景图片（优先加载）
+      try {
+        const bgImageData = await loadImageFromIndexedDB('background_img');
+        if (bgImageData) {
+          console.log('背景图片加载成功');
+          setBackgroundImage(bgImageData);
+        } else {
+          console.log('没有找到保存的背景图片');
+        }
+      } catch (error) {
+        console.error('加载背景图片失败:', error);
+      }
+      
+      // 加载图片框图片数据
+      if (saved.imageBoxes && Array.isArray(saved.imageBoxes)) {
+        for (let i = 0; i < saved.imageBoxes.length; i++) {
+          try {
+            const box = saved.imageBoxes[i];
+            if (box && box.hasImage) {
+              const imageData = await loadImageFromIndexedDB(`img_${box.id}`);
+              if (imageData) {
+                saved.imageBoxes[i].image = imageData;
+              }
+            }
+          } catch (error) {
+            console.error(`加载图片框 ${i} 的图片失败:`, error);
+          }
+        }
+        // 更新图片框状态
+        setImageBoxes([...saved.imageBoxes]);
+      }
+      
+      // 加载滚动画廊图片数据
+      if (saved.rollingGalleryImages && Array.isArray(saved.rollingGalleryImages)) {
+        for (let i = 0; i < saved.rollingGalleryImages.length; i++) {
+          try {
+            const imgRef = saved.rollingGalleryImages[i];
+            if (imgRef && imgRef.hasImage) {
+              const imageData = await loadImageFromIndexedDB(`rolling_img_${i}`);
+              if (imageData) {
+                saved.rollingGalleryImages[i] = imageData;
+              }
+            }
+          } catch (error) {
+            console.error(`加载滚动图片 ${i} 失败:`, error);
+          }
+        }
+        // 更新滚动画廊状态
+        setRollingGalleryImages([...saved.rollingGalleryImages]);
+      }
+      
+      // 加载自定义画册图片数据
+      if (saved.customGalleries && Array.isArray(saved.customGalleries)) {
+        for (const gallery of saved.customGalleries) {
+          for (let index = 0; index < gallery.images.length; index++) {
+            try {
+              const imgRef = gallery.images[index];
+              if (imgRef && imgRef.hasImage) {
+                const imageData = await loadImageFromIndexedDB(`gallery_${gallery.id}_img_${index}`);
+                if (imageData) {
+                  gallery.images[index] = imageData;
+                }
+              }
+            } catch (error) {
+              console.error(`加载自定义画册 ${gallery.id} 图片 ${index} 失败:`, error);
+            }
+          }
+        }
+        // 更新自定义画册状态
+        setCustomGalleries([...saved.customGalleries]);
+      }
+      
+      // 确保所有状态都已正确设置后再标记为无未保存更改
+      setHasUnsavedChanges(false);
+      
+    } catch (error) {
+      console.error('IndexedDB加载失败:', error);
+      // 降级到localStorage
+      const localSaved = localStorage.getItem('essayPagePositions');
+      if (localSaved) {
         try {
-          const positions = JSON.parse(saved);
+          const positions = JSON.parse(localSaved);
           setNotes(positions.notes || getDefaultNotes());
           setRecordSection(positions.recordSection || { x: window.innerWidth / 2 - 200, y: 200 });
           setImageBoxes(positions.imageBoxes || []);
@@ -158,20 +363,28 @@ export const useEssayState = () => {
           setRollingGalleryTitle(positions.rollingGalleryTitle || '✨ 日常注脚 ✨');
           setCustomGalleries(positions.customGalleries || []);
           setSelectedGallery(positions.selectedGallery || 'main');
-          setBackgroundImage(positions.backgroundImage || '/assets/images/2.jpeg');
+          // 确保 backgroundImage 是字符串类型
+          const bgImage = positions.backgroundImage;
+          if (typeof bgImage === 'object' && bgImage !== null) {
+            // 如果是对象，使用默认背景
+            setBackgroundImage('/assets/images/2.jpeg');
+          } else {
+            setBackgroundImage(bgImage || '/assets/images/2.jpeg');
+          }
           setCurrentTheme(positions.currentTheme || 'default');
           setHasUnsavedChanges(false);
-        } catch (error) {
-          console.error('加载位置失败:', error);
+        } catch (localError) {
+          console.error('localStorage加载失败:', localError);
           setHasUnsavedChanges(false);
         }
       } else {
         setHasUnsavedChanges(false);
       }
-    };
-    loadPositions();
-  }, []);
-
+    }
+  };
+  
+  loadPositions();
+}, []);
   // 自动隐藏toast
   useEffect(() => {
     if (submitMessage) {
@@ -182,31 +395,149 @@ export const useEssayState = () => {
     }
   }, [submitMessage]);
 
-  // 保存位置到localStorage
-  const savePositions = () => {
-    const positions = {
-      notes,
-      recordSection,
-      imageBoxes,
-      rollingGalleryImages,
-      rollingGalleryTitle,
-      customGalleries,
-      selectedGallery,
-      backgroundImage,
-      currentTheme
-    };
-    localStorage.setItem('essayPagePositions', JSON.stringify(positions));
-    setHasUnsavedChanges(false);
+  // 保存位置到IndexedDB
+  const savePositions = async () => {
+    try {
+      // 压缩数据：只保存图片引用，不保存完整图片数据
+      const compressedData = {
+        notes,
+        recordSection,
+        imageBoxes: imageBoxes.map(box => ({
+          id: box.id,
+          x: box.x,
+          y: box.y,
+          hasImage: !!box.image,
+          imageSize: box.image ? box.image.length : 0
+        })),
+        rollingGalleryImages: rollingGalleryImages.map((img, index) => ({
+          index,
+          hasImage: !!img,
+          imageSize: img ? img.length : 0
+        })),
+        rollingGalleryTitle,
+        customGalleries: customGalleries.map(gallery => ({
+          id: gallery.id,
+          title: gallery.title,
+          images: gallery.images.map((img, index) => ({
+            index,
+            hasImage: !!img,
+            imageSize: img ? img.length : 0
+          }))
+        })),
+        selectedGallery,
+        backgroundImage: backgroundImage, // 直接保存字符串，不转换为对象
+        currentTheme,
+        timestamp: new Date().toISOString()
+      };
+      
+      // 保存压缩数据到IndexedDB
+      await saveLayoutToIndexedDB('essayPagePositions', compressedData);
+      
+      // 单独保存图片数据
+      for (let i = 0; i < imageBoxes.length; i++) {
+        const box = imageBoxes[i];
+        if (box.image) {
+          await saveImageToIndexedDB(`img_${box.id}`, box.image);
+        }
+      }
+      
+      for (let i = 0; i < rollingGalleryImages.length; i++) {
+        const img = rollingGalleryImages[i];
+        if (img) {
+          await saveImageToIndexedDB(`rolling_img_${i}`, img);
+        }
+      }
+      
+      // 保存自定义画册图片
+      for (const gallery of customGalleries) {
+        for (let index = 0; index < gallery.images.length; index++) {
+          const img = gallery.images[index];
+          if (img) {
+            await saveImageToIndexedDB(`gallery_${gallery.id}_img_${index}`, img);
+          }
+        }
+      }
+      
+      if (backgroundImage && backgroundImage.startsWith('data:')) {
+        await saveImageToIndexedDB('background_img', backgroundImage);
+      }
+      
+      setHasUnsavedChanges(false);
+    } catch (error) {
+      console.error('IndexedDB保存失败:', error);
+      
+      // 降级到localStorage，但只保存布局信息
+      try {
+        const layoutOnly = {
+          notes,
+          recordSection,
+          rollingGalleryTitle,
+          selectedGallery,
+          currentTheme,
+          timestamp: new Date().toISOString()
+        };
+        
+        localStorage.setItem('essayPageLayout_backup', JSON.stringify(layoutOnly));
+        setSubmitMessage('IndexedDB保存失败，已保存基础布局到本地存储～');
+        setHasUnsavedChanges(false);
+      } catch (localError) {
+        setSubmitMessage('存储空间严重不足，请清理数据后重试～');
+      }
+    }
   };
 
   // 保存布局
-  const handleSaveLayout = () => {
+  const handleSaveLayout = async () => {
     if (!hasUnsavedChanges) {
       setSubmitMessage(' 当前布局无改动噢～ ');
       return;
     }
-    savePositions();
+    
+    console.log('开始保存布局，当前状态:', {
+      notes: notes.length,
+      imageBoxes: imageBoxes.length,
+      rollingGalleryImages: rollingGalleryImages.length,
+      customGalleries: customGalleries.length,
+      recordSection: recordSection
+    });
+    
+    await savePositions();
     setSubmitMessage(' 自定义布局已保存！');
+  };
+
+  const handleSaveImages = async () => {
+  try {
+    // 保存所有图片框图片
+    for (let i = 0; i < imageBoxes.length; i++) {
+      const box = imageBoxes[i];
+      if (box.image) {
+        await saveImageToIndexedDB(`img_${box.id}`, box.image);
+      }
+    }
+    // 保存滚动画廊图片
+    for (let i = 0; i < rollingGalleryImages.length; i++) {
+      const img = rollingGalleryImages[i];
+      if (img) {
+        await saveImageToIndexedDB(`rolling_img_${i}`, img);
+      }
+    }
+    // 保存自定义画廊图片
+    for (const gallery of customGalleries) {
+      for (let index = 0; index < gallery.images.length; index++) {
+        const img = gallery.images[index];
+        if (img) {
+          await saveImageToIndexedDB(`gallery_${gallery.id}_img_${index}`, img); // 修正
+        }
+      }
+    }
+    // 保存背景图片（如有）
+    if (backgroundImage && backgroundImage.startsWith('data:')) {
+      await saveImageToIndexedDB('background_img', backgroundImage);
+    }
+    setSubmitMessage('图片已保存！');
+    } catch (error) {
+      setSubmitMessage('保存图片失败，请重试～');
+    }
   };
 
   // 重置到默认布局
@@ -231,8 +562,10 @@ export const useEssayState = () => {
       setBackgroundImage('/assets/images/2.jpeg');
       setCurrentTheme('blue'); // 重置为奶蓝色主题
       localStorage.removeItem('essayPagePositions');
-      setHasUnsavedChanges(false);
-      setSubmitMessage(' 布局已重置！');
+      
+      // 重置后标记为有未保存的更改，这样用户可以保存重置后的布局
+      setHasUnsavedChanges(true);
+      setSubmitMessage(' 布局已重置！ ');
     });
   };
 
@@ -384,11 +717,15 @@ export const useEssayState = () => {
     showDeleteGallerySelector, setShowDeleteGallerySelector,
     showDeleteImageSelector, setShowDeleteImageSelector,
     currentTheme, setCurrentTheme,
+    saveLayoutToIndexedDB,
+    saveImageToIndexedDB,
+    deleteImageFromIndexedDB,
     handlePointerDown,
     handlePointerMove,
     handlePointerUp,
     handleResetLayout,
     handleSaveLayout,
+    handleSaveImages,
     handleChangeBackground,
     handleSubmitRecord,
     handleConfirm,

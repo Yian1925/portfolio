@@ -21,7 +21,6 @@
   border-radius: 20px;
   padding: 40px;
   backdrop-filter: blur(10px);
-  border: 2px solid var(--theme-primary);
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.1),
     0 6px 15px rgba(0, 0, 0, 0.08),

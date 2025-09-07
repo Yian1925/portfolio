@@ -33,12 +33,26 @@ function EssayPage() {
   // 处理画册保存
   const handleSaveGallery = async (galleryId, images) => {
     try {
-      // 这里可以调用后端API保存画册
-      console.log('保存画册:', galleryId, images);
-      // 暂时使用本地存储，后续可以改为调用API
+      // 添加参数验证，防止 images 为 undefined
+      if (!images || !Array.isArray(images)) {
+        console.error('handleSaveGallery: images 参数无效', images);
+        state.setSubmitMessage('保存画册失败～');
+        return { success: false };
+      }
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        if (img) {
+          const key = galleryId === 'main'
+            ? `rolling_img_${i}`
+            : `gallery_${galleryId}_img_${i}`;
+          await state.saveImageToIndexedDB(key, img);
+        }
+      }
+
+      state.setSubmitMessage('画册图片已保存～');
       return { success: true };
     } catch (error) {
-      console.error('保存画册失败:', error);
+      state.setSubmitMessage('保存画册失败～');
       throw error;
     }
   };
@@ -51,12 +65,19 @@ function EssayPage() {
     document.body.setAttribute('data-theme', newTheme);
   };
 
-  // 组件挂载时应用当前主题
+  // 组件挂载时应用当前主题，避免主题切换时的过渡效果
   useEffect(() => {
+    // 立即应用主题，避免默认主题的闪烁
     document.body.setAttribute('data-theme', state.currentTheme);
   }, [state.currentTheme]);
 
-  // 修改galleryManagement的调用
+  // 页面加载时立即应用主题
+  useEffect(() => {
+    // 在组件挂载时立即应用当前主题
+    document.body.setAttribute('data-theme', state.currentTheme);
+  }, []); // 空依赖数组，只在组件挂载时执行一次
+
+  // galleryManagement的调用
   const galleryManagement = useGalleryManagement(
     state.setCustomGalleries,
     state.setRollingGalleryImages,
@@ -65,7 +86,8 @@ function EssayPage() {
     setShowInputDialog,
     setInputDialogConfig,
     state.rollingGalleryImages,
-    handleSaveGallery  // 假设你已经定义了这个函数
+    handleSaveGallery,              // 修正：这应该是第8个参数 onSaveGallery
+    state.deleteImageFromIndexedDB  // 修正：这应该是第9个参数 deleteImageFromIndexedDB
   );
   
   const imageBoxManagement = useImageBoxManagement(
@@ -84,8 +106,17 @@ function EssayPage() {
     }
   );
 
+  // 检查是否有用户自定义背景
+  const hasCustomBackground = state.backgroundImage &&
+    state.backgroundImage !== '/assets/images/2.jpeg' &&
+    typeof state.backgroundImage === 'string' &&
+    (state.backgroundImage.startsWith('data:') || state.backgroundImage.startsWith('blob:'));
+
   return (
-    <div className="essay-page" style={{ minHeight: '1500px' }}>
+    <div 
+      className={`essay-page ${hasCustomBackground ? 'has-custom-background' : ''}`} 
+      style={{ minHeight: '1500px' }}
+    >
       {/* 背景层 */}
       <BackgroundLayer
         backgroundImage={state.backgroundImage}
@@ -106,7 +137,14 @@ function EssayPage() {
         onAddImageBox={imageBoxManagement.handleAddImageBox}
         onGalleryImageUpload={() => state.setShowGallerySelector(true)}
         onAddCustomGallery={galleryManagement.addCustomGallery}
-        onDeleteGallery={() => state.setShowDeleteGallerySelector(true)}
+        onDeleteGallery={() => {
+          // 检查是否有自定义画册，如果没有则直接显示提示
+          if (state.customGalleries.length === 0) {
+            state.setSubmitMessage(' 当前没有自定义画册～ ');
+            return;
+          }
+          state.setShowDeleteGallerySelector(true);
+        }}
         onDeleteGalleryImages={() => state.setShowDeleteImageSelector(true)}
       />
       
@@ -140,6 +178,9 @@ function EssayPage() {
         rollingGalleryTitle={state.rollingGalleryTitle}
         rollingGalleryImages={state.rollingGalleryImages}
         customGalleries={state.customGalleries}
+        handleImageUploadToGallery={galleryManagement.handleImageUploadToGallery}
+        onSaveGallery={handleSaveGallery}
+        setSubmitMessage={state.setSubmitMessage}
       />
       
       {/* 模态框 */}
@@ -150,7 +191,7 @@ function EssayPage() {
         rollingGalleryImages={state.rollingGalleryImages}
         customGalleries={state.customGalleries}
         handleImageUploadToGallery={galleryManagement.handleImageUploadToGallery}
-        onSaveGallery={galleryManagement.saveGalleryToBackend}
+        onSaveGallery={handleSaveGallery}
         setSubmitMessage={state.setSubmitMessage}
       />
       

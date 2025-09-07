@@ -8,7 +8,8 @@ const GallerySelectorModal = ({
   customGalleries, 
   handleImageUploadToGallery,
   onSaveGallery,  // 添加保存回调
-  setSubmitMessage  // 添加消息回调
+  setSubmitMessage,  // 添加消息回调
+  handleSaveImages
 }) => {
   const [selectedGallery, setSelectedGallery] = useState(null);
 
@@ -32,10 +33,10 @@ const GallerySelectorModal = ({
       // 获取当前画册的图片数据
       let galleryImages = [];
       if (selectedGallery === 'main') {
-        galleryImages = rollingGalleryImages;
+        galleryImages = rollingGalleryImages || [];
       } else {
         const gallery = customGalleries.find(g => g.id === selectedGallery);
-        galleryImages = gallery ? gallery.images : [];
+        galleryImages = gallery && gallery.images ? gallery.images : [];
       }
 
       await onSaveGallery(selectedGallery, galleryImages);

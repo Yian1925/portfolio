@@ -19,7 +19,8 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
   const displayImages = images && images.length > 0 ? images : IMGS;
  
   const [isScreenSizeSm, setIsScreenSizeSm] = useState(window.innerWidth <= 640);
-
+  const [isMounted, setIsMounted] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
   const faceCount = displayImages.length;
   const faceWidth = (cylinderWidth / faceCount) * 1.5;
@@ -35,29 +36,43 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
   };
 
   const handleDragEnd = (_, info) => {
-    controls.start({
-      rotateY: rotation.get() + info.velocity.x * dragFactor,
-      transition: { type: 'spring', stiffness: 60, damping: 20, mass: 0.1, ease: 'easeOut' }
-    });
+    if (isMounted && isReady) {
+      controls.start({
+        rotateY: rotation.get() + info.velocity.x * dragFactor,
+        transition: { type: 'spring', stiffness: 60, damping: 20, mass: 0.1, ease: 'easeOut' }
+      });
+    }
   };
-
+  
   const transform = useTransform(rotation, value => {
     return `rotate3d(0, 1, 0, ${value}deg)`;
   });
 
   useEffect(() => {
-    if (autoplay) {
+    // 使用 setTimeout 确保组件完全挂载
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+      setIsReady(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (autoplay && isMounted && isReady) {
       autoplayRef.current = setInterval(() => {
-        controls.start({
-          rotateY: rotation.get() - 360 / faceCount,
-          transition: { duration: 2, ease: 'linear' }
-        });
-        rotation.set(rotation.get() - 360 / faceCount);
+        if (isMounted && isReady) {
+          controls.start({
+            rotateY: rotation.get() - 360 / faceCount,
+            transition: { duration: 2, ease: 'linear' }
+          });
+          rotation.set(rotation.get() - 360 / faceCount);
+        }
       }, 2000);
 
       return () => clearInterval(autoplayRef.current);
     }
-  }, [autoplay, rotation, controls, faceCount]);
+  }, [autoplay, rotation, controls, faceCount, isMounted, isReady]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,14 +84,14 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
   }, []);
 
   const handleMouseEnter = () => {
-    if (autoplay && pauseOnHover) {
+    if (autoplay && pauseOnHover && isMounted && isReady) {
       clearInterval(autoplayRef.current);
       controls.stop();
     }
   };
 
   const handleMouseLeave = () => {
-    if (autoplay && pauseOnHover) {
+    if (autoplay && pauseOnHover && isMounted && isReady) {
       controls.start({
         rotateY: rotation.get() - 360 / faceCount,
         transition: { duration: 2, ease: 'linear' }
@@ -84,11 +99,13 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
       rotation.set(rotation.get() - 360 / faceCount);
 
       autoplayRef.current = setInterval(() => {
-        controls.start({
-          rotateY: rotation.get() - 360 / faceCount,
-          transition: { duration: 2, ease: 'linear' }
-        });
-        rotation.set(rotation.get() - 360 / faceCount);
+        if (isMounted && isReady) {
+          controls.start({
+            rotateY: rotation.get() - 360 / faceCount,
+            transition: { duration: 2, ease: 'linear' }
+          });
+          rotation.set(rotation.get() - 360 / faceCount);
+        }
       }, 2000);
     }
   };

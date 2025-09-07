@@ -15,10 +15,10 @@ const ImageSelectionModal = ({
   // 获取当前画册的图片
   const getGalleryImages = () => {
     if (gallery === 'main') {
-      return rollingGalleryImages;
+      return rollingGalleryImages || [];
     } else {
       const customGallery = customGalleries.find(g => g.id === gallery.id);
-      return customGallery ? customGallery.images : [];
+      return customGallery && customGallery ? customGallery.images : [];
     }
   };
 
@@ -53,6 +53,7 @@ const ImageSelectionModal = ({
 
     const galleryId = gallery === 'main' ? 'main' : gallery.id;
     onDelete(galleryId, selectedImages);
+    // await deleteGalleryImages(selectedGalleryId, selectedImageIndexes);
 
     if (remainingCount === 0) {
       // 如果删除了所有图片，返回上一级弹窗

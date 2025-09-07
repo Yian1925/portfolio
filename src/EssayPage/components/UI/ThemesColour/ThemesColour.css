@@ -75,10 +75,15 @@
 }
 
 .essay-page {
-  background: var(--page-bg, linear-gradient(135deg, #e3f2fd 0%, #bae1ff 50%, #e3f2fd 100%));
-  background-attachment: fixed;
-  background-size: cover;
+  /* 背景由BackgroundLayer组件处理，这里不设置背景避免覆盖用户自定义背景 */
   margin: 0;
   padding: 0;
   min-height: 100vh;
+}
+
+/* 当没有用户自定义背景时，使用主题背景 */
+.essay-page:not(.has-custom-background) {
+  background: var(--page-bg, linear-gradient(135deg, #e3f2fd 0%, #bae1ff 50%, #e3f2fd 100%));
+  background-attachment: fixed;
+  background-size: cover;
 }
