@@ -30,15 +30,15 @@ function ProjectSection() {
       demoLink: 'https://www.coucou.icu/essay' 
     },
     {
-      title: { zh: '数据可视化大屏', en: 'Data Visualization Dashboard' },
+      title: { zh: '支付反插件防护', en: 'Payment Anti-Fraud Plugin / Protection' },
       desc: { 
-        zh: '使用Echarts和Vue实现多维度数据展示与交互。', 
-        en: 'Implemented with Echarts and Vue for multidimensional data display and interaction.' 
+        zh: '收集恶意插件信息并拦截，提高支付系统安全和支付转化率低的问题', 
+        en: 'Detect, collect, and intercept malicious plugin data to strengthen payment system security and resolve low transaction conversion issues.' 
       },
       img: '/assets/images/Project3.jpg',
       leftImg: true,
-      link: 'https://github.com/yourname/project3',
-      demoLink: 'https://dashboard.example.com' 
+      link: 'https://github.com/Yian1925/test_case',
+      demoLink: '---' 
     }
   ];
 
