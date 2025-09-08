@@ -38,5 +38,5 @@ src/
 ### 启动开发服务器
 
 ```bash
-npm start
+npm run dev
 ```
