@@ -13,7 +13,7 @@ function ExperienceSection() {
           <div className="exp-left">
             <div className="exp-title-row">
               <img className="exp-icon" src="/assets/images/校徽.webp" alt="北京理工大学校徽" />
-              <span className="exp-title">{lang === 'zh' ? '北京理工大学' : 'Beijing Institute of Technology'}</span>
+              <span className="exp-title">{lang === 'zh' ? 'xx大学' : 'xxx'}</span>
             </div>
             <div className="exp-type-row">
               <span className="exp-type">{lang === 'zh' ? '本科' : "Bachelor's Degree"}</span>
@@ -37,7 +37,7 @@ function ExperienceSection() {
         <div className="exp-row">
           <div className="exp-left">
             <div className="exp-title-row">
-              <img className="exp-icon" src="/assets/images/京东健康.webp" alt="京东健康" />
+              <img className="exp-icon" src="/assets/images/京东健康.webp" alt="xxx" />
               <span className="exp-title">{lang === 'zh' ? '京东健康' : 'JD Health'}</span>
             </div>
             <div className="exp-type-row">
@@ -62,22 +62,22 @@ function ExperienceSection() {
         <div className="exp-row">
           <div className="exp-left">
             <div className="exp-title-row">
-              <img className="exp-icon" src="/assets/images/准动.jpg" alt="厦门准动网络" />
-              <span className="exp-title">{lang === 'zh' ? '厦门准动网络' : 'Zhundong Network'}</span>
+              <img className="exp-icon" src="/assets/images/京东健康.webp" alt="xx" />
+              <span className="exp-title">{lang === 'zh' ? 'xxx' : 'xx Network'}</span>
             </div>
             <div className="exp-type-row">
               <span className="exp-type">{lang === 'zh' ? '全职' : 'Full-time'}</span>
             </div>
             <div className="exp-info-row">
               <span className="exp-identity">{lang === 'zh' ? '测试工程师' : 'Test Engineer'}</span>
-              <span className="exp-time">2023.11-2024.5</span>
+              <span className="exp-time">2023.11-2025.5</span>
             </div>
           </div>
           <div className="exp-right">
             <div className="exp-desc">
               {lang === 'zh' 
-                ? '主要职责：\n●  负责银豹客户端、web端的接口测试、功能测试等，在单接口自动化的基础上实现场景自动化提高测试效率以及业务测试用例覆盖率\n●  根据抓包结果以及后端日志辅助定位缺陷产生原因，累计跟进测试项目30+'
-                : 'Responsibilities:\n●  Developed scenario-based automation on top of single-interface automation to improve testing efficiency and business test coverage for Xibao client and web platforms\n●  Analyzed packet capture results and backend logs to identify root causes of defects, supporting 30+ test projects'
+                ? '主要职责：\n●  负责xx客户端、web端的接口测试、功能测试等，在单接口自动化的基础上实现场景自动化提高测试效率以及业务测试用例覆盖率\n●  根据抓包结果以及后端日志辅助定位缺陷产生原因，累计跟进测试项目30+'
+                : 'Responsibilities:\n●  Developed scenario-based automation on top of single-interface automation to improve testing efficiency and business test coverage for Yibao client and web platforms\n●  Analyzed packet capture results and backend logs to identify root causes of defects, supporting 30+ test projects'
               }
             </div>
           </div>

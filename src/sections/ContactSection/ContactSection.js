@@ -199,44 +199,44 @@ function ContactSection() {
               <div className="contact-item">
                 <div className="contact-details">
                   <span className="contact-label">{lang === 'zh' ? '邮箱：' : 'Email: '}</span>
-                  <a href="mailto:0280ly@sina.com">0280ly@sina.com</a>
+                  <a href="mailto:xxx@xxx.com">xxx@xxx.com</a>
                 </div>
               </div>
               
               <div className="contact-item">
                 <div className="contact-details">
                   <span className="contact-label">{lang === 'zh' ? '电话：' : 'Phone: '}</span>
-                  <span>18810573381</span>
+                  <span>123456789</span>
                 </div>
               </div>
               
               <div className="contact-item">
                 <div className="contact-details">
                   <span className="contact-label">GitHub: </span>
-                  <a href="https://github.com/Yian1925" target="_blank" rel="noreferrer">github.com/Yian1925</a>
+                  <a href="https://github.com/xxx" target="_blank" rel="noreferrer">github.com/xxx</a>
                 </div>
               </div>
               
               <div className="contact-item">
                 <div className="contact-details">
                   <span className="contact-label">Gitee: </span>
-                  <a href="https://gitee.com/chapter-one-thinking" target="_blank" rel="noreferrer">gitee.com/chapter-one-thinking</a>
+                  <a href="https://gitee.com/xxx" target="_blank" rel="noreferrer">gitee.com/xxx</a>
                 </div>
               </div>
             </div>
             
             {/* contact-icon-boxes */}
             <div className="contact-icon-boxes">
-              <a href="mailto:0280ly@sina.com" className="icon-box">
+              <a href="mailto:xxx@xxx.com" className="icon-box">
                 <img src="/assets/icon/Email-icon.png" alt="Email" />
               </a>
               <div className="icon-box">
                 <img src="/assets/icon/Phone-icon.png" alt="Phone" />
               </div>
-              <a href="https://github.com/Yian1925" target="_blank" rel="noreferrer" className="icon-box">
+              <a href="https://github.com/xxx" target="_blank" rel="noreferrer" className="icon-box">
                 <img src="/assets/icon/Github-icon.png" alt="GitHub" />
               </a>
-              <a href="https://www.notion.so/23c0ba9653f08037b15ff19c26cc99b5?source=copy_link" target="_blank" rel="noreferrer" className="icon-box">
+              <a href="https://www.notion.so/xxx" target="_blank" rel="noreferrer" className="icon-box">
                 <img src="/assets/icon/Notion-icon.png" alt="Notion" />
               </a>
             </div>

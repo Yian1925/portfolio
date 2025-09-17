@@ -15,8 +15,8 @@ function ProjectSection() {
       },
       img: '/assets/images/Project1.jpg',
       leftImg: true,
-      link: 'https://github.com/Yian1925/portfolio',
-      demoLink: 'https://www.coucou.icu/' 
+      link: 'https://github.com/xxx/xxx',
+      demoLink: 'https://www.xxx.xxx/' 
     },
     {
       title: { zh: '此刻-随笔系统', en: 'Current - Note System' },
@@ -26,8 +26,8 @@ function ProjectSection() {
       },
       img: '/assets/images/Project2.jpg',
       leftImg: false,
-      link: 'https://github.com/Yian1925/portfolio',
-      demoLink: 'https://www.coucou.icu/essay' 
+      link: 'https://github.com/xxx',
+      demoLink: 'https://www.xxx.xxx/xxx' 
     },
     {
       title: { zh: '支付反插件防护', en: 'Payment Anti-Fraud Plugin / Protection' },
@@ -37,7 +37,7 @@ function ProjectSection() {
       },
       img: '/assets/images/Project3.jpg',
       leftImg: true,
-      link: 'https://github.com/Yian1925/test_case',
+      link: 'https://github.com/xxx/xxx',
       demoLink: '---' 
     }
   ];
