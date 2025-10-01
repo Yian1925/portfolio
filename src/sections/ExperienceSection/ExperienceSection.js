@@ -38,7 +38,7 @@ function ExperienceSection() {
           <div className="exp-left">
             <div className="exp-title-row">
               <img className="exp-icon" src="/assets/images/京东健康.webp" alt="xxx" />
-              <span className="exp-title">{lang === 'zh' ? '京东健康' : 'JD Health'}</span>
+              <span className="exp-title">{lang === 'zh' ? 'xxx' : 'xxx'}</span>
             </div>
             <div className="exp-type-row">
               <span className="exp-type">{lang === 'zh' ? '实习' : 'Internship'}</span>
