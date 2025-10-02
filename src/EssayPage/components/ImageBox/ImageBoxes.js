@@ -21,7 +21,13 @@ export const ImageBoxes = ({
             zIndex: 300
           }}
           onMouseDown={(e) => onPointerDown(e, 'imageBox', box.id)}
-          onTouchStart={(e) => onPointerDown(e, 'imageBox', box.id)}
+          onTouchStart={(e) => {
+            // 只在可以阻止默认行为时才调用preventDefault
+            if (e.cancelable) {
+              e.preventDefault();
+            }
+            onPointerDown(e, 'imageBox', box.id);
+          }}
         >
           {box.image ? (
             <div className="image-display">

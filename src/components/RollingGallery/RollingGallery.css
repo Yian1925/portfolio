@@ -41,6 +41,7 @@
   cursor: grab;
   transform-style: preserve-3d;
   width: 100%;
+  touch-action: pan-x; /* 允许水平拖拽 */
 }
 
 .gallery-item {
@@ -69,12 +70,33 @@
   transition: 0.3s ease;
 }
 
+/* 响应式设计 */
 @media (max-width: 768px) {
-  .gallery-item {
-    padding: 6%;
+  .gallery-container {
+    height: 250px; /* 减小容器高度 */
   }
+  
+  .gallery-item {
+    padding: 4%; /* 减小内边距 */
+  }
+  
   .gallery-img {
-    height: 100px;
-    width: 220px;
+    height: 80px; /* 进一步减小图片高度 */
+    width: 180px; /* 进一步减小图片宽度 */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    height: 200px; /* 手机端进一步减小容器高度 */
+  }
+  
+  .gallery-item {
+    padding: 2%; /* 手机端减小内边距 */
+  }
+  
+  .gallery-img {
+    height: 60px; /* 手机端进一步减小图片高度 */
+    width: 140px; /* 手机端进一步减小图片宽度 */
   }
 }

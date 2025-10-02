@@ -85,6 +85,10 @@ export const RecordSection = ({
         if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.tagName === 'FORM') {
           return;
         }
+        // 只在可以阻止默认行为时才调用
+        if (e.cancelable) {
+          e.preventDefault();
+        }
         onPointerDown(e, 'record', 'record');
       }}
     >

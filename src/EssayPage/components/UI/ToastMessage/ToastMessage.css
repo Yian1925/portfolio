@@ -49,3 +49,28 @@
     opacity: 0;
   }
 }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .submit-message {
+    max-width: 180px !important;
+    padding: 18px 22px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-message {
+    max-width: 160px !important;
+    padding: 15px 18px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .submit-message {
+    max-width: 140px !important;
+    padding: 12px 15px !important;
+    font-size: 12px !important;
+  }
+}

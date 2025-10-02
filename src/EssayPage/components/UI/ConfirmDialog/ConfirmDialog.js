@@ -20,7 +20,7 @@ export const ConfirmDialog = ({ show, message, onConfirm, onCancel }) => {
   return (
     <div className="confirm-dialog-overlay">
       <div className="confirm-dialog">
-        <h3 className="confirm-message">{message}</h3>
+        <h3 className="confirm-dialog-title">{message}</h3>
         <div className="confirm-buttons">
           <button className="modal-btn" onClick={handleConfirm}>
             确定

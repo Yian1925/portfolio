@@ -92,3 +92,103 @@
   text-align: center;
   color: var(--theme-text-primary);
 }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .image-selection-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    gap: 12px !important;
+    max-height: 350px !important;
+    padding: 12px 0 !important;
+  }
+
+  .modal-title {
+    font-size: 20px !important;
+  }
+
+  .back-btn {
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+  }
+
+  .modal-header {
+    gap: 12px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .image-overlay input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    bottom: 8px !important;
+    right: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-selection-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)) !important;
+    gap: 10px !important;
+    max-height: 300px !important;
+    padding: 10px 0 !important;
+  }
+
+  .modal-title {
+    font-size: 18px !important;
+  }
+
+  .back-btn {
+    padding: 5px 8px !important;
+    font-size: 12px !important;
+  }
+
+  .modal-header {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .modal-header h3 {
+    font-size: 16px !important;
+  }
+
+  .image-overlay input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    bottom: 6px !important;
+    right: 6px !important;
+  }
+
+  .modal-btn {
+    width: auto !important;
+    min-width: 60px !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .image-selection-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)) !important;
+    gap: 8px !important;
+    max-height: 250px !important;
+  }
+
+  .modal-title {
+    font-size: 16px !important;
+  }
+
+  .back-btn {
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+  }
+
+  .modal-header h3 {
+    font-size: 14px !important;
+  }
+
+  .image-overlay input[type="checkbox"] {
+    width: 14px !important;
+    height: 14px !important;
+    bottom: 4px !important;
+    right: 4px !important;
+  }
+}

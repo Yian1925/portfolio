@@ -13,6 +13,7 @@
 
 @import './components/Notes/NoteBoxes.css';
 @import './components/Notes/NoteDeleteSelector.css';
+@import './components/Gallery/GalleryDisplaySection.css'; 
 
 /* 统一弹窗、按钮样式 */
 .modal-btn {
@@ -51,4 +52,59 @@
   padding: 0 !important;
   width: 100% !important;
   height: auto !important;
+}
+
+/* 全局响应式设计 */
+@media (max-width: 768px) {
+  .essay-page {
+    min-height: 1200px !important;
+  }
+
+  .modal-btn {
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+    width: auto !important;
+    min-width: 70px !important;
+  }
+
+  .modal-title {
+    font-size: 22px !important;
+    margin: 0 0 20px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .essay-page {
+    min-height: 1000px !important;
+  }
+
+  .modal-btn {
+    font-size: 13px !important;
+    padding: 6px 12px !important;
+    width: auto !important;
+    min-width: 60px !important;
+  }
+
+  .modal-title {
+    font-size: 20px !important;
+    margin: 0 0 18px 0 !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .essay-page {
+    min-height: 800px !important;
+  }
+
+  .modal-btn {
+    font-size: 12px !important;
+    padding: 5px 10px !important;
+    width: auto !important;
+    min-width: 50px !important;
+  }
+
+  .modal-title {
+    font-size: 18px !important;
+    margin: 0 0 15px 0 !important;
+  }
 }

@@ -15,9 +15,9 @@
   background: var(--theme-bg-primary) !important;
   border-radius: 20px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
-  max-width: min(900px, 90vw) !important;
+  max-width: min(800px, 85vw) !important;
   width: auto !important;
-  min-width: 550px !important;
+  min-width: 500px !important;
   max-height: min(60vh, 600px) !important;
   height: auto !important;
   display: flex !important;
@@ -196,17 +196,17 @@
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .note-delete-modal {
-    max-width: min(500px, 85vw) !important;
-    min-width: 350px !important;
-    max-height: min(75vh, 500px) !important;
+    max-width: min(450px, 80vw) !important;
+    min-width: 320px !important;
+    max-height: min(70vh, 450px) !important;
   }
 }
 
 @media (max-width: 768px) {
   .note-delete-modal {
-    max-width: min(450px, 90vw) !important;
-    min-width: 320px !important;
-    max-height: min(80vh, 450px) !important;
+    max-width: min(380px, 85vw) !important;
+    min-width: 300px !important;
+    max-height: min(75vh, 400px) !important;
   }
   
   .note-delete-header,
@@ -241,22 +241,24 @@
   }
   
   .note-delete-footer {
-    flex-direction: column !important;
+    flex-direction: row !important;
     gap: 15px !important;
     padding-top: 15px !important;
     padding-bottom: 20px !important;
+    justify-content: center !important;
   }
   
   .modal-btn {
-    width: 100% !important;
+    width: auto !important;
+    min-width: 60px !important;
   }
 }
 
 @media (max-width: 480px) {
   .note-delete-modal {
-    max-width: min(380px, 95vw) !important;
-    min-width: 280px !important;
-    max-height: min(85vh, 400px) !important;
+    max-width: min(320px, 90vw) !important;
+    min-width: 260px !important;
+    max-height: min(80vh, 350px) !important;
   }
   
   .note-delete-header,
@@ -305,8 +307,8 @@
 
 @media (max-width: 320px) {
   .note-delete-modal {
-    max-width: 98vw !important;
-    min-width: 260px !important;
+    max-width: min(280px, 95vw) !important;
+    min-width: 240px !important;
   }
   
   .note-delete-header,

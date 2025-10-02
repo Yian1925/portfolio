@@ -1,0 +1,26 @@
+.gallery-title-container {
+  background: var(--theme-bg-primary) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  text-align: center !important;
+  width: fit-content !important;
+  margin: 0 auto !important; 
+}
+
+.gallery-content-container {
+  /* 桌面端间距 */
+  margin-top: 25px;
+}
+
+/* 平板端响应式间距 (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .gallery-content-container {
+    margin-top: -25px; 
+  }
+}
+
+/* 手机端响应式间距 (≤480px) */
+@media (max-width: 480px) {
+  .gallery-content-container {
+    margin-top: -35px; 
+  }
+}

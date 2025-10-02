@@ -26,12 +26,13 @@
   justify-content: center !important; 
 }
 
-.confirm-dialog .confirm-message {
+.confirm-dialog-title {
   margin: 0 0 20px 0 !important;
-  font-size: 22px !important;
+  font-size: 18px !important;
   color: var(--theme-text-primary) !important;
   font-weight: 500 !important;
   line-height: 1.4 !important;
+  text-align: center !important;
 }
 
 .confirm-dialog .confirm-buttons {
@@ -47,5 +48,59 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .confirm-dialog {
+    max-width: min(280px, 80vw) !important;
+    padding: 18px 10px !important;
+  }
+
+  .confirm-dialog-title {
+    font-size: 15px !important;
+    margin: 0 0 15px 0 !important;
+  }
+
+  .confirm-buttons {
+    gap: 30px !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirm-dialog {
+    max-width: min(250px, 85vw) !important;
+    padding: 15px 8px !important;
+  }
+
+  .confirm-dialog-title {
+    font-size: 13px !important;
+    margin: 0 0 12px 0 !important;
+  }
+
+  .confirm-buttons {
+    gap: 20px !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    margin: 15px 0 10px 0 !important;
+  }
+
+  .modal-btn {
+    width: auto !important;
+    min-width: 60px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .confirm-dialog {
+    max-width: min(220px, 90vw) !important;
+    padding: 12px 6px !important;
+  }
+
+  .confirm-dialog-title {
+    font-size: 11px !important;
+    margin: 0 0 10px 0 !important;
   }
 }

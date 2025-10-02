@@ -621,7 +621,7 @@ export const useEssayState = () => {
 
   // 统一的事件处理函数 - 支持鼠标和触摸
   const handlePointerDown = (e, elementType, elementId) => {
-    e.preventDefault();
+    // preventDefault已在组件级别处理，这里不再调用
     
     // 获取正确的坐标（兼容鼠标和触摸）
     const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);

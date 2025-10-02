@@ -71,76 +71,39 @@
   }
 }
 
-/* 平板竖屏 (481px - 768px) */
+/* 平板竖屏 (481px - 768px) - 调整主题切换按钮大小与其他按钮一致 */
 @media (max-width: 768px) and (min-width: 481px) {
   .theme-switch-btn {
     width: 120px !important;
     height: 36px !important;
     right: 16px !important;
+    top: 20px !important;
   }
 
   .theme-switch-btn span {
     font-size: 0.85em !important;
-    padding: 0 3px;
-  }
-
-  /* 调整按钮位置以适应屏幕 */
-  .theme-switch-btn {
-    top: 34px !important;
+    padding: 0 3px !important;
   }
 }
 
-/* 手机大屏 (361px - 480px) */
+/* 手机大屏 (361px - 480px) - 隐藏主题切换按钮 */
 @media (max-width: 480px) and (min-width: 361px) {
   .theme-switch-btn {
-    width: 100px !important;
-    height: 32px !important;
-    right: 12px !important;
-  }
-
-  .theme-switch-btn span {
-    font-size: 0.75em !important;
-    padding: 0 2px;
-  }
-
-  /* 调整按钮位置 */
-  .theme-switch-btn {
-    top: 36px !important;
+    display: none !important;
   }
 }
 
-/* 手机小屏 (≤360px) */
+/* 手机小屏 (≤360px) - 隐藏主题切换按钮 */
 @media (max-width: 360px) {
   .theme-switch-btn {
-    width: 90px !important;
-    height: 30px !important;
-    right: 8px !important;
-  }
-
-  .theme-switch-btn span {
-    font-size: 0.7em !important;
-    padding: 0 2px;
-    letter-spacing: -0.03em;
-  }
-
-  /* 调整按钮位置 */
-  .theme-switch-btn {
-    top: 34px !important;
+    display: none !important;
   }
 }
 
-/* 超小屏幕 (≤320px) */
+/* 超小屏幕 (≤320px) - 隐藏主题切换按钮 */
 @media (max-width: 320px) {
   .theme-switch-btn {
-    width: 80px !important;
-    height: 28px !important;
-    right: 6px !important;
-  }
-
-  .theme-switch-btn span{
-    font-size: 0.65em !important;
-    padding: 0 1px;
-    letter-spacing: -0.02em;
+    display: none !important;
   }
 }
 

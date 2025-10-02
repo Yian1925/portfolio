@@ -142,6 +142,8 @@ function EssayPage() {
         onDeleteGalleryImages={() => state.setShowDeleteImageSelector(true)}
         onAddNoteBox={state.handleAddNoteBox}
         onDeleteNoteBox={state.handleDeleteNoteBox}
+        onThemeChange={handleThemeChange}
+        currentTheme={state.currentTheme}
       />
       
       {/* 随笔文本框 - 使用统一的函数名 */}

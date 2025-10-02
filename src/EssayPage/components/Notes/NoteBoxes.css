@@ -38,3 +38,41 @@
   display: inline-block;
 }
 
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .note-box {
+    max-width: 250px !important;
+    padding: 10px 14px !important;
+    border-radius: 15px !important;
+  }
+
+  .note-content {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .note-box {
+    max-width: 200px !important;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .note-content {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .note-box {
+    max-width: 150px !important;
+    padding: 6px 10px !important;
+    border-radius: 10px !important;
+  }
+
+  .note-content {
+    font-size: 11px !important;
+  }
+}
+

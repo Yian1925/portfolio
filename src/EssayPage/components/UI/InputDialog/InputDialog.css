@@ -68,3 +68,68 @@
     opacity: 1;
   }
 }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .input-dialog {
+    max-width: min(350px, 80vw) !important;
+    padding: 25px !important;
+  }
+
+  .modal-title {
+    font-size: 20px !important;
+  }
+
+  .input-dialog-input {
+    font-size: 15px !important;
+    padding: 12px 8px !important;
+  }
+
+  .input-dialog-buttons {
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .input-dialog {
+    max-width: min(300px, 85vw) !important;
+    padding: 20px !important;
+  }
+
+  .modal-title {
+    font-size: 18px !important;
+  }
+
+  .input-dialog-input {
+    font-size: 14px !important;
+    padding: 10px 6px !important;
+    margin: 0 10px 20px -5px !important;
+  }
+
+  .input-dialog-buttons {
+    gap: 25px !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  .modal-btn {
+    width: auto !important;
+    min-width: 60px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .input-dialog {
+    max-width: min(260px, 90vw) !important;
+    padding: 15px !important;
+  }
+
+  .modal-title {
+    font-size: 16px !important;
+  }
+
+  .input-dialog-input {
+    font-size: 13px !important;
+  }
+}

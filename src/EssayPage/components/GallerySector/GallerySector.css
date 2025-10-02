@@ -91,3 +91,103 @@
   cursor: pointer;
 }
 
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gallery-selector {
+    max-width: min(380px, 80vw) !important;
+    padding: 20px !important;
+  }
+
+  .modal-title {
+    font-size: 20px !important;
+  }
+
+  .gallery-option {
+    padding: 12px !important;
+  }
+
+  .gallery-name {
+    font-size: 15px !important;
+  }
+
+  .gallery-count {
+    font-size: 13px !important;
+  }
+
+  .selector-buttons {
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-selector {
+    max-width: min(300px, 85vw) !important;
+    padding: 18px !important;
+  }
+
+  .modal-title {
+    font-size: 18px !important;
+  }
+
+  .gallery-option {
+    padding: 10px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 5px !important;
+  }
+
+  .gallery-name {
+    font-size: 14px !important;
+  }
+
+  .gallery-count {
+    font-size: 12px !important;
+  }
+
+  .selector-buttons {
+    gap: 20px !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    margin-top: 15px !important;
+  }
+
+  .modal-btn {
+    width: auto !important;
+    min-width: 60px !important;
+  }
+
+  .gallery-checkbox-option {
+    padding: 12px !important;
+    gap: 8px !important;
+  }
+
+  .gallery-checkbox {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .gallery-selector {
+    max-width: min(260px, 90vw) !important;
+    padding: 12px !important;
+  }
+
+  .modal-title {
+    font-size: 16px !important;
+  }
+
+  .gallery-option {
+    padding: 8px !important;
+  }
+
+  .gallery-name {
+    font-size: 13px !important;
+  }
+
+  .gallery-count {
+    font-size: 11px !important;
+  }
+}
+

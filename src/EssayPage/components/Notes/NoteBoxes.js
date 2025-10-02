@@ -85,7 +85,13 @@ export const NoteBoxes = ({ notes, onPointerDown }) => {
             transformOrigin: 'center'
           }}
           onMouseDown={(e) => onPointerDown(e, 'note', note.id)}
-          onTouchStart={(e) => onPointerDown(e, 'note', note.id)}
+          onTouchStart={(e) => {
+            // 只在可以阻止默认行为时才调用preventDefault
+            if (e.cancelable) {
+              e.preventDefault();
+            }
+            onPointerDown(e, 'note', note.id);
+          }}
         >
           <div 
             className="note-content"
