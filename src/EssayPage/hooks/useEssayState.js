@@ -2,16 +2,18 @@ import { useState, useEffect } from 'react';
 
 export const useEssayState = () => {
   const getDefaultNotes = () => {
-    const screenWidth = window.innerWidth; 
+    // 使用相对位置，避免在初始化时依赖window.innerWidth
+    // 这些位置会在NoteBoxes组件中根据实际屏幕尺寸调整
+    const baseWidth = 1200; // 基准屏幕宽度
     return [
-      { id: 1, content: '请你永远永远，不要再光临我的夏季', x: screenWidth / 2 - 400, y: 60 },
-      { id: 2, content: '截停一场未定的秋天', x: screenWidth / 2 + 240, y: 30 },
-      { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: screenWidth / 2 - 700, y: 160 },
-      { id: 4, content: '无所事事的平静很珍贵', x: screenWidth / 2 - 640, y: 500 },
-      { id: 5, content: '我特别特别喜欢散步', x: screenWidth / 2 - 560, y: 330 },
-      { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: screenWidth / 2 - 100, y: 110 },
-      { id: 7, content: '世界温和，大道光明', x: screenWidth / 2 - 650, y: 40 },
-      { id: 8, content: '梧桐大道', x: screenWidth / 2 + 400, y: 120 }
+      { id: 1, content: '请你永远永远，不要再光临我的夏季', x: baseWidth / 2 - 400, y: 60 },
+      { id: 2, content: '截停一场未定的秋天', x: baseWidth / 2 + 240, y: 30 },
+      { id: 3, content: '与我在世界的角落渺小又清晰地共振', x: baseWidth / 2 - 700, y: 160 },
+      { id: 4, content: '无所事事的平静很珍贵', x: baseWidth / 2 - 640, y: 500 },
+      { id: 5, content: '我特别特别喜欢散步', x: baseWidth / 2 - 560, y: 330 },
+      { id: 6, content: '那些细小幽微的感受也同样值得被描摹', x: baseWidth / 2 - 100, y: 110 },
+      { id: 7, content: '世界温和，大道光明', x: baseWidth / 2 - 650, y: 40 },
+      { id: 8, content: '梧桐大道', x: baseWidth / 2 + 400, y: 120 }
     ];
   };
 
@@ -24,7 +26,10 @@ export const useEssayState = () => {
   const [confirmCallback, setConfirmCallback] = useState(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState('/assets/images/2.jpeg');
-  const [recordSection, setRecordSection] = useState({ x: window.innerWidth / 2 - 300, y: 240 });
+  const [recordSection, setRecordSection] = useState(() => {
+    // 延迟计算初始位置，确保在组件挂载后计算
+    return { x: 0, y: 240 }; // x会在RecordSection组件中重新计算
+  });
   const [draggedElement, setDraggedElement] = useState(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [imageBoxes, setImageBoxes] = useState([]);
@@ -258,7 +263,7 @@ export const useEssayState = () => {
 
       // 恢复布局数据
       setNotes(saved.notes || getDefaultNotes());
-      setRecordSection(saved.recordSection || { x: window.innerWidth / 2 - 200, y: 200 });
+      setRecordSection(saved.recordSection || { x: 0, y: 240 });
       setImageBoxes(saved.imageBoxes || []);
       setRollingGalleryImages(saved.rollingGalleryImages || []);
       setRollingGalleryTitle(saved.rollingGalleryTitle || '✨ 日常注脚 ✨');
@@ -357,7 +362,7 @@ export const useEssayState = () => {
         try {
           const positions = JSON.parse(localSaved);
           setNotes(positions.notes || getDefaultNotes());
-          setRecordSection(positions.recordSection || { x: window.innerWidth / 2 - 200, y: 200 });
+          setRecordSection(positions.recordSection || { x: 0, y: 240 });
           setImageBoxes(positions.imageBoxes || []);
           setRollingGalleryImages(positions.rollingGalleryImages || []);
           setRollingGalleryTitle(positions.rollingGalleryTitle || '✨ 日常注脚 ✨');
@@ -553,7 +558,7 @@ export const useEssayState = () => {
       const defaultNotes = getDefaultNotes();
       
       setNotes(defaultNotes);
-      setRecordSection({ x: window.innerWidth / 2 - 300, y: 240 });
+      setRecordSection({ x: 0, y: 240 }); // x会在RecordSection组件中重新计算为居中
       setImageBoxes([]);
       setRollingGalleryImages([]);
       setRollingGalleryTitle('✨ 日常注脚 ✨');
@@ -695,6 +700,68 @@ export const useEssayState = () => {
     setConfirmCallback(null);
   };
 
+  // 添加note-box的状态
+  const [showAddNoteDialog, setShowAddNoteDialog] = useState(false);
+  const [addNoteDialogConfig, setAddNoteDialogConfig] = useState({});
+  
+  // 删除note-box选择器的状态
+  const [showNoteDeleteSelector, setShowNoteDeleteSelector] = useState(false);
+
+  // 添加note-box
+  const handleAddNoteBox = () => {
+    setAddNoteDialogConfig({
+      title: '添加便签',
+      placeholder: '请输入便签内容（最多20字）...',
+      maxLength: 20,
+      onConfirm: (content) => {
+        if (content.trim()) {
+          // 创建新的note-box
+          const newNote = {
+            id: Date.now(),
+            content: content.trim(),
+            x: Math.random() * (window.innerWidth - 300) + 50, // 随机位置
+            y: Math.random() * (window.innerHeight - 200) + 50
+          };
+          
+          setNotes(prev => [...prev, newNote]);
+          setHasUnsavedChanges(true);
+          setSubmitMessage(' 便签已添加～ ');
+        }
+        setShowAddNoteDialog(false);
+      },
+      onCancel: () => {
+        setShowAddNoteDialog(false);
+      }
+    });
+    setShowAddNoteDialog(true);
+  };
+
+  // 删除note-box - 打开选择器
+  const handleDeleteNoteBox = () => {
+    if (notes.length === 0) {
+      setSubmitMessage(' 当前没有便签可删除～ ');
+      return;
+    }
+    
+    setShowNoteDeleteSelector(true);
+  };
+  
+  // 批量删除选中的便签
+  const handleDeleteSelectedNotes = (selectedNoteIds) => {
+    if (selectedNoteIds.length === 0) {
+      return;
+    }
+    
+    setNotes(prev => prev.filter(note => !selectedNoteIds.includes(note.id)));
+    setHasUnsavedChanges(true);
+    setSubmitMessage(` 已删除 ${selectedNoteIds.length} 个便签～ `);
+  };
+  
+  // 关闭便签删除选择器
+  const handleCloseNoteDeleteSelector = () => {
+    setShowNoteDeleteSelector(false);
+  };
+
   return {
     notes, setNotes,
     recordText, setRecordText,
@@ -729,6 +796,13 @@ export const useEssayState = () => {
     handleChangeBackground,
     handleSubmitRecord,
     handleConfirm,
-    handleCancel
+    handleCancel,
+    handleAddNoteBox,
+    handleDeleteNoteBox,
+    showAddNoteDialog,
+    addNoteDialogConfig,
+    showNoteDeleteSelector,
+    handleDeleteSelectedNotes,
+    handleCloseNoteDeleteSelector
   };
 };

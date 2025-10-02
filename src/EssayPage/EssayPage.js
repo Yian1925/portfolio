@@ -8,6 +8,7 @@ import { useImageBoxManagement } from './hooks/useImageBoxManagement.js';
 import { GalleryDisplaySection } from './components/Gallery/GalleryDisplaySection.js';
 import { ImageBoxes } from './components/ImageBox/ImageBoxes.js';
 import { NoteBoxes } from './components/Notes/NoteBoxes.js';
+import { NoteDeleteSelector } from './components/Notes/NoteDeleteSelector.js';
 import { RecordSection } from './components/Record/RecordSection.js';
 
 import { BackgroundLayer } from './components/UI/BackgroundLayer/BackgroundLayer.js';
@@ -146,6 +147,8 @@ function EssayPage() {
           state.setShowDeleteGallerySelector(true);
         }}
         onDeleteGalleryImages={() => state.setShowDeleteImageSelector(true)}
+        onAddNoteBox={state.handleAddNoteBox}
+        onDeleteNoteBox={state.handleDeleteNoteBox}
       />
       
       {/* 随笔文本框 - 使用统一的函数名 */}
@@ -232,6 +235,24 @@ function EssayPage() {
         placeholder={inputDialogConfig.placeholder}
         onConfirm={inputDialogConfig.onConfirm}
         onCancel={inputDialogConfig.onCancel}
+      />
+
+      {/* 添加便签输入弹窗 */}
+      <InputDialog
+        show={state.showAddNoteDialog}
+        title={state.addNoteDialogConfig.title}
+        placeholder={state.addNoteDialogConfig.placeholder}
+        maxLength={state.addNoteDialogConfig.maxLength}
+        onConfirm={state.addNoteDialogConfig.onConfirm}
+        onCancel={state.addNoteDialogConfig.onCancel}
+      />
+
+      {/* 便签删除选择器 */}
+      <NoteDeleteSelector
+        show={state.showNoteDeleteSelector}
+        onClose={state.handleCloseNoteDeleteSelector}
+        notes={state.notes}
+        onDeleteNotes={state.handleDeleteSelectedNotes}
       />
     </div>
   );

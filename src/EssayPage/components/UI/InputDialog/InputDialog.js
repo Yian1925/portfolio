@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const InputDialog = ({ show, title, placeholder, onConfirm, onCancel }) => {
+export const InputDialog = ({ show, title, placeholder, maxLength, onConfirm, onCancel }) => {
   const [inputValue, setInputValue] = useState('');
 
   if (!show) return null;
@@ -35,6 +35,7 @@ export const InputDialog = ({ show, title, placeholder, onConfirm, onCancel }) =
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder={placeholder}
+          maxLength={maxLength}
           className="input-dialog-input"
           autoFocus
         />

@@ -12,6 +12,7 @@
 @import './components/UI/ThemesColour/ThemesColour.css';
 
 @import './components/Notes/NoteBoxes.css';
+@import './components/Notes/NoteDeleteSelector.css';
 
 
 .essay-page {

@@ -26,7 +26,9 @@
 .rolling-gallery-upload-btn,
 .add-custom-gallery-btn,
 .delete-gallery-btn,
-.delete-gallery-images-btn {
+.delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
   --border-width: clamp(1px, 0.0625em, 4px);
   all: unset;
   cursor: pointer;
@@ -69,7 +71,9 @@
 .rolling-gallery-upload-btn,
 .add-custom-gallery-btn,
 .delete-gallery-btn,
-.delete-gallery-images-btn {
+.delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
   position: relative;
   display: block;
   user-select: none;
@@ -103,7 +107,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     width: 140px !important;
     height: 40px !important;
   }
@@ -115,7 +121,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     font-size: clamp(0.9em, 0.6em + 0.3vw, 1.1em) !important;
   }
 }
@@ -129,7 +137,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     width: 120px !important;
     height: 36px !important;
     right: 16px !important;
@@ -142,7 +152,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     font-size: 0.85em !important;
     padding: 0 3px;
   }
@@ -179,6 +191,14 @@
   .delete-gallery-images-btn {
     top: 370px !important;
   }
+
+  .add-note-box-btn {
+    top: 412px !important;
+  }
+
+  .delete-note-box-btn {
+    top: 454px !important;
+  }
 }
 
 /* 手机大屏 (361px - 480px) */
@@ -190,7 +210,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     width: 100px !important;
     height: 32px !important;
     right: 12px !important;
@@ -203,7 +225,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     font-size: 0.75em !important;
     padding: 0 2px;
   }
@@ -240,6 +264,14 @@
   .delete-gallery-images-btn {
     top: 324px !important;
   }
+
+  .add-note-box-btn {
+    top: 360px !important;
+  }
+
+  .delete-note-box-btn {
+    top: 396px !important;
+  }
 }
 
 /* 手机小屏 (≤360px) */
@@ -251,7 +283,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     width: 90px !important;
     height: 30px !important;
     right: 8px !important;
@@ -264,7 +298,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     font-size: 0.7em !important;
     padding: 0 2px;
     letter-spacing: -0.03em;
@@ -302,6 +338,14 @@
   .delete-gallery-images-btn {
     top: 306px !important;
   }
+
+  .add-note-box-btn {
+    top: 340px !important;
+  }
+
+  .delete-note-box-btn {
+    top: 374px !important;
+  }
 }
 
 /* 超小屏幕 (≤320px) */
@@ -313,7 +357,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     width: 80px !important;
     height: 28px !important;
     right: 6px !important;
@@ -326,7 +372,9 @@
   .rolling-gallery-upload-btn,
   .add-custom-gallery-btn,
   .delete-gallery-btn,
-  .delete-gallery-images-btn {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn {
     font-size: 0.65em !important;
     padding: 0 1px;
     letter-spacing: -0.02em;
@@ -366,6 +414,14 @@
   top: 500px !important;
 }
 
+.add-note-box-btn {
+  top: 560px !important;
+}
+
+.delete-note-box-btn {
+  top: 620px !important;
+}
+
 /* 按钮悬停效果 */
 .reset-button:hover,
 .essay-save-layout-button:hover,
@@ -374,7 +430,9 @@
 .rolling-gallery-upload-btn:hover,
 .add-custom-gallery-btn:hover,
 .delete-gallery-btn:hover,
-.delete-gallery-images-btn:hover {
+.delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn:hover {
   transform: scale(0.975);
   backdrop-filter: blur(0.01em);
   -webkit-backdrop-filter: blur(0.01em);
@@ -396,7 +454,9 @@
   .rolling-gallery-upload-btn:hover,
   .add-custom-gallery-btn:hover,
   .delete-gallery-btn:hover,
-  .delete-gallery-images-btn:hover {
+  .delete-gallery-images-btn,
+.add-note-box-btn,
+.delete-note-box-btn:hover {
     transform: none;
   }
 }

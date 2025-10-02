@@ -33,8 +33,18 @@ export const RecordSection = ({
       const containerWidth = 560 * scale; // record-container的min-width
       const containerHeight = 300 * scale; // 估算高度
       
+      // 如果是初始加载或者recordSection.y是默认值，则居中显示
       let centerX = (screenWidth - containerWidth) / 2;
-      let centerY = recordSection.y * scale;
+      let centerY;
+      
+      // 判断是否为初始默认位置（240是默认Y值）
+      if (recordSection.y === 240 || recordSection.y < 100) {
+        // 居中显示
+        centerY = (screenHeight - containerHeight) / 2;
+      } else {
+        // 使用保存的位置
+        centerY = recordSection.y * scale;
+      }
       
       // 确保在安全区域内
       centerX = Math.max(20, Math.min(centerX, screenWidth - containerWidth - 20));

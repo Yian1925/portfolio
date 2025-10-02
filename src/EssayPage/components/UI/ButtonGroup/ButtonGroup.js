@@ -8,7 +8,9 @@ export const ButtonGroup = ({
   onGalleryImageUpload,
   onAddCustomGallery,
   onDeleteGallery,
-  onDeleteGalleryImages
+  onDeleteGalleryImages,
+  onAddNoteBox,
+  onDeleteNoteBox
 }) => {
   return (
     <div>
@@ -74,6 +76,22 @@ export const ButtonGroup = ({
         onClick={onDeleteGalleryImages}
       >
         删除画册图集
+      </button>
+
+      {/* 添加note-box按钮 */}
+      <button 
+        className="add-note-box-btn"
+        onClick={onAddNoteBox}
+      >
+        添加便签
+      </button>
+
+      {/* 删除note-box按钮 */}
+      <button 
+        className="delete-note-box-btn"
+        onClick={onDeleteNoteBox}
+      >
+        删除便签
       </button>
     </div>
   );

@@ -2,7 +2,6 @@
   position: absolute !important;
   z-index: 500 !important;
   cursor: grab !important;
-  transition: all 0.3s ease !important;
   user-select: text !important;
   pointer-events: auto !important;
   transform-origin: top left !important;
@@ -34,7 +33,6 @@
   user-select: text !important;
   pointer-events: auto !important;
   z-index: 500 !important;
-  transition: all 0.3s ease;
 }
 
 /* 响应式容器尺寸调整 */

@@ -2,15 +2,15 @@
   position: absolute !important;
   background: var(--theme-bg-primary) !important;
   border-radius: 18px !important;
-  padding: 15px 20px !important;
-  min-width: 80px !important;
+  padding: 12px 16px !important;
+  min-width: auto !important;
   max-width: 300px !important;
   width: fit-content !important;
+  display: inline-block !important;
   box-shadow: 0 6px 20px rgba(171, 172, 176, 0.4) !important;
   backdrop-filter: blur(10px) !important;
   border: 2px solid var(--theme-bg-primary) !important;
   cursor: grab !important;
-  transition: all 0.2s ease !important;
   user-select: none !important;
   z-index: 1000 !important;
   will-change: transform !important;
@@ -29,9 +29,12 @@
 
 .note-content {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.4;
   color: #333;
   font-style: italic;
   pointer-events: none;
+  white-space: nowrap;
+  word-break: keep-all;
+  display: inline-block;
 }
 
