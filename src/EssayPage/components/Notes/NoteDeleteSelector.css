@@ -26,43 +26,11 @@
 }
 
 .note-delete-header {
-  padding: 25px 30px 20px 30px !important;
+  padding: 25px 30px 0 30px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   position: relative !important;
-}
-
-.note-delete-header h3 {
-  margin: 0 !important;
-  font-size: 24px !important;
-  color: var(--theme-text-primary) !important;
-  font-weight: 600 !important;
-}
-
-.close-btn {
-  background: none !important;
-  border: none !important;
-  font-size: 28px !important;
-  color: var(--theme-text-secondary) !important;
-  cursor: pointer !important;
-  padding: 0 !important;
-  width: 30px !important;
-  height: 30px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 50% !important;
-  transition: all 0.2s ease !important;
-  position: absolute !important;
-  right: 30px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-}
-
-.close-btn:hover {
-  background: var(--theme-bg-secondary) !important;
-  color: var(--theme-text-primary) !important;
 }
 
 .note-delete-content {
@@ -225,22 +193,6 @@
   gap: 20px !important;
 }
 
-.cancel-btn {
-  background: var(--theme-bg-tertiary) !important;
-  color: var(--theme-text-primary) !important;
-  padding: 12px 24px !important;
-  border-radius: 12px !important;
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-}
-
-.cancel-btn:hover {
-  background: var(--theme-primary) !important;
-  transform: translateY(-2px) !important;
-}
-
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .note-delete-modal {
@@ -269,7 +221,7 @@
     padding-bottom: 15px !important;
   }
   
-  .note-delete-header h3 {
+  .note-delete-header .modal-title {
     font-size: 20px !important;
   }
   
@@ -295,7 +247,7 @@
     padding-bottom: 20px !important;
   }
   
-  .cancel-btn {
+  .modal-btn {
     width: 100% !important;
   }
 }
@@ -314,7 +266,7 @@
     padding-right: 15px !important;
   }
   
-  .note-delete-header h3 {
+  .note-delete-header .modal-title {
     font-size: 18px !important;
   }
   
@@ -345,7 +297,7 @@
     min-width: 30px !important;
   }
   
-  .cancel-btn {
+  .modal-btn {
     padding: 10px 20px !important;
     font-size: 14px !important;
   }
@@ -364,7 +316,7 @@
     padding-right: 12px !important;
   }
   
-  .note-delete-header h3 {
+  .note-delete-header .modal-title {
     font-size: 16px !important;
   }
   

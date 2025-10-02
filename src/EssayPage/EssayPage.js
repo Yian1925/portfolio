@@ -21,7 +21,6 @@ import { ThemeSwitcher } from './components/UI/ThemeSwitcher/ThemeSwitcher.js';
 import GallerySelectorModal from './components/GallerySector/GallerySectorModal.js';
 import DeleteGallerySelectorModal from './components/GallerySector/DeleteGallerySectorModal.js';
 import DeleteImageSelectorModal from './components/ImageCardSector/DeleteImageSelectorModal.js';
-import ImageSelectionModal from './components/ImageCardSector/ImageSelectionModal.js';
 
 function EssayPage() {
   // 状态管理
@@ -71,12 +70,6 @@ function EssayPage() {
     // 立即应用主题，避免默认主题的闪烁
     document.body.setAttribute('data-theme', state.currentTheme);
   }, [state.currentTheme]);
-
-  // 页面加载时立即应用主题
-  useEffect(() => {
-    // 在组件挂载时立即应用当前主题
-    document.body.setAttribute('data-theme', state.currentTheme);
-  }, []); // 空依赖数组，只在组件挂载时执行一次
 
   // galleryManagement的调用
   const galleryManagement = useGalleryManagement(

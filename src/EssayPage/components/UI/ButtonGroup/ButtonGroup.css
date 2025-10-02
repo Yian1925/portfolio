@@ -430,8 +430,8 @@
 .rolling-gallery-upload-btn:hover,
 .add-custom-gallery-btn:hover,
 .delete-gallery-btn:hover,
-.delete-gallery-images-btn,
-.add-note-box-btn,
+.delete-gallery-images-btn:hover,
+.add-note-box-btn:hover,
 .delete-note-box-btn:hover {
   transform: scale(0.975);
   backdrop-filter: blur(0.01em);
@@ -454,9 +454,9 @@
   .rolling-gallery-upload-btn:hover,
   .add-custom-gallery-btn:hover,
   .delete-gallery-btn:hover,
-  .delete-gallery-images-btn,
-.add-note-box-btn,
-.delete-note-box-btn:hover {
+  .delete-gallery-images-btn:hover,
+  .add-note-box-btn:hover,
+  .delete-note-box-btn:hover {
     transform: none;
   }
 }

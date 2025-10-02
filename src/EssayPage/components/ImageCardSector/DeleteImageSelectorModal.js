@@ -60,7 +60,7 @@ const DeleteImageSelectorModal = ({
   return (
     <div className="gallery-selector-overlay">
       <div className="gallery-selector">
-        <h3>选择要删除图片的画册</h3>
+        <h3 className="modal-title">选择要删除图片的画册</h3>
         <div className="gallery-options">
           <button
             className="gallery-option"
@@ -81,7 +81,7 @@ const DeleteImageSelectorModal = ({
           ))}
         </div>
         <button
-          className="cancel-btn"
+          className="modal-btn"
           onClick={() => setShowDeleteImageSelector(false)}
         >
           取消

@@ -50,7 +50,7 @@ const GallerySelectorModal = ({
   return (
     <div className="gallery-selector-overlay">
       <div className="gallery-selector">
-        <h3>选择要上传图片的画册</h3>
+        <h3 className="modal-title">选择要上传图片的画册</h3>
         <div className="gallery-options">
           <button 
             className="gallery-option"
@@ -74,13 +74,13 @@ const GallerySelectorModal = ({
         {/* 添加保存和取消按钮区域 */}
         <div className="selector-buttons">
           <button 
-            className="save-btn"
+            className="modal-btn"
             onClick={handleSaveGallery}
           >
             保存
           </button>
           <button 
-            className="cancel-btn"
+            className="modal-btn"
             onClick={() => setShowGallerySelector(false)}
           >
             取消

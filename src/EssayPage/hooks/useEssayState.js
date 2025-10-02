@@ -389,7 +389,7 @@ export const useEssayState = () => {
   };
   
   loadPositions();
-}, []);
+}, []); // eslint-disable-line react-hooks/exhaustive-deps
   // 自动隐藏toast
   useEffect(() => {
     if (submitMessage) {

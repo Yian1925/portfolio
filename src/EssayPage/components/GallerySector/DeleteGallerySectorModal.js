@@ -61,7 +61,7 @@ const DeleteGallerySelectorModal = ({
   return (
     <div className="gallery-selector-overlay">
       <div className="gallery-selector">
-        <h3>选择要删除的画册（可多选）</h3>
+        <h3 className="modal-title">选择要删除的画册（可多选）</h3>
         <div className="gallery-options">
           {customGalleries.map(gallery => (
             <label key={gallery.id} className="gallery-checkbox-option">
@@ -79,13 +79,13 @@ const DeleteGallerySelectorModal = ({
         </div>
         <div className="selector-buttons">
           <button 
-            className="delete-btn"
+            className="modal-btn"
             onClick={handleDelete}
           >
             删除
           </button>
           <button 
-            className="cancel-btn"
+            className="modal-btn"
             onClick={() => {
               setSelectedGalleries([]);
               setShowDeleteGallerySelector(false);

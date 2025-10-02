@@ -28,7 +28,7 @@ export const InputDialog = ({ show, title, placeholder, maxLength, onConfirm, on
   return (
     <div className="input-dialog-overlay">
       <div className="input-dialog">
-        <h3 className="input-dialog-title">{title}</h3>
+        <h3 className="modal-title">{title}</h3>
         <input
           type="text"
           value={inputValue}
@@ -40,10 +40,10 @@ export const InputDialog = ({ show, title, placeholder, maxLength, onConfirm, on
           autoFocus
         />
         <div className="input-dialog-buttons">
-          <button className="input-dialog-btn input-dialog-confirm" onClick={handleConfirm}>
+          <button className="modal-btn" onClick={handleConfirm}>
             确定
           </button>
-          <button className="input-dialog-btn input-dialog-cancel" onClick={handleCancel}>
+          <button className="modal-btn" onClick={handleCancel}>
             取消
           </button>
         </div>

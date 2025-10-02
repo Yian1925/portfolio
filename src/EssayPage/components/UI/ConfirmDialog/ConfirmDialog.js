@@ -20,12 +20,12 @@ export const ConfirmDialog = ({ show, message, onConfirm, onCancel }) => {
   return (
     <div className="confirm-dialog-overlay">
       <div className="confirm-dialog">
-        <div className="confirm-message">{message}</div>
+        <h3 className="confirm-message">{message}</h3>
         <div className="confirm-buttons">
-          <button className="confirm-btn confirm-yes" onClick={handleConfirm}>
+          <button className="modal-btn" onClick={handleConfirm}>
             确定
           </button>
-          <button className="confirm-btn confirm-no" onClick={handleCancel}>
+          <button className="modal-btn" onClick={handleCancel}>
             取消
           </button>
         </div>

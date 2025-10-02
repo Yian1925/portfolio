@@ -14,6 +14,32 @@
 @import './components/Notes/NoteBoxes.css';
 @import './components/Notes/NoteDeleteSelector.css';
 
+/* 统一弹窗、按钮样式 */
+.modal-btn {
+  background: var(--theme-bg-tertiary) !important;
+  color: var(--theme-text-primary) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.modal-btn:hover {
+  background: var(--theme-bg-tertiary) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 统一弹窗标题样式 */
+.modal-title {
+  margin: 0 0 25px 0 !important;
+  font-size: 24px !important;
+  color: var(--theme-text-primary) !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
 
 .essay-page {
   min-height: 1500px !important;
@@ -26,150 +52,3 @@
   width: 100% !important;
   height: auto !important;
 }
-
-/* 响应式设计 */
-/* 修改第29-77行的响应式规则，添加更多断点 */
-
-/* @media (max-width: 1024px) {
-  .essay-page {
-    min-height: 1300px;
-  }
-  
-  .note-box {
-    max-width: 180px;
-    font-size: 13px;
-  }
-  
-  .record-container {
-    min-width: 280px;
-    padding: 18px;
-  }
-  
-  .record-container textarea {
-    max-width: 280px;
-  }
-  
-  .image-box {
-    width: 180px;
-    height: 180px;
-  }
-}
-
-@media (max-width: 768px) {
-  .essay-page {
-    min-height: 1200px;
-  }
-  
-  .note-box {
-    max-width: 160px;
-    font-size: 12px;
-    padding: 12px 18px;
-  }
-  
-  .record-container {
-    min-width: 280px;
-    padding: 18px;
-  }
-  
-  .record-container textarea {
-    max-width: 280px;
-    min-height: 120px;
-  }
-  
-  .image-box {
-    width: 160px;
-    height: 160px;
-  }
-  
-  .gallery-selector {
-    max-width: 85%;
-    padding: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .essay-page {
-    min-height: 1000px;
-  }
-  
-  .note-box {
-    max-width: 140px;
-    font-size: 11px;
-    padding: 10px 15px;
-  }
-  
-  .record-container {
-    min-width: 250px;
-    padding: 15px;
-  }
-  
-  .record-container textarea {
-    max-width: 250px;
-    min-height: 100px;
-  }
-  
-  .image-box {
-    width: 140px;
-    height: 140px;
-  }
-  
-  .gallery-selector {
-    max-width: 95%;
-    padding: 15px;
-  }
-  
-  .gallery-option {
-    padding: 8px;
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .essay-page {
-    min-height: 1000px !important;
-  }
-  
-  .note-box {
-    max-width: 150px !important;
-    font-size: 11px !important;
-    padding: 10px 15px !important;
-  }
-  
-  .record-container {
-    min-width: 250px !important;
-    padding: 15px !important;
-  }
-  
-  .record-container textarea {
-    max-width: 250px !important;
-    min-height: 100px !important;
-  }
-  
-  .image-box {
-    width: 150px !important;
-    height: 150px !important;
-  }
-  
-  .reset-button,
-  .essay-save-layout-button,
-  .change-background-btn,
-  .add-image-box-btn,
-  .rolling-gallery-upload-btn,
-  .add-custom-gallery-btn,
-  .delete-gallery-btn,
-  .delete-gallery-images-btn {
-    width: 80px !important;
-    font-size: 11px !important;
-    padding: 6px 12px !important;
-  }
-  
-  .gallery-selector {
-    max-width: 95% !important;
-    padding: 15px !important;
-  }
-  
-  .gallery-option {
-    padding: 8px !important;
-    font-size: 12px !important;
-  }
-} */

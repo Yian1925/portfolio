@@ -81,8 +81,7 @@ export const NoteDeleteSelector = ({
     <div className="note-delete-overlay">
       <div className="note-delete-modal">
         <div className="note-delete-header">
-          <h3>选择要删除的便签</h3>
-          <button className="close-btn" onClick={onClose}>×</button>
+          <h3 className="modal-title">选择要删除的便签</h3>
         </div>
         
         <div className="note-delete-content">
@@ -161,15 +160,15 @@ export const NoteDeleteSelector = ({
         
         <div className="note-delete-footer">
           <button
-            className="delete-btn"
+            className="modal-btn"
             disabled={selectedNotes.size === 0}
             onClick={handleDelete}
           >
             删除
           </button>
-          <button className="cancel-btn" onClick={onClose}>
-            取消
-          </button>
+            <button className="modal-btn" onClick={onClose}>
+              取消
+            </button>
         </div>
       </div>
     </div>

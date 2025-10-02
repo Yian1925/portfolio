@@ -23,7 +23,6 @@ const ImageSelectionModal = ({
   };
 
   const galleryImages = getGalleryImages();
-  const galleryTitle = gallery === 'main' ? rollingGalleryTitle : gallery.title;
 
   // 当图片变化时，清空选择状态（防止选择不存在的图片）
   useEffect(() => {
@@ -71,7 +70,7 @@ const ImageSelectionModal = ({
       <div className="gallery-selector">
         <div className="modal-header">
           <button className="back-btn" onClick={onBack}>返回</button>
-          <h3>选择要删除的图片</h3>
+          <h3 className="modal-title">选择要删除的图片</h3>
         </div>
 
         <div className="image-selection-grid">
@@ -95,13 +94,13 @@ const ImageSelectionModal = ({
 
         <div className="selector-buttons">
           <button
-            className="delete-btn"
+            className="modal-btn"
             onClick={handleDelete}
           >
             删除
           </button>
           <button
-            className="cancel-btn"
+            className="modal-btn"
             onClick={onClose}
           >
             取消

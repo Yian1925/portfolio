@@ -21,14 +21,6 @@
   text-align: center !important;
 }
 
-.input-dialog-title {
-  margin: 0 0 25px 0 !important;
-  font-size: 24px !important;
-  color: var(--theme-text-primary) !important;
-  font-weight: 600 !important;
-  line-height: 1.4 !important;
-}
-
 .input-dialog-input {
   width: 100% !important;
   padding: 15px 10px !important;
@@ -56,24 +48,6 @@
   gap: 55px !important;
   justify-content: center !important;
 }
-
-.input-dialog-btn {
-  padding: 12px 30px !important;
-  background: var(--theme-primary) !important;
-  color: var(--theme-text-primary);
-  border: none !important;
-  border-radius: 18px !important;
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-}
-
-.input-dialog-btn:hover {
-  background: var(--theme-primary) !important;
-  transform: translateY(-2px) !important;
-}
-
 
 @keyframes fadeIn {
   from {
